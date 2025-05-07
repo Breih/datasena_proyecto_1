@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Empresa</title>
+    <link rel="stylesheet" href="super.css">
+</head>
+<body>
+    <header>datasenn</header>
+    <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+
+    <div class="form-container">
+        <h2>Modificar Empresa</h2>
+        <form action="#" method="post">
+            <input type="text" name="nombre_empresa" placeholder="Ingrese el nuevo nombre de la empresa" required>
+            <input type="text" name="nit" placeholder="Ingrese el nuevo NIT" required>
+            <input type="email" name="correo_contacto" placeholder="Ingrese el nuevo correo de contacto" required>
+            <input type="tel" name="telefono_contacto" placeholder="Ingrese el nuevo teléfono de contacto" required>
+            <input type="text" name="direccion_empresa" placeholder="Ingrese la nueva dirección de la empresa" required>
+            <input type="text" name="tipo_empresa" placeholder="Ingrese el nuevo tipo de empresa" required>
+            <select name="activacion" required>
+                <option value="">Seleccione nuevo estado</option>
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+            </select>
+            <div class="">
+                <button class="back-modificar">Modificar</button>
+            </div>
+        </form> 
+    </div>
+
+    <div class="">
+        <button class="habilitar-btn" onclick="window.location.href='/SU_admin/menu_SU_admin/super_menu.html'"'">Regresar</button>
+    </div>
+
+    <footer>
+        <a>© todos los derechos reservados al SENA</a>
+    </footer>
+</body>
+</html>

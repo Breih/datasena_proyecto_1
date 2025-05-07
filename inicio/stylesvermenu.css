@@ -1,0 +1,172 @@
+:root {
+    --background-color: #f4f4f4;
+    --primary-color: #39A900;
+    --secondary-color: #007bff;
+    --text-color: #333;
+    --border-color: #ccc;
+    --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    --font-family: 'Work Sans','calibri' ;
+    --padding: 20px;
+    --margin-bottom: 15px;
+    --border-radius: 4px;
+    --hover-color: #218838;
+    --input-height: 56px; /* Altura de los inputs y selects */
+    --button-size: 48px; /* Tamaño mínimo de los botones */
+    --button-spacing: 20px; /* Espaciado mínimo entre el último campo y el botón */
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+.logo-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.logo-container img {
+    width: 80px; /* Tamaño del logo del SENA */
+    height: auto; /* Mantener la relación de aspecto */
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: var(--padding);
+    height: 70%;
+}
+
+.verification-container {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 95%; /* Aumentar el tamaño del contenedor */
+    max-width: 450px; /* Ajustar el ancho máximo del contenedor */
+    padding: var(--padding);
+    text-align: center;
+    border: 1px solid black; /* Borde negro */
+}
+
+.verification-container h3 {
+    margin-bottom: var(--padding);
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+.icon-container {
+    margin-bottom: var(--padding);
+}
+
+.icon-container .material-icons {
+    font-size: 48px;
+    color: var(--text-color);
+}
+
+.verification-container p {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: var(--margin-bottom);
+}
+
+.md-input {
+    width: 100%;
+    padding: 16px;
+    height: var(--input-height);
+    margin-bottom: var(--button-spacing); /* Espaciado mínimo entre el último campo y el botón */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.md-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.md-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+    margin-top: var(--button-spacing); /* Espaciado superior para separar del campo de entrada */
+}
+
+.md-button:hover {
+    background-color: var(--hover-color);
+}
+
+.md-link {
+    display: block;
+    margin-top: 15px;
+    font-size: 14px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.md-link:hover {
+    text-decoration: underline;
+}
+
+footer {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    /* padding: 10px 0; */
+    font-size: 14px;
+    position: relative;
+    bottom: 0;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .verification-container {
+        width: 90%;
+        padding: var(--padding);
+    }
+
+    .logo-container {
+        top: 10px;
+        right: 10px;
+    }
+
+    .logo-container img {
+        width: 80px; /* Ajusta el tamaño del logo para dispositivos más pequeños */
+    }
+}
+
+@media (max-width: 480px) {
+    .verification-container {
+        width: 95%;
+        padding: var(--padding);
+    }
+
+    .logo-container {
+        top: 5px;
+        right: 5px;
+    }
+
+    .logo-container img {
+        width: 60px; /* Ajusta el tamaño del logo para dispositivos más pequeños */
+    }
+}

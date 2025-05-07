@@ -1,0 +1,104 @@
+:root {
+    --background-color: #f4f4f4;
+    --primary-color: #39A900;
+    --secondary-color: #007bff;
+    --text-color: #333;
+    --border-color: #ccc;
+    --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    --font-family: 'Work Sans', 'calibri';
+    --padding: 20px;
+    --margin-bottom: 15px;
+    --border-radius: 4px;
+    --hover-color: #218838;
+    --input-height: 56px;
+    --button-size: 48px;
+    --button-spacing: 20px;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1{
+    font-size: 37px;
+    margin-left: 42%;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #eaeaea;
+}
+
+.logo {
+    width: 80px; /* Tamaño del logo del SENA */
+    height: auto; /* Mantener la relación de aspecto */
+}
+
+.container {
+    background: #fff;
+    box-shadow: var(--box-shadow);
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    width: 400px;
+    margin: 50px auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    height: var(--input-height);
+    margin-bottom: var(--margin-bottom);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 10px;
+}
+
+.submit-button {
+    background: var(--primary-color);
+    color: white;
+    height: var(--button-size);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background: var(--hover-color);
+}
+footer {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-align: center;
+    padding: 5px 0; /* Aumentar el padding del footer */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Ajusta este valor según sea necesario */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 0.9em;
+}

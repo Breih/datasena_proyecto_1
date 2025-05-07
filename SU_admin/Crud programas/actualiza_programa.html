@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Actualizar programa</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>Datasenn</header>
+        <img src="img/download-removebg-preview.png" alt="Logo SENA" class="img">
+
+        <div class="form-container">
+            <h2>Actualizar programa</h2>
+            <form action="#" method="post">
+                <select name="tipo_programa" required>
+                    <option value="">Ingrese el tipo de programa de formacion</option>
+                    <option value="Tc">Tecnico</option>
+                    <option value="Tn">Tecnologo</option>
+                    <option value="Cm">Complementario</option>
+                </select>
+
+                <input type="text" name="nombre_programa" placeholder="Ingrese el nombre del programa de formacion" required>
+                <input type="tel" name="duracion_programa" placeholder="Ingrese la duracion del programa de formacion" required>
+            <select name="activacion" required>
+                <option value="">Activo</option>
+                <option value="cc">Inactivo</option>
+            </select>
+
+            <div class="">
+                <button class="back">Actualizar</button>
+            </div>
+        </div>
+            <p></p>
+            <div class="">
+                <button class="logout-btn" onclick="window.location.href='C:/Users/leyva/Desktop/datasenn/SU_admin/Crud programas/menu_programas.html'">Regresar</button>
+            </div>
+        <footer>
+            <a>&copy; todos los derechos reservados al SENA</a>
+        </footer>
+    </body>
+</html>

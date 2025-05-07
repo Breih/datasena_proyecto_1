@@ -1,0 +1,154 @@
+:root {
+    --background-color: #f4f4f4;
+    --primary-color: #39a900;
+    --secondary-color: #007bff;
+    --text-color: #333;
+    --border-color: #ccc;
+    --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    --font-family: 'Work Sans', 'calibri';
+    --padding: 20px;
+    --margin-bottom: 15px;
+    --border-radius: 4px;
+    --hover-color: #218838;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.main-content {
+    position: absolute; /* Para posicionarlo de manera independiente */
+    top: 0; /* Ajusta según tu diseño */
+    left: 50%;
+    transform: translateX(-50%); /* Centra horizontalmente */
+    text-align: center; /* Centra el texto */
+    font-size: 24px; /* Tamaño ajustable */
+    font-weight: bold; /* Negrita, si es necesario */
+}
+.logo-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.sena-logo {
+    width: 80px; /* Tamaño del logo del SENA */
+    height: auto; /* Mantener la relación de aspecto */
+}
+.container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--padding);
+    width: 100%;
+    max-width: 800px;
+    box-shadow: var(--box-shadow);
+}
+
+.profile-container1 {
+    width: 100%;
+    padding: var(--padding);
+    background-color: #f0f0f0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.profile-container1 h2 {
+    text-align: center;
+    margin-bottom: var(--margin-bottom);
+}
+
+.content-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--margin-bottom);
+    width: 100%;
+}
+
+.info-box {
+    background-color: #ccc; /* Color de fondo gris más oscuro */
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    flex: 1;
+    margin-right: var(--margin-bottom);
+    width: 70%;
+}
+
+.info-box p {
+    margin: 0;
+    padding: var(--padding);
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 30%;
+}
+
+.edit-button, .delete-button {
+    background-color: #ffffff;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+    width: 60%;
+    text-align: left;
+}
+
+.edit-button:hover, .delete-button:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.save-button {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    padding: 10px 10px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-top: var(--margin-bottom);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .info-box {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: var(--margin-bottom);
+    }
+
+    .buttons-container {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .edit-button, .delete-button {
+        width: 48%;
+    }
+}

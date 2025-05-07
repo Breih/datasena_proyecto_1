@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar usuario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>Datasenn</header>
+    <img src="img/download-removebg-preview.png" alt="Logo SENA" class="img">
+
+    <div class="form-container">
+        <h2>Visualizar usuario</h2>
+        <form action="#" method="get">
+            <!-- Visualizar usuario con readonly -->
+            <label for="nombre_completo">Tipo de programa:</label>
+            <input type="text" id="tipo_programa" name="tipo_programa" value="Tecnologo" placeholder="Ingrese el tipo de programa de formacion" readonly>
+
+            <label for="tarjeta_identidad">Nombre del programa:</label>
+            <input type="text" id="nombre_programa" name="nombre_programa" value="Analisis y Desarrollo de Software" placeholder="Ingrese el nombre del programa de formacion" readonly>
+
+            <label for="recidencia">Tiempo de duracion del programa:</label>
+            <input type="text" id="duracion_programa" name="duracion_programa" value="912 Horas" placeholder="Ingrese la duracion del programa de formacion" readonly>
+
+        </form>
+        <div class="back_visual">
+            <button class="logout-btn" onclick="window.location.href='C:/Users/leyva/Desktop/datasenn/SU_admin/Crud programas/menu_programas.html'">Regresar</button>
+        </div>
+    </div>
+
+    <footer>
+        <a>&copy; Todos los derechos reservados al SENA</a>
+    </footer>
+</body>
+</html>

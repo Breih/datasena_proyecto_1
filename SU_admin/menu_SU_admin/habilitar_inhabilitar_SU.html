@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>habilitar inhabilitar usuario</title>
+    <link rel="stylesheet" href="super.css">
+</head>
+<body>
+    <header>datasenn</header>
+    <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+
+    <div class="form-container">
+        <h2>habilitar inhabilitar usuario</h2>
+        <form action="#" method="post">
+            <select name="tipo_documento" required>
+                <option value="">Ingrese su tipo de documento</option>
+                <option value="cc">Cédula de ciudadanía</option>
+                <option value="ce">Cédula de extranjería</option>
+                <option value="ti">Tarjeta de identidad</option>
+            </select>
+
+            <!-- Visualizar usuario con readonly -->
+            <label for="nombre_completo">Nombre completo:</label>
+            <input type="text" id="nombre_completo" name="nombre_completo" value="Juan Pérez" placeholder="Ingrese el nombre completo" readonly>
+
+            <label for="tarjeta_identidad">Tarjeta de identidad:</label>
+            <input type="text" id="tarjeta_identidad" name="tarjeta_identidad" value="123456789" placeholder="Ingrese la tarjeta de identidad" readonly>
+
+            <label for="recidencia">Residencia:</label>
+            <input type="text" id="recidencia" name="recidencia" value="Bogotá" placeholder="Ingrese la residencia" readonly>
+
+            <label for="correo">Correo:</label>
+            <input type="text" id="correo" name="correo" value="juanperez@email.com" placeholder="Ingrese el correo" readonly>
+
+            <label for="validacion">Validación:</label>
+            <input type="text" id="validacion" name="validacion" value="Verificado" placeholder="Ingrese la validación" readonly>
+
+            <label for="contrasena">Contraseña:</label>
+            <input type="text" id="contrasena" name="contrasena" value="********" placeholder="Ingrese la contraseña" readonly>
+
+            <label for="tipo_de_sangre">Tipo de sangre:</label>
+            <input type="text" id="tipo_de_sangre" name="tipo_de_sangre" value="O+" placeholder="Ingrese el tipo de sangre" readonly>
+
+            <label for="activacion">Activación:</label>
+            <input type="text" id="activacion" name="activacion" value="Activo" placeholder="Estado de activación" readonly>
+
+        <select name="activacion" required>
+            <option value="">Habilitado</option>
+            <option value="cc">Inhabilitado</option>
+        </select>
+        <div class="">
+            <button class="back">Actualizar</button>
+        </div>
+
+      
+        </form>
+ 
+    </div>
+    <div class="">
+        <button class="habilitar-btn" onclick="window.location.href='super_menu.html'">Regresar</button>
+    </div> 
+    <footer>
+        <a>&copy; todos los derechos reservados al SENA</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>Datasenn</header>
+    
+    <!-- Imagen del logo -->
+    <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+
+    <!-- Contenedor del formulario -->
+    <div class="form-container">
+        <h2>Actualizar usuario</h2>
+        <form action="#" method="post">
+            <select name="tipo_documento" required>
+                <option value="">Ingrese su tipo de documento</option>
+                <option value="cc">Cédula de ciudadanía</option>
+                <option value="ce">Cédula de extranjería</option>
+                <option value="ti">Tarjeta de identidad</option>
+            </select>
+
+            <input type="text" name="nombre_completo" placeholder="Ingrese el nombre completo" required>
+            <input type="text" name="tarjeta_identidad" placeholder="Ingrese la tarjeta identidad" required>
+            <input type="text" name="recidencia" placeholder="Ingrese la residencia" required>
+            <input type="email" name="correo" placeholder="Ingrese el correo" required>
+            <input type="text" name="validacion" placeholder="Ingrese la validación" required>
+            <input type="password" name="contrasena" placeholder="Ingrese la contraseña" required>
+            <input type="text" name="tipo_de_sangre" placeholder="Ingrese el tipo de sangre" required>
+
+            <select name="activacion" required>
+                <option value="">Seleccione el estado</option>
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+            </select>
+
+            <div class="">
+                <button type="submit" class="back_actualizar">Actualizar</button>
+            </div>
+        </form>
+
+        <!-- Botón de regreso (fuera del form para que no pida campos) -->
+        <div class="">
+            <button class="logout-btn" onclick="window.location.href='super_menu.html'">Regresar</button>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <a>&copy; Todos los derechos reservados al SENA</a>
+    </footer>
+</body>
+</html>

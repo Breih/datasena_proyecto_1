@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Empresa</title>
+    <link rel="stylesheet" href="stylesRE.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="logo-container">
+        <img src="C:\Users\leyva\Desktop\datasenn\inicio\logo.png" alt="Logo">
+    </div>
+    <div class="content">
+        <h2>Datasenn</h2>
+        <div class="form-container">
+            <h3>Registro de Empresa</h3>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="tipoDocumento">Tipo de documento</label>
+                    <select id="tipoDocumento" name="tipoDocumento" class="md-input">
+                        <option value="cedula">Cedula de ciudadania</option>
+                        <!-- <option value="ruc"></option> -->
+                        <option value="cedula">Cédula de extranjería</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="numeroDocumento">Número de documento</label>
+                    <input type="text" id="numeroDocumento" name="numeroDocumento" placeholder="Ingrese el número de documento" class="md-input">
+                </div>
+                <div class="form-group">
+                    <label for="nombreSolicitante">Representante legal</label>
+                    <input type="text" id="nombreSolicitante" name="nombreSolicitante" placeholder="Ingrese su nombre completo" class="md-input">
+                </div>
+                <div class="form-group">
+                    <label for="tipoEmpresa">Tipo de empresa</label>
+                    <select id="tipoEmpresa" name="tipoEmpresa" class="md-input">
+                        <option value="microempresa">Microempresa</option>
+                        <option value="pequeña">Pequeña empresa</option>
+                        <option value="mediana">Mediana empresa</option>
+                        <option value="grande">Grande empresa</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="estadoEmpresa">Estado de la empresa</label>
+                    <select id="estadoEmpresa" name="estadoEmpresa" class="md-input">
+                        <option value="activa">Activa</option>
+                        <option value="inactiva">Inactiva</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ubicacion">Ubicación</label>
+                    <input type="text" id="ubicacion" name="ubicacion" placeholder="Ingrese la ubicación" class="md-input">
+                </div>
+                <div class="form-group">
+                    <label for="correoElectronico">Correo electrónico</label>
+                    <input type="email" id="correoElectronico" name="correoElectronico" placeholder="Ingrese su correo electrónico" class="md-input">
+                </div>
+                <div class="form-group">
+                    <label for="razonSocial">Razón social</label>
+                    <input type="text" id="razonSocial" name="razonSocial" placeholder="Ingrese la razón social" class="md-input">
+                </div>
+                <div class="form-group">
+                    <label for="numeroTelefono">Número de teléfono</label>
+                    <input type="text" id="numeroTelefono" name="numeroTelefono" placeholder="Ingrese su número de teléfono" class="md-input">
+                </div>
+                <div class="form-group">
+                    <label for="razonComercial">Razón comercial</label>
+                    <input type="text" id="razonComercial" name="razonComercial" placeholder="Ingrese la razón comercial" class="md-input">
+                </div>
+                <a href="ver_co.html" class="md-button">Registrar</a>
+                <a href="#" class="md-link">Restaurar contraseña</a>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>© Todos los derechos reservados al SENA</p>
+    </footer>
+</body>
+</html>

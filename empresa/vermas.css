@@ -1,0 +1,222 @@
+:root {
+    --background-color: #f4f4f4;
+    --primary-color: #39A900;
+    --secondary-color: #007bff;
+    --text-color: #333;
+    --border-color: #ccc;
+    --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    --font-family: 'Work Sans', 'calibri';
+    --padding: 20px;
+    --margin-bottom: 15px;
+    --border-radius: 4px;
+    --hover-color: #218838;
+    --sidebar-width: 25%;
+    --sidebar-width-mobile: 100%; /* Ancho de la barra lateral en móviles */
+    --content-width: 75%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-logo {
+    width: 80px; /* Tamaño del logo del usuario */
+    height: auto; /* Mantener la relación de aspecto */
+    margin-bottom: 5px;
+}
+
+.username {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.logo-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.sena-logo {
+    width: 80px; /* Tamaño del logo del SENA */
+    height: auto; /* Mantener la relación de aspecto */
+}
+
+/* .container {
+    display: flex;
+    flex-direction: row;
+} */
+/* ... (tu código CSS existente) */
+
+.profile-container1 {
+    /* Estilo para el contenedor del perfil */
+    width: 180%;
+    padding: 20px;
+}
+
+.user-details {
+    /* Estilo para los detalles del usuario */
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.edit-profile-btn {
+    /* Estilo para el botón de editar perfil */
+    background-color:var(--primary-color); /* Verde */
+    color: white;
+    justify-content: end;
+    margin-top: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: #ffffff;
+    padding: var(--padding);
+    box-shadow: var(--box-shadow);
+    min-height: 93vh; /* Asegura que la barra lateral ocupe toda la altura de la ventana */
+}
+
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: var(--margin-bottom);
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: var(--padding);
+    display: block;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.main-content {
+    position: absolute; /* Para posicionarlo de manera independiente */
+    top: 0; /* Ajusta según tu diseño */
+    left: 50%;
+    transform: translateX(-50%); /* Centra horizontalmente */
+    text-align: center; /* Centra el texto */
+    font-size: 24px; /* Tamaño ajustable */
+    font-weight: bold; /* Negrita, si es necesario */
+}
+
+
+.logout-container {
+    position: fixed;
+    bottom: 70px; /* Ajusta este valor según sea necesario */
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logout-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    position: fixed; /* Lo hace fijo en la pantalla */
+    bottom: 5%;    /* Distancia desde el borde inferior */
+    right: 20px;     /* Distancia desde el borde derecho */
+}
+
+.logo-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.logo-container img {
+    width: 80px; /* Tamaño del logo del SENA */
+    height: auto; /* Mantener la relación de aspecto */
+}
+footer {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-align: center;
+    padding: 5px 0; /* Aumentar el padding del footer */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Ajusta este valor según sea necesario */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 0.9em;
+}
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: var(--sidebar-width-mobile);
+        padding: 10px;
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .user-info {
+        margin-bottom: 10px;
+    }
+
+    .logo-container {
+        position: static;
+        margin-top: 10px;
+    }
+
+    .logout-container {
+        bottom: 80px; /* Ajusta este valor según sea necesario */
+        right: 10px;
+    }
+
+    .logout-button {
+        padding: 10px;
+    }
+}

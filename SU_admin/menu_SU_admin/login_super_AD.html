@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Administrador</title>
+    <link rel="stylesheet" href="super.css">
+</head>
+<body>
+    <header>datasenn</header>
+    <img src="C:\Users\leyva\Desktop\datasenn\inicio\logo.png" alt="Logo SENA" class="img">
+
+    <div class="form-container">
+        <h2>Registro de administrador</h2>
+        <form action="verificacion.html" method="get">
+            <select name="tipo_documento" required>
+                <option value="">Ingrese su tipo de documento</option>
+                <option value="cc">Cédula de ciudadanía</option>
+                <option value="ce">Cédula de extranjería</option>
+                <option value="ti">Tarjeta de identidad</option>
+            </select>
+
+            <input type="text" name="numero_documento" placeholder="Ingrese su número de documento" required>
+            <input type="text" name="nombre_completo" placeholder="Ingrese su nombre completo" required>
+            <input type="email" name="correo_electronico" placeholder="Ingrese su correo electrónico" required>
+            <input type="password" name="contrasena" placeholder="Ingrese su contraseña" required>
+            <input type="tel" name="numero_telefonico" placeholder="Ingrese su número telefónico" required>
+
+            <button type="submit">Ingresar</button>
+        </form>
+        <a href="#">Restaurar contraseña</a>
+    </div>
+
+    <footer>
+        <a>&copy; todos los derechos reservados al SENA</a>
+    </footer>
+</body>
+</html>

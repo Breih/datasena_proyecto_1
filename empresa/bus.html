@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Navegación</title>
+    <link rel="stylesheet" href="stylesMenu.css">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="logo-container">
+            <!-- <img src="C:\Users\leyva\Desktop\datasenn\inicio\logo.png" alt="Logo"> -->
+        </div>
+        <div class="menu-container">
+            <div class="menu-container">
+                <select class="dropdown" id="programaFormacion" name="programaFormacion">
+                <option value="">Seleccione un programa</option>
+                <option value="analisis_desarrollo_software_trimestre1">Análisis y Desarrollo de Software</option>
+                <!-- Resto de las opciones... -->
+                </select>
+                <select class="dropdown" id="trimestre" name="trimestre">
+                    <option value="">Seleccione un trimestre</option>
+                    <option value="1">Trimestre 1</option>
+                    <!-- Resto de las opciones... -->
+                </select>
+                <select class="dropdown" id="ficha" name="ficha">
+                    <option value="">Seleccione una ficha</option>
+                    <option value="ficha1">Ficha 123456</option>
+                    <!-- Resto de las opciones... -->
+                </select>
+                <select class="dropdown" id="ciudadUbicacion" name="ciudadUbicacion">
+                    <option value="">Seleccione una ciudad</option>
+                    <option value="armenia">Armenia</option>
+                    <!-- Resto de las opciones... -->
+                </select>
+            </div>
+            <a href="usuario.html" class="md-button">Buscar</a>
+        </div>
+    </nav>
+
+    <!-- Slider en el centro de la página -->
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="icon">🎓</div>
+                    <h2>Programas de Formación SENA</h2>
+                    <p>Desarrolla tus competencias y habilidades con nuestros programas de formación técnica y tecnológica.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="icon">💼</div>
+                    <h2>Formación Profesional Integral</h2>
+                    <p>Aprende con metodologías innovadoras y prácticas para responder a las necesidades del sector productivo.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="icon">🌟</div>
+                    <h2>Educación para el Trabajo</h2>
+                    <p>Accede a oportunidades laborales y contribuye al desarrollo económico y social del país.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-controls">
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+        </div>
+        
+        <div class="slider-nav">
+            <button class="active" data-slide="0"></button>
+            <button data-slide="1"></button>
+            <button data-slide="2"></button>
+        </div>
+    </div>
+
+    <div class="">
+        <button class="m-btn" onclick="window.location.href='../inicio/inicio_todos.html'">Cerrar sesión</button>
+        
+    </div>
+
+    <footer>
+        <a>© Todos los derechos reservados al SENA</a>
+    </footer>
+    
+    <script>
+        // JavaScript para controlar el slider
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.slider');
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            const navBtns = document.querySelectorAll('.slider-nav button');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            
+            // Función para mostrar un slide específico
+            function showSlide(index) {
+                if (index < 0) index = totalSlides - 1;
+                if (index >= totalSlides) index = 0;
+                
+                currentSlide = index;
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Actualizar botones de navegación
+                navBtns.forEach((btn, i) => {
+                    btn.classList.toggle('active', i === currentSlide);
+                });
+            }
+            
+            // Event listeners para los botones de navegación
+            prevBtn.addEventListener('click', () => {
+                showSlide(currentSlide - 1);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                showSlide(currentSlide + 1);
+            });
+            
+            // Event listeners para los puntos de navegación
+            navBtns.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+            
+            // Automatizar el slider
+            setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

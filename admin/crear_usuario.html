@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crear usuario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper"> <!-- INICIO del wrapper -->
+        <header>datasenn</header>
+
+        <div class="logo-container">
+            <img src="../img/logo-sena.png" alt="Logo">
+        </div>
+
+        <div class="form-container">
+            <h2>Crear usuario</h2>
+            <form action="#" method="post">
+                <select name="tipo_documento" required>
+                    <option value="">Ingrese su tipo de documento</option>
+                    <option value="cc">Cédula de ciudadanía</option>
+                    <option value="ce">Cédula de extranjería</option>
+                    <option value="ti">Tarjeta de identidad</option>
+                </select>
+
+                <input type="text" name="nombre_completo" placeholder="Ingrese el nombre completo" required>
+                <input type="text" name="tarjeta identidad" placeholder="Ingrese la tarjeta identidad" required>
+                <input type="email" name="recidencia" placeholder="Ingrese la recidencia" required>
+                <input type="password" name="correo" placeholder="Ingrese el correo" required>
+                <input type="tel" name="validacion" placeholder="Ingrese la validacion" required>
+                <input type="tel" name="contrasena" placeholder="Ingrese la contraseña" required>
+                <input type="tel" name="tipo de sangre" placeholder="Ingrese el tipo de sangre" required>
+
+                <select name="activacion" required>
+                    <option value="">Activo</option>
+                    <option value="cc">Inactivo</option>
+                </select>
+
+                <div>
+                    <button class="back">Crear</button>
+                </div>
+            </form> 
+        </div>
+
+        <div>
+            <button class="logout-btn" onclick="window.location.href='menu.html'">Regresar</button>
+        </div>
+    </div> <!-- FIN del wrapper -->
+
+    <footer>
+        <a>&copy; todos los derechos reservados al SENA</a>
+    </footer>
+</body>
+</html>

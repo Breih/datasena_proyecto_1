@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú</title>
+    <link rel="stylesheet" href="style_Super_menu.css">
+    <style>
+        /* Estilos del slider */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; /* Asegura que el contenido se apile */
+            text-align: center;
+            height: 100vh; /* Usa toda la altura de la pantalla */
+        }
+
+        .slider-container {
+            width: 100%;
+            max-width: 750px; /* Ajuste del tamaño del slider */
+            height: 400px; /* Más grande */
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 300%;
+        }
+
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        /* Botones de navegación */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+        }
+
+        .prev-button {
+            left: 10px;
+        }
+
+        .next-button {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="user-profile">
+                <div class="user-icon">
+                    <span>@</span>Super Administrador
+                </div>
+            </div>
+            <ul class="menu">
+                <li><button class="menu-btn" onclick="window.location.href='reportar_SU.html'">Reportar usuario</button></li>
+                <li><button class="menu-btn" onclick="window.location.href='crear_usuario_SU.html'">Crear usuario</button></li>
+                <li><button class="menu-btn" onclick="window.location.href='visualizar_usuario.html'">Visualizar usuario</button></li>
+                <li><button class="menu-btn" onclick="window.location.href='listar_usuario_SU.html'">Listar usuario</button></li>
+                <li><button class="menu-btn" onclick="window.location.href='actualiza_usuario_SU.html'">Actualizar usuario</button></li>
+                <li><button class="menu-btn" onclick="window.location.href='habilitar_inhabilitar_SU.html'">Habilitar/Deshabilitar usuario</button></li>
+                <li><button class="menu-btn" onclick="window.location.href='Usuario.html'">Información del perfil del aprendiz SENA</button></li>
+                <li><button class="menu-btn" onclick="window.location.href='modificar_empresa_SU.html'">Modificar empresa</button></li>
+                <li><button class="menu-btn" onclick="window.location.href='estado_empresa_SU.html'">Modificar estado de empresa</button></li>
+                <li><button class="menu-btn" onclick="window.location.href='reporte_empresa_SU.html'">Generar reporte empresa</button></li>
+                <li><button class="menu-btn" onclick="window.location.href='crear_administrador_SU.html'">Crear administrador</button></li>
+                <li><button class="menu-btn" onclick="window.location.href='../Crud programas/menu_programas.html'">Crear programa de formación</button></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div>
+                <h1>Datasenn</h1>
+            </div>
+            <!-- Logo -->
+            <!-- <div class="logo-container">
+                <img src="C:\Users\leyva\Desktop\datasenn\inicio\logo.png" alt="Logo">
+            </div> -->
+            <!-- Slider -->
+            <div class="slider-container">
+                <div class="slider" id="slider">
+                    <div class="slide">
+                        <img src="../../img/slide1.jpg" alt="Imagen de prueba">
+                    </div>
+                    
+                    <div class="slide">
+                        <img src="../../img/Sena-.jpg" alt="Imagen de prueba">
+
+                    </div>
+                    <div class="slide">
+                        <img src="../../img/practicas-y-pasantias-sena.jpg" alt="Imagen de prueba">
+
+                    </div>
+                </div>
+                <button class="nav-button prev-button" onclick="prevSlide()">❮</button>
+                <button class="nav-button next-button" onclick="nextSlide()">❯</button>
+            </div>
+        </div>
+    </div>
+
+        <button class="m-btn" onclick="window.location.href='/inicio_todos.html'">Cerrar sesión</button>
+
+
+
+    <footer>
+        <a>&copy; Todos los derechos reservados al SENA</a>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            const offset = -index * 100;
+            slider.style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            showSlide(currentIndex);
+        }
+
+        // Cambio automático cada 3 segundos
+        setInterval(nextSlide, 3000);
+
+        showSlide(currentIndex);
+    </script>
+</body>
+</html>

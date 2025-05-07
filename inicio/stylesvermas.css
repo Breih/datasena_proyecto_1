@@ -1,0 +1,318 @@
+:root {
+    --background-color: #f4f4f4;
+    --primary-color: #39A900;
+    --secondary-color: #50E5F9;
+    --text-color: #333;
+    --black: #000;
+    --border-color: #ccc;
+    --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    --font-family: 'Work Sans', 'calibri';
+    --padding: 20px;
+    --margin-bottom: 15px;
+    --border-radius: 4px;
+    --hover-color: #218838;
+    --sidebar-width: 25%;
+    --sidebar-width-mobile: 100%; /* Ancho de la barra lateral en móviles */
+    --content-width: 75%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    background-image: url("../img/fondo.webp");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.fondo {
+    margin: auto;
+    padding: auto;
+    background-image: url(../img/fondo.webp);
+    background-size: contain;
+    height: 250%;
+    width: 300%;
+}
+
+
+
+
+
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Contenedor del slider */
+.slider-container {
+    width: 800px; /* Cada imagen ocupa el 100% del contenedor visible */
+    height: 320px;/* Se ajusta a la altura del slider */
+    left: 65%; 
+    top: 100px;
+    transform: translateX(-50%);
+    overflow: hidden;
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor de imágenes */
+.slider {
+    display: flex; /* Alinea las imágenes en una fila */
+    width: 300%; /* Para contener todas las imágenes en línea */
+    height: 100%;
+    animation: slide 20s infinite ease-in-out;
+}
+
+/* Estilos de las imágenes */
+.slider img {
+    width: 1000px; /* Igual al contenedor */
+    height: 100%;
+    object-fit: cover; /* Ocupa todo el espacio sin deformarse */
+}
+
+/* Animación de desplazamiento */
+@keyframes slide {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(-1000px); } /* Mueve a la segunda imagen */
+    66% { transform: translateX(-2000px); } /* Mueve a la tercera imagen */
+    100% { transform: translateX(0); } /* Vuelve a la primera imagen */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.user-info { /*centra la foto del usuario */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-logo {
+    width: 80px; /* Tamaño del logo del usuario */
+    height: auto; /* Mantener la relación de aspecto */
+    margin-bottom: 5px;
+}
+
+.username {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.logo-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.sena-logo {
+    width: 80px; /* Tamaño del logo del SENA */
+    height: auto; /*Mantener la relación de aspecto*/
+}
+
+
+.sidebar {
+  
+    width: 100% ;
+    background-color: #ffffff;
+    padding: var(--padding);
+    /* box-shadow: var(--box-shadow); */
+    transition: width 0.3s;
+    margin: 20px;
+ }  Ajusta el valor según la separación que necesites
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: var(--margin-bottom);
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: var(--padding);
+    display: block;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: var(--hover-color);
+    color: #ffffff;
+} */
+
+.main-content {
+    position: absolute; /* Para posicionarlo de manera independiente */
+    top: 0; /* Ajusta según tu diseño */
+    left: 50%;
+    transform: translateX(-50%); /* Centra horizontalmente */
+    text-align: center; /* Centra el texto */
+    font-size: 24px; /* Tamaño ajustable */
+    font-weight: bold; /* Negrita, si es necesario */
+    
+}
+
+
+.logout-container {
+    position: fixed;
+    bottom: 70px; /* Ajusta este valor según sea necesario */
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logout-button {
+    background-color: #ffffff;
+    color: var(--primary-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: var(--primary-950);
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Ajusta este valor según sea necesario */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 0.9em;
+}
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+
+    .main-content {
+        width: 100%;
+        padding: 10px;
+    }
+
+
+    /* :root {
+        --background-color: #f4f4f4;
+        --primary-color: #39A900;
+        --text-color: #333;
+        --border-color: #ccc;
+        --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        --font-family: 'Work Sans', 'calibri';
+        --padding: 20px;
+        --border-radius: 4px;
+        --hover-color: #218838;
+    } */
+
+    body {
+        margin: 0;
+        font-family: var(--font-family);
+        background-color: var(--background-color);
+        color: var(--text-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #ffffff;
+        padding: 30px;
+        box-shadow: var(--box-shadow);
+        border-radius: var(--border-radius);
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user-logo {
+        width: 80px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .username {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .sidebar ul li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar ul li a {
+        text-decoration: none;
+        color: var(--text-color);
+        padding: 10px 20px;
+        display: block;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        transition: background-color 0.3s;
+        text-align: center;
+    }
+ 
+    .sidebar ul li a:hover {
+        background-color: var(--hover-color);
+        color: #ffffff;
+    } 
+
+    footer {
+        background-color: var(--primary-color);
+        color: #ffffff;
+        text-align: center;
+        padding: 5px 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
