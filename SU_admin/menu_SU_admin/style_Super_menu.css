@@ -362,7 +362,7 @@ footer {
     top: 0;
     left: 0;
     z-index: 1001;
-    padding: 10px;
+    padding: 8.3px;
     background-color: var(--primary-950);
 }
 
@@ -380,33 +380,47 @@ footer {
     cursor: pointer;
 }
 
+/* Contenedor del menú desplegable */
 .dropdown-content {
-    display: none;
+    display: flex;
+    flex-direction: column;
     position: absolute;
     background-color: #fff;
-    min-width: 1880px;
+    min-width: 180px; /* Ajusta el ancho a tu gusto */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 5px;
     margin-top: 5px;
-    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    left: 0;
 }
 
+/* Estilo de los botones dentro del menú */
 .dropdown-content button {
     width: 100%;
-    padding: 12px 16px;
+    padding: 15px 20px; /* Aumenta el tamaño de los botones */
     text-align: left;
     border: none;
     background-color: white;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 16px;  /* Ajusta el tamaño del texto */
     color: black;
+    border-bottom: 2px solid #eee; /* Aumenta el grosor de la línea de separación */
+    margin-bottom: 10px; /* Añade espacio entre los botones */
+    border-radius: 5px; /* Bordes redondeados para los botones */
 }
 
+/* Efecto hover de los botones */
 .dropdown-content button:hover {
     background-color: var(--primary-200);
 }
 
+/* Clase para mostrar el menú */
 .show {
-    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
