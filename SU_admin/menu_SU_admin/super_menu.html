@@ -19,6 +19,7 @@
         <button class="top-btn" onclick="location.href='crear_administrador_SU.html'">Crear administrador</button>
         <button class="top-btn" onclick="location.href='../Crud%20programas/menu_programas.html'">Crear programa de formación</button>
     </div>
+    
     <div class="container">
 <div class="menu-wrapper">
     <div class="dropdown">
@@ -85,6 +86,20 @@
         showSlide(currentIndex);
     </script>
     <script>
+    function toggleDropdown() {
+        document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-btn')) {
+            const dropdowns = document.getElementsByClassName("dropdown-content");
+            for (let i = 0; i < dropdowns.length; i++) {
+                dropdowns[i].classList.remove('show');
+            }
+        }
+    }
+</script>
+<script>
     function toggleDropdown() {
         document.getElementById("dropdownMenu").classList.toggle("show");
     }
