@@ -2,31 +2,35 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Panel Principal</title>
+    <title>Super administrador</title>
     <link rel="stylesheet" href="style_Super_menu.css"> <!-- Asegúrate de tener este CSS vinculado -->
     <link rel="icon" href="/img/Logotipo_Datasena.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+    <meta charset="UTF-8">
+    <title>Menú Desplegable</title>
+    <link rel="stylesheet" href="">
+</head>
 </head>
 <body>
     <div class="top-buttons">
-        <button class="top-btn" onclick="location.href='menu_opciones_usuario.html'">usuarios</button>
-        <button class="top-btn" onclick="location.href='menu_opciones_empresa.html'">empresa</button>
+        <button class="top-btn" onclick="location.href='menu_opciones_usuario.html'">Usuarios</button>
+        <button class="top-btn" onclick="location.href='menu_opciones_empresa.html'">Empresa</button>
         <button class="top-btn" onclick="location.href='crear_administrador_SU.html'">Crear administrador</button>
         <button class="top-btn" onclick="location.href='../Crud%20programas/menu_programas.html'">Crear programa de formación</button>
     </div>
     <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="user-profile">
-                <div class="user-icon">👤 Super Administrador</div>
-            </div>
-            <ul class="menu">
-                <li><button class="menu-btn" onclick="location.href='menu_opciones_SU.html'">Inicio</button></li>
-                <li><button class="menu-btn">Configuración</button></li>
-                <li><button class="menu-btn">Ayuda</button></li>
-            </ul>
-            <li><button class="m-btn" onclick="location.href='../../inicio/inicio_todos.html'">Cerrar sesión</button></li>
+<div class="menu-wrapper">
+    <div class="dropdown">
+        <button onclick="toggleDropdown()" class="dropdown-btn">&#9776;</button>
+        <div id="dropdownMenu" class="dropdown-content">
+            <button onclick="location.href='menu_opciones_SU.html'">Inicio</button>
+            <button onclick="">Configuración</button>
+            <button onclick="">Ayuda</button>
+            <button onclick="location.href='../../inicio/inicio_todos.html'">Cerrar sesión</button>
         </div>
+    </div>
+</div>
 
         <!-- Contenido principal -->
         <div class="main-content">
@@ -80,5 +84,20 @@
         // Inicializar
         showSlide(currentIndex);
     </script>
+    <script>
+    function toggleDropdown() {
+        document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-btn')) {
+            const dropdowns = document.getElementsByClassName("dropdown-content");
+            for (let i = 0; i < dropdowns.length; i++) {
+                dropdowns[i].classList.remove('show');
+            }
+        }
+    }
+</script>
+
 </body>
 </html>
