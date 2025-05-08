@@ -3,45 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>crear usuario</title>
+    <title>Crear usuario</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos básicos para mejorar la visualización del formulario */
+        .form-container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px;
+            /* border: 2px solid #0066cc; */
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: var(2.4rem);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .form-row label {
+            min-width: 150px;
+            text-align: right;
+            margin-right: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input, select {
+            flex: 1;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #000000;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .buttons-container {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        
+        
+        
+    </style>
 </head>
 <body>
-    <header>datasenn</header>
+    <h1>datasenn</h1>
     <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
-
+    
     <div class="form-container">
-        <h2>Crear usuario</h2>
+        <h3>Crear usuario</h3>
         <form action="#" method="post">
-            <select name="tipo_documento" required>
-                <option value="">Ingrese su tipo de documento</option>
-                <option value="cc">Cédula de ciudadanía</option>
-                <option value="ce">Cédula de extranjería</option>
-                <option value="ti">Tarjeta de identidad</option>
-            </select>
-
-            <input type="text" name="nombre_completo" placeholder="Ingrese el nombre completo" required>
-            <input type="text" name="tarjeta identidad" placeholder="Ingrese la tarjeta identidad" required>
-            <input type="email" name="recidencia" placeholder="Ingrese la recidencia" required>
-            <input type="password" name="correo" placeholder="Ingrese el correo" required>
-            <input type="tel" name="validacion" placeholder="Ingrese la validacion" required>
-            <input type="tel" name="contrasena" placeholder="Ingrese la contraseña" required>
-            <input type="tel" name="tipo de sangre" placeholder="Ingrese el tipo de sangre" required>
-        <select name="activacion" required>
-            <option value="">Activo</option>
-            <option value="cc">Inactivo</option>
-        </select>
-        <div class="">
-            <button class="back_crear">Crear</button>
-        </div>
-       
-        </form> 
+            <div class="form-grid">
+                <!-- Primera columna -->
+                <div>
+                    <div class="form-row">
+                        <label for="nombre_completo">Nombre completo:</label>
+                        <input type="text" id="nombre_completo" name="nombre_completo" placeholder="Ingrese el nombre completo" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="tipo_documento">Tipo de documento:</label>
+                        <select id="tipo_documento" name="tipo_documento" required>
+                            <option value="">Seleccione</option>
+                            <option value="cc">Cédula de ciudadanía</option>
+                            <option value="ce">Cédula de extranjería</option>
+                            <option value="ti">Tarjeta de identidad</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="numero_identidad">Número de identidad:</label>
+                        <input type="text" id="numero_identidad" name="numero_identidad" placeholder="Ingrese número" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="residencia">Residencia:</label>
+                        <input type="text" id="residencia" name="residencia" placeholder="Ingrese dirección" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="tipo_sangre">Tipo de sangre:</label>
+                        <select id="tipo_sangre" name="tipo_sangre" required>
+                            <option value="">Seleccione</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Segunda columna -->
+                <div>
+                    <div class="form-row">
+                        <label for="correo">Correo electrónico:</label>
+                        <input type="email" id="correo" name="correo" placeholder="Ingrese correo" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ingrese teléfono" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese contraseña" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="validacion">Confirmar contraseña:</label>
+                        <input type="password" id="validacion" name="validacion" placeholder="Confirme contraseña" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="activacion">Estado:</label>
+                        <select id="activacion" name="activacion" required>
+                            <option value="">Seleccione</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="buttons-container">
+                <button type="submit" class="back_crear">Crear</button>
+                <button type="button" class="logout-btn" onclick="window.location.href='super_menu.html'">Regresar</button>
+            </div>
+        </form>
     </div>
-
-    <div class="">
-        <button class="logout-btn" onclick="window.location.href='super_menu.html'">Regresar</button>
-    </div>
-
+    
     <footer>
         <a>&copy; todos los derechos reservados al SENA</a>
     </footer>

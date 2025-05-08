@@ -38,7 +38,7 @@ body {
     height: 100vh;
 }
 
-/* Form Container */
+/* Form Container
 .form-container {
     background-color: var(--white);
     border-radius: 15px;
@@ -90,7 +90,7 @@ body {
 
 .form-container a:hover {
     text-decoration: underline;
-}
+} */
 
 /* Footer Styles */
 footer {
