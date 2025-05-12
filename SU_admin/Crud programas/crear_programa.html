@@ -11,38 +11,28 @@
         <header>DATASENA</header>
         <img src="img/download-removebg-preview.png" alt="Logo SENA" class="img">
 
-        <div class="form-container">
-            <h2>Crear Programa</h2>
-            <form action="registrar_programa.php" method="post">
-                <select name="tipo_programa" required>
-                    <option value="">Ingrese el tipo de programa de formación</option>
-                    <option value="Tecnico">Técnico</option>
-                    <option value="Tecnologo">Tecnólogo</option>
-                    <option value="Complementario">Complementario</option>
-                </select>
+   <div class="form-container">
+    <h2>Crear Programa</h2>
+    <form action="registrar_programa.php" method="post">
+        <select name="tipo_programa" required>
+            <option value="Tecnico">Técnico</option>
+            <option value="Tecnologo">Tecnólogo</option>
+            <option value="Operario">Operario</option>
+        </select>
 
-                <select name="nombre_programa" required>
-                    <option value="">Nombre del programa de formación</option>
-                    <option value="Sistemas constructivos e infraestructura">Sistemas constructivos e infraestructura</option>
-                    <option value="Fabricación mecánica">Fabricación mecánica</option>
-                    <option value="Sistemas eléctricos">Sistemas eléctricos</option>
-                    <option value="Servicio automotriz">Servicio automotriz</option>
-                    <option value="Manufactura textil y del cuero">Manufactura textil y del cuero</option>
-                    <option value="Automatización">Automatización</option>
-                    <option value="Diseño gráfico">Diseño gráfico</option>
-                    <option value="Desarrollo de aplicaciones móviles">Desarrollo de aplicaciones móviles</option>
-                    <option value="Soldadura">Soldadura</option>
-                    <option value="Cableado de redes de información">Cableado de redes de información</option>
-                    <option value="Análisis y desarrollo de sistemas">Análisis y desarrollo de sistemas</option>
-                    <option value="Análisis y desarrollo de software">Análisis y desarrollo de software</option>
-                </select>
+        <input type="text" name="nombre_programa" placeholder="Ingrese el nombre del programa de formación" required>  
 
-                <input type="number" name="duracion_programa" placeholder="Ingrese la duración del programa de formación (en horas)" required>
+        <input type="number" name="duracion_programa" placeholder="Ingrese la duración del programa (en horas)" required>
 
-                <select name="activacion" required>
-                    <option value="Activo">Activo</option>
-                    <option value="Inactivo">Inactivo</option>
-                </select>
+
+        <select name="activacion" required>
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+        </select> 
+
+        <button type="submit">Registrar</button>
+    </form>
+</div>
 
                 <div class="">
                     <button class="back" type="submit">Crear</button>

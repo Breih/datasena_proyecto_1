@@ -4,53 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Usuario</title>
-    <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
+    <link rel="icon" href="/img/Logotipo_Datasena.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="wrapper"> <!-- INICIO del wrapper -->
-        <header>DATASENA</header>
-
-        <div class="logo-container">
-            <img src="../img/logo-sena.png" alt="Logo">
-        </div>
-
-        <div class="form-container">
-            <h2>Crear usuario</h2>
-            <form action="#" method="post">
-                <select name="tipo_documento" required>
-                    <option value="">Ingrese su tipo de documento</option>
-                    <option value="cc">Cédula de ciudadanía</option>
-                    <option value="ce">Cédula de extranjería</option>
-                    <option value="ti">Tarjeta de identidad</option>
-                </select>
-
-                <input type="text" name="nombre_completo" placeholder="Ingrese el nombre completo" required>
-                <input type="text" name="tarjeta identidad" placeholder="Ingrese la tarjeta identidad" required>
-                <input type="email" name="recidencia" placeholder="Ingrese la recidencia" required>
-                <input type="password" name="correo" placeholder="Ingrese el correo" required>
-                <input type="tel" name="validacion" placeholder="Ingrese la validacion" required>
-                <input type="tel" name="contrasena" placeholder="Ingrese la contraseña" required>
-                <input type="tel" name="tipo de sangre" placeholder="Ingrese el tipo de sangre" required>
-
-                <select name="activacion" required>
-                    <option value="">Activo</option>
-                    <option value="cc">Inactivo</option>
-                </select>
-
+    <h1>DATASENA</h1>
+    <img src="../img/logo-sena.png" alt="Logo SENA" class="img">
+    
+    <div class="forma-container">
+        <h3>Crear usuario</h3>
+        <form action="#" method="post">
+            <div class="forma-grid">
+                <!-- Primera columna -->
                 <div>
-                    <button class="back">Crear</button>
+                    <div class="forma-row">
+                        <label for="tipoDocumento">Tipo de documento</label>
+                            <select id="tipoDocumento" name="tipoDocumento" class="md-input">
+                                <option value="cedula">Cédula de ciudadanía</option>
+                                <option value="extranjera">Cédula de extranjería</option>
+                                <option value="ti">Tarjeta de identidad</option>
+                        </select>
+                    </div>
+                    
+                     
+                    <div class="forma-row">
+                        <label for="Nombre_completo">Nombre completo</label>
+                        <input type="text" id="Nombre_completo" name="Nombre_completo" placeholder="Ingrese su nombre completo" class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="numeroDocumento">Número de documento</label>
+                        <input type="text" id="numeroDocumento" name="numeroDocumento" placeholder="Ingrese el número de documento" class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="residencia">Residencia</label>
+                        <input type="text" id="residencia" name="residencia" placeholder="Ingrese la residencia" class="md-input">
+                    </div>
+                    
                 </div>
-            </form> 
-        </div>
+                
+                <!-- Segunda columna -->
+                <div>
+                    <div class="forma-row">
+                            <label for="correo">Correo electrónico</label>
+                            <input type="email" id="correo" name="correo" placeholder="Ingrese su correo electrónico" class="md-input">
+                    </div>
+                    <div class="forma-row">
+                            <label for="validacion">Validación</label>
+                            <input type="tel" id="validacion" name="validacion" placeholder="Ingrese la validación" class="md-input">
+                        </div>
+                        <div class="forma-row">
+                            <label for="contrasena">Contraseña</label>
+                            <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese la contraseña" class="md-input">
+                        </div>
+                        <div class="forma-row">
+                            <label for="tipoSangre">Tipo de sangre</label>
+                            <select id="tipoSangre" name="tipoSangre" class="md-input">
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div class="forma-row">
+                            <label for="activacion">Activación</label>
+                            <select id="activacion" name="activacion" class="md-input">
+                                <option value="activo">Activo</option>
+                                <option value="inactivo">Inactivo</option>
+                            </select>
+                        </div>
 
-        <div>
-            <button class="logout-btn" onclick="window.location.href='menu.html'">Regresar</button>
-        </div>
-    </div> <!-- FIN del wrapper -->
-
+                     </div>        
+                </div>
+            </div>
+            
+            
+        </form>
+        <div class="buttons-container">
+                <button type="submit" class="back_crear">Crear</button>
+                <button type="button" class="logout-btn" onclick="window.location.href='super_menu.html'">Regresar</button>
+            </div>
+    </div>
+    
     <footer>
         <a>&copy; Todos los derechos reservados al SENA</a>
     </footer>
 </body>
 </html>
+
+
+
+
+
+
