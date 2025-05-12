@@ -1,7 +1,5 @@
 <?php
-// Conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "datasenn_db");
-
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
@@ -15,10 +13,10 @@ $tipo_sangre = $_POST['tipo_sangre'] ?? '';
 $correo = $_POST['correo'] ?? '';
 $telefono = $_POST['telefono'] ?? '';
 $contrasena = $_POST['contrasena'] ?? '';
-$validacion = $_POST['validacion'] ?? ''; // Confirmar la contraseña
+$validacion = $_POST['validacion'] ?? '';
 $estado = $_POST['activacion'] ?? '';
 
-// Validación básica
+// Validaciones
 if (empty($nombre_completo) || empty($tipo_documento) || empty($numero_identidad) || empty($residencia) || empty($tipo_sangre) || empty($correo) || empty($telefono) || empty($contrasena) || empty($validacion) || empty($estado)) {
     echo "<script>
         alert('❌ Todos los campos son obligatorios.');
@@ -27,7 +25,6 @@ if (empty($nombre_completo) || empty($tipo_documento) || empty($numero_identidad
     exit;
 }
 
-// Verificar si las contraseñas coinciden
 if ($contrasena !== $validacion) {
     echo "<script>
         alert('❌ Las contraseñas no coinciden.');
@@ -36,19 +33,34 @@ if ($contrasena !== $validacion) {
     exit;
 }
 
-// Insertar los datos en la base de datos
+// Verificar si ya existe el numero de identidad
+$verificar_sql = "SELECT id FROM usuarios WHERE numero_identidad = ?";
+$verificar_stmt = $conexion->prepare($verificar_sql);
+$verificar_stmt->bind_param("s", $numero_identidad);
+$verificar_stmt->execute();
+$verificar_stmt->store_result();
+
+if ($verificar_stmt->num_rows > 0) {
+    echo "<script>
+        alert('❌ El número de identidad ya está registrado.');
+        window.history.back();
+    </script>";
+    exit;
+}
+$verificar_stmt->close();
+
+// Insertar el usuario
 $sql = "INSERT INTO usuarios (nombre_completo, tipo_documento, numero_identidad, residencia, tipo_sangre, correo, telefono, contrasena, estado)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-// Preparar la consulta
 $stmt = $conexion->prepare($sql);
-$stmt->bind_param("sssssssss", $nombre_completo, $tipo_documento, $numero_identidad, $residencia, $tipo_sangre, $correo, $telefono, password_hash($contrasena, PASSWORD_DEFAULT), $estado);
+$hashed_pass = password_hash($contrasena, PASSWORD_DEFAULT);
+$stmt->bind_param("sssssssss", $nombre_completo, $tipo_documento, $numero_identidad, $residencia, $tipo_sangre, $correo, $telefono, $hashed_pass, $estado);
 
-// Ejecutar la consulta
-if ($stmt->execute()) { 
+if ($stmt->execute()) {
     echo "<script>
         alert('✅ Usuario creado con éxito.');
-        window.location.href = 'super_menu.html'; // Redirigir al menú
+        window.location.href = 'super_menu.html';
     </script>";
 } else {
     echo "<script>
@@ -57,7 +69,6 @@ if ($stmt->execute()) {
     </script>";
 }
 
-// Cerrar la conexión y la sentencia
 $stmt->close();
 $conexion->close();
 ?>
