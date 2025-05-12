@@ -5,62 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habilitar Inhabilitar Usuario</title>
     <link rel="icon" href="/img/Logotipo_Datasena.png" type="image/x-icon">
-    <link rel="stylesheet" href="super.css">
+    <link rel="stylesheet" href="habilitar_inhabilitar_SU.css">
 </head>
 <body>
-    <header>DATASENA</header>
+    <h1>DATASENA</h1>
     <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
 
-    <div class="form-container">
-        <h2>Habilitar Inhabilitar Usuario</h2>
+    <div class="forma-container">
+        <h3>Habilitar Inhabilitar Usuario</h3>
         <form action="#" method="post">
-            <select name="tipo_documento" required>
-                <option value="">Ingrese su tipo de documento</option>
-                <option value="cc">Cédula de ciudadanía</option>
-                <option value="ce">Cédula de extranjería</option>
-                <option value="ti">Tarjeta de identidad</option>
-            </select>
+            <div class="forma-grid">
+                <!-- Primera columna -->
+                <div>
+                    <div class="forma-row">
+                        <label for="tipo_documento">Tipo de Documento:</label>
+                        <select name="tipo_documento" id="tipo_documento" required class="md-input">
+                            <option value="">Ingrese su tipo de documento</option>
+                            <option value="cc">Cédula de ciudadanía</option>
+                            <option value="ce">Cédula de extranjería</option>
+                            <option value="ti">Tarjeta de identidad</option>
+                        </select>
+                    </div>
 
-            <!-- Visualizar usuario con readonly -->
-            <label for="nombre_completo">Nombre completo:</label>
-            <input type="text" id="nombre_completo" name="nombre_completo" value="Juan Pérez" placeholder="Ingrese el nombre completo" readonly>
+                    <div class="forma-row">
+                        <label for="nombre_completo">Nombre completo:</label>
+                        <input type="text" id="nombre_completo" name="nombre_completo" value="Juan Pérez" readonly class="md-input">
+                    </div>
 
-            <label for="tarjeta_identidad">Tarjeta de identidad:</label>
-            <input type="text" id="tarjeta_identidad" name="tarjeta_identidad" value="123456789" placeholder="Ingrese la tarjeta de identidad" readonly>
+                    <div class="forma-row">
+                        <label for="tarjeta_identidad">Tarjeta de identidad:</label>
+                        <input type="text" id="tarjeta_identidad" name="tarjeta_identidad" value="123456789" readonly class="md-input">
+                    </div>
 
-            <label for="recidencia">Residencia:</label>
-            <input type="text" id="recidencia" name="recidencia" value="Bogotá" placeholder="Ingrese la residencia" readonly>
+                    <div class="forma-row">
+                        <label for="recidencia">Residencia:</label>
+                        <input type="text" id="recidencia" name="recidencia" value="Bogotá" readonly class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="correo">Correo:</label>
+                        <input type="text" id="correo" name="correo" value="juanperez@email.com" readonly class="md-input">
+                    </div>
+                </div>
 
-            <label for="correo">Correo:</label>
-            <input type="text" id="correo" name="correo" value="juanperez@email.com" placeholder="Ingrese el correo" readonly>
+                <!-- Segunda columna -->
+                <div>
+                    
 
-            <label for="validacion">Validación:</label>
-            <input type="text" id="validacion" name="validacion" value="Verificado" placeholder="Ingrese la validación" readonly>
+                    <div class="forma-row">
+                        <label for="validacion">Validación:</label>
+                        <input type="text" id="validacion" name="validacion" value="Verificado" readonly class="md-input">
+                    </div>
 
-            <label for="contrasena">Contraseña:</label>
-            <input type="text" id="contrasena" name="contrasena" value="********" placeholder="Ingrese la contraseña" readonly>
+                    <div class="forma-row">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="text" id="contrasena" name="contrasena" value="********" readonly class="md-input">
+                    </div>
 
-            <label for="tipo_de_sangre">Tipo de sangre:</label>
-            <input type="text" id="tipo_de_sangre" name="tipo_de_sangre" value="O+" placeholder="Ingrese el tipo de sangre" readonly>
+                    <div class="forma-row">
+                        <label for="tipo_de_sangre">Tipo de sangre:</label>
+                        <input type="text" id="tipo_de_sangre" name="tipo_de_sangre" value="O+" readonly class="md-input">
+                    </div>
 
-            <label for="activacion">Activación:</label>
-            <input type="text" id="activacion" name="activacion" value="Activo" placeholder="Estado de activación" readonly>
+                    <div class="forma-row">
+                        <label for="activacion">Estado actual:</label>
+                        <input type="text" id="activacion" name="activacion" value="Activo" readonly class="md-input">
+                    </div>
 
-        <select name="activacion" required>
-            <option value="">Habilitado</option>
-            <option value="cc">Inhabilitado</option>
-        </select>
-        <div class="">
-            <button class="back">Actualizar</button>
-        </div>
+                    <div class="forma-row">
+                        <label for="nuevo_estado">Nuevo estado:</label>
+                        <select name="nuevo_estado" id="nuevo_estado" required class="md-input">
+                            <option value="">Habilitado</option>
+                            <option value="inhabilitado">Inhabilitado</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
-      
+           
         </form>
- 
+        <div class="buttons-container">
+                <button type="submit" class="back">Actualizar</button>
+                <button type="button" class="habilitar-btn" onclick="window.location.href='super_menu.html'">Regresar</button>
+        </div>
     </div>
-    <div class="">
-        <button class="habilitar-btn" onclick="window.location.href='super_menu.html'">Regresar</button>
-    </div> 
+
     <footer>
         <a>&copy; Todos los derechos reservados al SENA</a>
     </footer>
