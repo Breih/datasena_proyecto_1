@@ -5,48 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Administrador</title>
     <link rel="icon" href="/img/Logotipo_Datasena.png" type="image/x-icon">
-    <link rel="stylesheet" href="super.css">
+    <link rel="stylesheet" href="crear_administrador.css">
 </head>
 <body>
-    <header>Nombre de la Empresa</header>
+    <h1>DATASENA</h1>
     <img src="../../img/logo-sena.png" alt="Logo de la Empresa" class="img">
 
-    <div class="form-container">
-        <h2>Crear Administrador</h2>
-            <form action="crear_administrador.php" method="post">
-            <select name="tipo_documento" required>
-                <option value="">Seleccione el tipo de documento</option>
-                <option value="cc">Cédula de ciudadanía</option>
-                <option value="ce">Cédula de extranjería</option>
-                <option value="ti">Tarjeta de identidad</option>
-            </select>
+    <div class="forma-container">
+        <h3>Crear Administrador</h3>
+        <form action="crear_administrador.php" method="post">
+            <div class="forma-grid">
+                <!-- Primera columna -->
+                <div>
+                    <div class="forma-row">
+                        <label for="tipo_documento">Tipo de Documento:</label>
+                        <select name="tipo_documento" id="tipo_documento" required class="md-input">
+                            <option value="">Seleccione el tipo de documento</option>
+                            <option value="cc">Cédula de ciudadanía</option>
+                            <option value="ce">Cédula de extranjería</option>
+                            <option value="ti">Tarjeta de identidad</option>
+                        </select>
+                    </div>
+                    <div class="forma-row">
+                        <label for="nombre_completo">Nombre completo:</label>
+                        <input type="text" name="nombre_completo" id="nombre_completo" placeholder="Ingrese el nombre completo" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="numero_documento">Número de documento:</label>
+                        <input type="text" name="numero_documento" id="numero_documento" placeholder="Ingrese el número de documento" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="correo">Correo electrónico (usuario):</label>
+                        <input type="email" name="correo" id="correo" placeholder="Ingrese el correo electrónico" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" name="contrasena" id="contrasena" placeholder="Ingrese la contraseña" required class="md-input">
+                    </div>
+                </div>
 
-            <input type="text" name="nombre_completo" placeholder="Ingrese el nombre completo" required>
-            <input type="text" name="numero_documento" placeholder="Ingrese el número de documento" required>
-            <input type="email" name="correo" placeholder="Ingrese el correo electrónico (usuario)" required>
-            <input type="password" name="contrasena" placeholder="Ingrese la contraseña" required>
-            <input type="password" name="confirmar_contrasena" placeholder="Confirme la contraseña" required>
-            <input type="tel" name="telefono" placeholder="Ingrese el número de teléfono" required>
-            <input type="text" name="tipo_sangre" placeholder="Ingrese el tipo de sangre" required>
+                <!-- Segunda columna -->
+                <div>
+                    <div class="forma-row">
+                        <label for="confirmar_contrasena">Confirmar Contraseña:</label>
+                        <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" placeholder="Confirme la contraseña" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" name="telefono" id="telefono" placeholder="Ingrese el número de teléfono" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="tipo_sangre">Tipo de sangre:</label>
+                        <input type="text" name="tipo_sangre" id="tipo_sangre" placeholder="Ingrese el tipo de sangre" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="estado">Estado:</label>
+                        <select name="estado" id="estado" required class="md-input">
+                            <option value="">Seleccione el estado</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
-            <select name="estado" required>
-                <option value="">Seleccione el estado</option>
-                <option value="activo">Activo</option>
-                <option value="inactivo">Inactivo</option>
-            </select>
-
-            <div class="form_actions">
-                <button type="submit" class="btn btn-submit">Crear Administrador</button>
+            <div class="buttons-container">
+                <button type="submit" class="back_crear">Crear Administrador</button>
+                <button type="button" class="logout-btn" onclick="window.location.href='/SU_admin/menu_SU_admin/super_menu.html'">Regresar al Menú</button>
             </div>
         </form>
     </div>
 
-    <div class="back_report">
-        <button class="habilitar-btn" onclick="window.location.href='/SU_admin/menu_SU_admin/super_menu.html'">Regresar al Menú</button>
-    </div>
-
-    <footer class="footer">
-        <a>&copy; © Todos los derechos reservados al SENA</a>
+    <footer>
+        <a>&copy; Todos los derechos reservados al SENA</a>
     </footer>
 </body>
 </html>

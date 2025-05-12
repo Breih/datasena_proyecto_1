@@ -5,51 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Empresa</title>
     <link rel="icon" href="/img/Logotipo_Datasena.png" type="image/x-icon">
-    <link rel="stylesheet" href="stylesemre.css">
+    <link rel="stylesheet" href="empresaRe_SU.css">
 </head>
 <body>
-    <header>
-        <h1>DATASENA</h1>
-        <img src="C:\Users\leyva\Desktop\datasenn\inicio\logo.png" alt="Logo" class="logo">
-    </header>
-    
-    <div class="container">
-        <h2>Registro de Empresa</h2>
+    <h1>DATASENA</h1>
+    <img src="../../img/logo-sena.png" alt="Logo" class="img">
+
+    <div class="forma-container">
+        <h3>Registro de Empresa</h3>
         <form action="#" method="POST">
-            <label for="id">ID:</label>
-            <input type="number" id="id" name="id" required>
-            
-            <label for="tipo_documento">Tipo de Documento:</label>
-            <input type="number" id="tipo_documento" name="tipo_documento" required>
-            
-            <label for="nit">NIT:</label>
-            <input type="number" id="nit" name="nit" required>
-            
-            <label for="nickname">Nickname:</label>
-            <input type="text" id="nickname" name="nickname" required>
-            
-            <label for="telefono">Teléfono:</label>
-            <input type="number" id="telefono" name="telefono" required>
-            
-            <label for="correo">Correo:</label>
-            <input type="email" id="correo" name="correo" required>
-            
-            <label for="confirmar_correo">Confirmar Correo:</label>
-            <input type="email" id="confirmar_correo" name="confirmar_correo" required>
-            
-            <label for="direccion">Dirección:</label>
-            <input type="text" id="direccion" name="direccion" required>
-            
-            <label for="rol">Rol:</label>
-            <input type="text" id="rol" name="rol" required>
-            
-            <label for="actividad_economica">Actividad Económica:</label>
-            <input type="text" id="actividad_economica" name="actividad_economica" required>
-            
-            <button type="submit" class="submit-button"onclick="window.location.href='file:/C:/Users/leyva/Desktop/datasenn/SU_admin/menu_SU_admin/super_menu.html'">Registrar</button>
+            <div class="forma-grid">
+                <!-- Primera columna -->
+                <div>
+                    <div class="forma-row">
+                        <label for="id">ID:</label>
+                        <input type="number" id="id" name="id" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="tipo_documento">Tipo de Documento:</label>
+                        <input type="number" id="tipo_documento" name="tipo_documento" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="nit">NIT:</label>
+                        <input type="number" id="nit" name="nit" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="nickname">Nickname:</label>
+                        <input type="text" id="nickname" name="nickname" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="number" id="telefono" name="telefono" required class="md-input">
+                    </div>
+                    
+                </div>
+
+                <!-- Segunda columna -->
+                <div>
+                    <div class="forma-row">
+                        <label for="correo">Correo:</label>
+                        <input type="email" id="correo" name="correo" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="confirmar_correo">Confirmar Correo:</label>
+                        <input type="email" id="confirmar_correo" name="confirmar_correo" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="direccion">Dirección:</label>
+                        <input type="text" id="direccion" name="direccion" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="rol">Rol:</label>
+                        <input type="text" id="rol" name="rol" required class="md-input">
+                    </div>
+                    <div class="forma-row">
+                        <label for="actividad_economica">Actividad Económica:</label>
+                        <input type="text" id="actividad_economica" name="actividad_economica" required class="md-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons-container">
+                <button type="submit" class="back_crear" onclick="window.location.href='file:/C:/Users/leyva/Desktop/datasenn/SU_admin/menu_SU_admin/super_menu.html'">Registrar</button>
+            </div>
         </form>
     </div>
-    
+
     <footer>
         <a>&copy; Todos los derechos reservados al SENA</a>
     </footer>
