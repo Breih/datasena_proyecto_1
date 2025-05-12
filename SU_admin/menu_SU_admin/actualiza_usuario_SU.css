@@ -117,7 +117,13 @@ img {
     width: 60px;
     height: auto;
 }
-
+h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: var(--font-size-h3);
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
 /* Sidebar */
 .sidebar {
     background-color: #f2f2f2;
