@@ -216,7 +216,7 @@ h2 {
 }
 
 .form-row {
-    display: flex;
+    display: grid;
     align-items: center;
     margin-bottom: 15px; /* Margen inferior ligeramente reducido */
     padding: 0 8px; /* Padding horizontal ligeramente reducido */

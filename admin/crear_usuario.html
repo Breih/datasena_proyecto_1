@@ -11,82 +11,91 @@
     <h1>DATASENA</h1>
     <img src="../img/logo-sena.png" alt="Logo SENA" class="img">
     
-    <div class="forma-container">
-        <h3>Crear usuario</h3>
-        <form action="#" method="post">
-            <div class="forma-grid">
+    <div class="form-container">
+        <h4>Crear usuario</h4>
+            <form action="crear_usuario_.php" method="post">
+            <div class="form-grid">
                 <!-- Primera columna -->
                 <div>
-                    <div class="forma-row">
-                        <label for="tipoDocumento">Tipo de documento</label>
-                            <select id="tipoDocumento" name="tipoDocumento" class="md-input">
-                                <option value="cedula">Cédula de ciudadanía</option>
-                                <option value="extranjera">Cédula de extranjería</option>
-                                
+                    <div class="form-row">
+                        <label for="nombre_completo">Nombre  <br> completo:</label>
+                        <input type="text" id="nombre_completo" name="nombre_completo" placeholder="Ingrese el nombre completo" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="tipo_documento">Tipo de <br> documento:</label>
+                        <select id="tipo_documento" name="tipo_documento" required>
+                            <option value="">Seleccione</option>
+                            <option value="cc">Cédula de ciudadanía</option>
+                            <option value="ce">Cédula de extranjería</option>
+                            <option value="ti">Tarjeta de identidad</option>
                         </select>
                     </div>
                     
-                     
-                    <div class="forma-row">
-                        <label for="Nombre_completo">Nombre completo</label>
-                        <input type="text" id="Nombre_completo" name="Nombre_completo" placeholder="Ingrese su nombre completo" class="md-input">
-                    </div>
-                    <div class="forma-row">
-                        <label for="numeroDocumento">Número de documento</label>
-                        <input type="text" id="numeroDocumento" name="numeroDocumento" placeholder="Ingrese el número de documento" class="md-input">
-                    </div>
-                    <div class="forma-row">
-                        <label for="residencia">Residencia</label>
-                        <input type="text" id="residencia" name="residencia" placeholder="Ingrese la residencia" class="md-input">
+                    <div class="form-row">
+                        <label for="numero_identidad">Número de <br> identidad:</label>
+                        <input type="text" id="numero_identidad" name="numero_identidad" placeholder="Ingrese número" required>
                     </div>
                     
+                    <div class="form-row">
+                        <label for="residencia">Residencia:</label>
+                        <input type="text" id="residencia" name="residencia" placeholder="Ingrese dirección" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="tipo_sangre">Tipo de <br>  sangre:</label>
+                        <select id="tipo_sangre" name="tipo_sangre" required>
+                            <option value="">Seleccione</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
                 </div>
                 
                 <!-- Segunda columna -->
                 <div>
-                    <div class="forma-row">
-                            <label for="correo">Correo electrónico</label>
-                            <input type="email" id="correo" name="correo" placeholder="Ingrese su correo electrónico" class="md-input">
+                    <div class="form-row">
+                        <label for="correo">Correo <br> electrónico:</label>
+                        <input type="email" id="correo" name="correo" placeholder="Ingrese correo" required>
                     </div>
-                    <div class="forma-row">
-                            <label for="validacion">Validación</label>
-                            <input type="tel" id="validacion" name="validacion" placeholder="Ingrese la validación" class="md-input">
-                        </div>
-                        <div class="forma-row">
-                            <label for="contrasena">Contraseña</label>
-                            <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese la contraseña" class="md-input">
-                        </div>
-                        <div class="forma-row">
-                            <label for="tipoSangre">Tipo de sangre</label>
-                            <select id="tipoSangre" name="tipoSangre" class="md-input">
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                            </select>
-                        </div>
-                        <div class="forma-row">
-                            <label for="activacion">Activación</label>
-                            <select id="activacion" name="activacion" class="md-input">
-                                <option value="activo">Activo</option>
-                                <option value="inactivo">Inactivo</option>
-                            </select>
-                        </div>
-
-                     </div>        
+                    
+                    <div class="form-row">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ingrese teléfono" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese contraseña" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="validacion">Confirmar <br> contraseña:</label>
+                        <input type="password" id="validacion" name="validacion" placeholder="Confirme contraseña" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="activacion">Estado:</label>
+                        <select id="activacion" name="activacion" required>
+                            <option value="">Seleccione</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             
-            
-        </form>
-        <div class="buttons-container">
+            <div class="buttons-container">
                 <button type="submit" class="back_crear">Crear</button>
                 <button type="button" class="logout-btn" onclick="window.location.href='super_menu.html'">Regresar</button>
             </div>
+        </form>
     </div>
     
     <footer>
@@ -94,9 +103,3 @@
     </footer>
 </body>
 </html>
-
-
-
-
-
-

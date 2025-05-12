@@ -13,6 +13,7 @@
 
    <div class="form-container">
     <h2>Crear Programa</h2>
+
     <form action="registrar_programa.php" method="post">
         <select name="tipo_programa" required>
             <option value="Tecnico">Técnico</option>
@@ -22,8 +23,9 @@
 
         <input type="text" name="nombre_programa" placeholder="Ingrese el nombre del programa de formación" required>  
 
-        <input type="number" name="duracion_programa" placeholder="Ingrese la duración del programa (en horas)" required>
+        <input type="text" name="numero_ficha" placeholder="Ingrese el numero de ficha " required>  
 
+        <input type="number" name="duracion_programa" placeholder="Ingrese la duración del programa (en horas)" required>
 
         <select name="activacion" required>
             <option value="Activo">Activo</option>
@@ -33,18 +35,11 @@
         <button type="submit">Registrar</button>
     </form>
 </div>
-
-                <div class="">
-                    <button class="back" type="submit">Crear</button>
-                </div>
-        
             </form> 
         </div>
-
         <div class="">
             <button class="logout-btn" onclick="window.location.href='menu_programas.html'">Regresar</button>
         </div>
-
         <footer>
             <a>&copy; Todos los derechos reservados al SENA</a>
         </footer>
