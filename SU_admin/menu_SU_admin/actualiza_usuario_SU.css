@@ -112,15 +112,16 @@ footer {
 /* Imagen flotante */
 img {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 60px;
+    top: 10px;
+    right: 10px;
+    width: 80px;
     height: auto;
 }
-h3 {
+
+h1 {
     text-align: center;
     margin-bottom: 30px;
-    font-size: var(--font-size-h3);
+    font-size: var(--font-size-h1);
     border-bottom: 1px solid #ddd;
     padding-bottom: 15px;
 }
@@ -203,7 +204,7 @@ h1 {
     margin: 15px auto; /* Margen ligeramente reducido */
     padding: 30px; /* Padding ligeramente reducido */
     border-radius: 1.2rem; /* Radio del borde ligeramente reducido */
-    background-color: var(--secundary-3-200);
+    background-color: var(--secundary-3-400);
     box-shadow: 0 3px 6px var(--secundary-3-950); /* Sombra ligeramente reducida */
 }
 
@@ -328,12 +329,12 @@ select:focus {
 }
 
 .back_crear:hover {
-    background-color: var(--secundary-4-950);
+    background-color: var(--secundary-2-950);
     transform: scale(0.98);
 }
 
 .logout-btn:hover {
-    background-color: var(--secundary-4-950);
+    background-color: var(--secundary-2-950);
     transform: scale(0.98);
 }
 

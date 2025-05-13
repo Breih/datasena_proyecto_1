@@ -8,50 +8,99 @@
     <link rel="stylesheet" href="actualiza_usuario_SU.css">
 </head>
 <body>
-    <header>DATASENA</header>
+    <h2>DATASENA</h2>
+    <img src="../img/logo-sena.png" alt="Logo SENA" class="img">
     
-    <!-- Imagen del logo -->
-    <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
-
-    <!-- Contenedor del formulario -->
     <div class="form-container">
-        <h2>Actualizar Usuario</h2>
-        <form action="#" method="post">
-            <select name="tipo_documento" required>
-                <option value="">Ingrese su tipo de documento</option>
-                <option value="cc">Cédula de ciudadanía</option>
-                <option value="ce">Cédula de extranjería</option>
-                <option value="ti">Tarjeta de identidad</option>
-            </select>
-
-            <input type="text" name="nombre_completo" placeholder="Ingrese el nombre completo" required>
-            <input type="text" name="tarjeta_identidad" placeholder="Ingrese la tarjeta identidad" required>
-            <input type="text" name="recidencia" placeholder="Ingrese la residencia" required>
-            <input type="email" name="correo" placeholder="Ingrese el correo" required>
-            <input type="text" name="validacion" placeholder="Ingrese la validación" required>
-            <input type="password" name="contrasena" placeholder="Ingrese la contraseña" required>
-            <input type="text" name="tipo_de_sangre" placeholder="Ingrese el tipo de sangre" required>
-
-            <select name="activacion" required>
-                <option value="">Seleccione el estado</option>
-                <option value="activo">Activo</option>
-                <option value="inactivo">Inactivo</option>
-            </select>
-
-            <div class="">
-                <button type="submit" class="back_actualizar">Actualizar</button>
+        <h1>Actualizar Usuario</h1>
+            <form action="actualizar_usuario_SU.php" method="post">
+            <div class="form-grid">
+                <!-- Primera columna -->
+                <div>
+                    <div class="form-row">
+                        <label for="nombre_completo">Nombre  <br> completo:</label>
+                        <input type="text" id="nombre_completo" name="nombre_completo" placeholder="Ingrese el nombre completo" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="tipo_documento">Tipo de <br> documento:</label>
+                        <select id="tipo_documento" name="tipo_documento" required>
+                            <option value="">Seleccione</option>
+                            <option value="cc">Cédula de ciudadanía</option>
+                            <option value="ce">Cédula de extranjería</option>
+                            <option value="ti">Tarjeta de identidad</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="numero_identidad">Número de <br> identidad:</label>
+                        <input type="text" id="numero_identidad" name="numero_identidad" placeholder="Ingrese número" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="residencia">Residencia:</label>
+                        <input type="text" id="residencia" name="residencia" placeholder="Ingrese dirección" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="tipo_sangre">Tipo de <br>  sangre:</label>
+                        <select id="tipo_sangre" name="tipo_sangre" required>
+                            <option value="">Seleccione</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Segunda columna -->
+                <div>
+                    <div class="form-row">
+                        <label for="correo">Correo <br> electrónico:</label>
+                        <input type="email" id="correo" name="correo" placeholder="Ingrese correo" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ingrese teléfono" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese contraseña" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="validacion">Confirmar <br> contraseña:</label>
+                        <input type="password" id="validacion" name="validacion" placeholder="Confirme contraseña" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="activacion">Estado:</label>
+                        <select id="activacion" name="activacion" required>
+                            <option value="">Seleccione</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="buttons-container">
+                <button type="submit" class="back_crear">Crear</button>
+                <button type="button" class="logout-btn" onclick="window.location.href='super_menu.html'">Regresar</button>
             </div>
         </form>
-
-        <!-- Botón de regreso (fuera del form para que no pida campos) -->
-        <div class="">
-            <button class="logout-btn" onclick="window.location.href='super_menu.html'">Regresar</button>
-        </div>
     </div>
-
-    <!-- Pie de página -->
+    
     <footer>
         <a>&copy; Todos los derechos reservados al SENA</a>
     </footer>
 </body>
 </html>
+                
