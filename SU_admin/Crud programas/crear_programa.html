@@ -1,48 +1,66 @@
+
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Crear Programa</title>
-        <link rel="icon" href="/img/Logotipo_Datasena.png" type="image/x-icon">
-        <!-- <link rel="stylesheet" href="style.css"> -->
-        <link rel="stylesheet" href="/css/SU_admin/Crud programas/style.css">
-    </head>
-    <body>
-        <header>DATASENA</header>
-        <img src="img/download-removebg-preview.png" alt="Logo SENA" class="img">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Programa</title>
+  <link rel="icon" href="/img/Logotipo_Datasena.png" type="image/x-icon">
+  <!-- <link rel="stylesheet" href="style_AC.css"> -->
+  <link rel="stylesheet" href="/css/SU_admin/Crud programas/style_AC.css">
+</head>
+<body>
+  <header>DATASENA</header>
+  <img src="img/download-removebg-preview.png" alt="Logo SENA" class="img">
 
-   <div class="form-container">
-    <h2>Crear Programa</h2>
+  <div class="forma-container">
+    <h3>Crear Programa</h3>
+    <form action="#" method="post">
+      <div class="forma-grid">
+        <!-- Única columna -->
+        <div>
+            <div class="forma-row">
+            <label for="nombre_programa">Nombre del Programa</label>
+            <input type="text" id="nombre_programa" name="nombre_programa" placeholder="Ingrese el nombre del programa de formación" class="md-input" required>
+          </div>
+          <div class="forma-row">
+            <label for="tipo_programa">Tipo de Programa</label>
+            <form action="registrar_programa.php" method="post">
+            <select name="tipo_programa" required>
+                <option value="Tecnico">Técnico</option>
+                <option value="Tecnologo">Tecnólogo</option>
+                <option value="Operario">Operario</option>
+            </select>
+          </div> 
+          <div class="forma-row">
+            <label for="numero_ficha">Numero de ficha</label>
+            <input type="text" id="numero_ficha" name="numero_ficha" placeholder="Ingrese numero de ficha" class="md-input" required>
+          </div>
+          <div class="forma-row">
+            <label for="duracion_programa">Duración</label>
+            <input type="tel" id="duracion_programa" name="duracion_programa" placeholder="Ingrese la duración del programa de formación" class="md-input" required>
+          </div>
 
-    <form action="registrar_programa.php" method="post">
-        <select name="tipo_programa" required>
-            <option value="Tecnico">Técnico</option>
-            <option value="Tecnologo">Tecnólogo</option>
-            <option value="Operario">Operario</option>
-        </select>
+          <div class="forma-row">
+            <label for="activacion">Activación</label>
+            <select id="activacion" name="activacion" class="md-input" required>
+              <option value="">Seleccione estado</option>
+              <option value="activo">Activo</option>
+              <option value="inactivo">Inactivo</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-        <input type="text" name="nombre_programa" placeholder="Ingrese el nombre del programa de formación" required>  
-
-        <input type="text" name="numero_ficha" placeholder="Ingrese el numero de ficha " required>  
-
-        <input type="number" name="duracion_programa" placeholder="Ingrese la duración del programa (en horas)" required>
-
-        <select name="activacion" required>
-            <option value="Activo">Activo</option>
-            <option value="Inactivo">Inactivo</option>
-        </select> 
-
-        <button type="submit">Registrar</button>
+      <div class="buttons-container">
+        <button type="submit" class="back">Registrar</button>
+        <button type="button" class="logout-btn" onclick="window.location.href='menu_programas.html'">Regresar</button>
+      </div>
     </form>
-</div>
-            </form> 
-        </div>
-        <div class="">
-            <button class="logout-btn" onclick="window.location.href='menu_programas.html'">Regresar</button>
-        </div>
-        <footer>
-            <a>&copy; Todos los derechos reservados al SENA</a>
-        </footer>
-    </body>
+  </div>
+
+  <footer>
+    <a>&copy; Todos los derechos reservados al SENA</a>
+  </footer>
+</body>
 </html>
