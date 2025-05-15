@@ -101,15 +101,15 @@ body {
   display: flex;
   gap: 15px; /* Espacio entre los botones */
   padding: 15px 20px;
-  background-color: #005A9C;
+  background-color: var(--primary-950);
   position: relative;
   z-index: 20;
   margin-bottom: 50px;
 }
 
 .top-btn {
-  background-color: white;
-  border: 2px solid #005A9C; /* Borde del botón */
+  background-color:var(--white);
+  border: 2px solid var(--primary-950); /* Borde del botón */
   padding: 12px 25px;
   border-radius: 5px;
   cursor: pointer;
@@ -118,7 +118,7 @@ body {
 }
 
 .top-btn:hover {
-  background-color: #e0e0e0;
+  background-color: var(--white);
   transform: scale(1.05); /* Aumento al pasar el mouse */
 }
 
@@ -133,11 +133,11 @@ body {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #4CAF50; /* Fondo verde */
-  border-radius: 5px;
-  margin-top: 5px; /* Margen para separar el submenú */
+  background-color: var(--primary-800); /* Fondo verde */
+  border-radius: 10px;
+  margin-top: 10px; /* Margen para separar el submenú */
   min-width: 220px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px var(--secundary-1-950);
   z-index: 30;
   transition: opacity 0.3s ease;
 }
@@ -146,13 +146,18 @@ body {
   display: block;
   padding: 12px;
   text-decoration: none;
-  color: white;
+  color: var(--white);
   font-weight: normal;
   transition: background-color 0.3s ease;
+  border-bottom: 1px solid var(--primary-800); 
+  border-radius: 10px;
+  
+
 }
 
 .submenu a:hover {
-  background-color: #45a049; /* Fondo más oscuro al pasar el mouse */
+  background-color: var(--secundary-1-900); /* Fondo más oscuro al pasar el mouse */
+  border-radius: 10px;
 }
 
 /* Mostrar submenú */
@@ -168,12 +173,11 @@ body {
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
 }
 /* Sidebar */
 .sidebar {
-  background-color: #f2f2f2;
+  background-color: var(--white);
   width: 250px;
   padding: 20px;
   display: flex;
@@ -183,7 +187,7 @@ body {
   left: 0;
   top: 0;
   overflow-y: auto;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 5px var(--black);
   z-index: 1000; /* Ajustamos z-index si hay conflicto */
 }
 
@@ -195,7 +199,7 @@ body {
 .user-icon {
   font-size: 24px;
   font-weight: bold;
-  color: #333;
+  color: var(--gray-500);
 }
 
 /* Menú */
@@ -251,11 +255,11 @@ body {
   overflow: hidden;
   position: relative;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px var(--black);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  background-color: var(--white);
   margin-top: 20px; /* Ajustamos margin-top ya que la barra superior es fija */
   margin-bottom: 20px; /* Espacio debajo del slider */
 }
@@ -286,8 +290,8 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: var(--black);
+  color: var(--white);
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -341,7 +345,7 @@ body {
   width: 100%; /* Ancho completo */
   background-color: var(--primary-950);
   padding: 0% 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--secundary-1-900);
   z-index: 1000;
   height: 70px; /* Altura fija para la barra superior */
 }
@@ -378,7 +382,7 @@ body {
   background-color: var(--primary-950); /* Usamos primary-950 como en otros botones */
   border: none;
   border-radius: 8px;
-  color: white;
+  color: var(--white);
   cursor: pointer;
   transition: background-color 0.3s;
   text-align: center;
@@ -562,7 +566,7 @@ body {
 
 .dropdown-btn {
   background-color: transparent;
-  color: white;
+  color: var(--white);
   padding: 10px 15px;
   font-size: 24px;
   border: none;
@@ -574,12 +578,11 @@ body {
   display: flex;
   flex-direction: column;
   position: absolute;
-  background-color: #fff;
   min-width: 180px; /* Ajusta el ancho a tu gusto */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px var(--white);
   z-index: 1;
-  border-radius: 5px;
-  margin-top: 5px;
+  border-radius: 10px;
+  margin-top: 10px;
   opacity: 0;
   transform: translateY(-10px);
   pointer-events: none;
@@ -599,18 +602,17 @@ body {
   padding: 15px 20px; /* Aumenta el tamaño de los botones */
   text-align: left;
   border: none;
-  background-color: white;
+  background-color: var(--primary-800);
   cursor: pointer;
   font-size: 16px;  /* Ajusta el tamaño del texto */
-  color: black;
-  border-bottom: 2px solid #eee; /* Aumenta el grosor de la línea de separación */
-  margin-bottom: 10px; /* Añade espacio entre los botones */
-  border-radius: 5px; /* Bordes redondeados para los botones */
+  color: var(--white);
+  border-bottom: 2px solid var(--primary-950); /* Aumenta el grosor de la línea de separación */
+  border-radius: 10px; /* Bordes redondeados para los botones */
 }
 
 /* Efecto hover de los botones */
 .dropdown-content button:hover {
-  background-color: var(--primary-200);
+  background-color: var(--secundary-1-800);
 }
 
 /* Clase para mostrar el menú */
@@ -630,9 +632,9 @@ body {
   max-width: 600px;
   margin: 20% auto;
   padding: 20px;
-  background-color: white;
+  background-color: var(--secundary-3-300);
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--secundary-3-950);
   text-align: center;
 }
 
@@ -650,7 +652,7 @@ footer {
   left: 0;
   width: 100%;
   background-color: var(--primary-950);
-  color: white;
+  color: var(--white);
   text-align: center;
   font-size: 14px;
   padding: 5px;
