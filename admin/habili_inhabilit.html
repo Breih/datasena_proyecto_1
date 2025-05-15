@@ -13,13 +13,18 @@
     <img src="../img/logo-sena.png" alt="Logo" class="img">
 
     <div class="forma-container">
-        <h3>Habilitar/Inhabilitar Usuario</h3>
+        <h3>Habilitar-Inhabilitar</h3>
         <form action="#" method="post">
             <div class="forma-grid">
                 <!-- Primera columna -->
                 <div>
                     <div class="forma-row">
-                        <label for="tipo_documento">Tipo de Documento:</label>
+                        <label for="nombre_completo">Nombre <br> Completo:</label>
+                        <input type="text" id="nombre_completo" name="nombre_completo" value="Juan Pérez" placeholder="Ingrese el nombre completo" readonly class="md-input">
+                    </div>
+
+                    <div class="forma-row">
+                        <label for="tipo_documento">Tipo de <br> Documento:</label>
                         <select name="tipo_documento" id="tipo_documento" required class="md-input">
                             <option value="">Ingrese su tipo de documento</option>
                             <option value="cc">Cédula de ciudadanía</option>
@@ -28,13 +33,10 @@
                         </select>
                     </div>
 
-                    <div class="forma-row">
-                        <label for="nombre_completo">Nombre completo:</label>
-                        <input type="text" id="nombre_completo" name="nombre_completo" value="Juan Pérez" placeholder="Ingrese el nombre completo" readonly class="md-input">
-                    </div>
+                    
 
                     <div class="forma-row">
-                        <label for="tarjeta_identidad">Tarjeta de identidad:</label>
+                        <label for="tarjeta_identidad">Número de <br> Doumento:</label>
                         <input type="text" id="tarjeta_identidad" name="tarjeta_identidad" value="123456789" placeholder="Ingrese la tarjeta de identidad" readonly class="md-input">
                     </div>
 
@@ -64,17 +66,17 @@
                     </div>
 
                     <div class="forma-row">
-                        <label for="tipo_de_sangre">Tipo de sangre:</label>
+                        <label for="tipo_de_sangre">Tipo de <br> sangre:</label>
                         <input type="text" id="tipo_de_sangre" name="tipo_de_sangre" value="O+" placeholder="Ingrese el tipo de sangre" readonly class="md-input">
                     </div>
 
                     <div class="forma-row">
-                        <label for="activacion">Estado actual:</label>
+                        <label for="activacion">Estado <br> actual:</label>
                         <input type="text" id="activacion" name="activacion" value="Activo" placeholder="Estado de activación" readonly class="md-input">
                     </div>
 
                     <div class="forma-row">
-                        <label for="nuevo_estado">Nuevo estado:</label>
+                        <label for="nuevo_estado">Nuevo <br> estado:</label>
                         <select name="nuevo_estado" id="nuevo_estado" required class="md-input">
                             <option value="">Seleccione estado</option>
                             <option value="habilitado">Habilitado</option>
