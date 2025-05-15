@@ -101,7 +101,7 @@ header .logo {
 /* Footer */
 footer {
     background-color: var(--primary-950);
-    color: white;
+    color: var(--white);
     text-align: center;
     font-size: 12px;
     width: 100%;
@@ -127,7 +127,7 @@ h1 {
 }
 /* Sidebar */
 .sidebar {
-    background-color: #f2f2f2;
+    background-color:  var(--white);
     width: 200px;
     padding: 15px;
     display: flex;
@@ -150,7 +150,7 @@ h1 {
 }
 
 .user-profile span {
-    color: #28a745;
+    color: var(--primary-950);
     font-size: 14px;
 }
 
@@ -187,7 +187,7 @@ h1 {
 
 .main-content h1 {
     font-size: 28px;
-    color: #333;
+    color: var();
     margin-top: 10px;
     margin-bottom: 15px;
 }
@@ -231,7 +231,7 @@ h4 {
     min-width: 130px; /* Ancho mínimo ligeramente reducido */
     text-align: right;
     font-weight: bold;
-    color: #333;
+    color: var(--black);
     text-align: center;
     margin-right: 12px; /* Margen derecho ligeramente reducido */
     font-size: 14px; /* Tamaño de fuente ligeramente reducido */
@@ -242,14 +242,14 @@ select {
     flex: 5;
     padding: 9px; /* Padding ligeramente reducido */
     border-radius: 3px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--gray-600);
     font-size: 14px; /* Tamaño de fuente ligeramente reducido */
 }
 
 input:focus,
 select:focus {
     outline: none;
-    border-color: #000000;
+    border-color: var(--black);
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
@@ -269,7 +269,7 @@ select:focus {
 
 .verification-container p {
     font-size: 12px;
-    color: #555;
+    color: var(--gray-500);
     margin-bottom: 15px;
 }
 
@@ -353,8 +353,8 @@ select:focus {
 
 /* Tarjetas de usuario */
 .user-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: var(--white);
+    border: 1px solid var(--gray-800);
     border-radius: 6px;
     padding: 15px;
     text-align: center;
@@ -387,7 +387,7 @@ select:focus {
     display: block;
     font-size: 12px;
     margin-bottom: 3px;
-    color: #333;
+    color: var(--gray-600);
 }
 
 .report__form textarea {
@@ -396,14 +396,14 @@ select:focus {
     resize: none;
     padding: 8px;
     font-size: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--white);
     border-radius: 3px;
 }
 
 .container_rep {
     background-color: var(--white);
     padding: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--white);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
