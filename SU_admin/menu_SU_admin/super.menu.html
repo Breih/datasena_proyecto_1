@@ -84,7 +84,7 @@
         const totalSlides = slides.length;
 
         currentIndex = (index + totalSlides) % totalSlides;
-        slider.style.transform = translateX(-${currentIndex * 100}%);
+        slider.style.transform = 'translateX(-${currentIndex * 100}%)';
     }
 
     function nextSlide() { showSlide(currentIndex + 1); }
