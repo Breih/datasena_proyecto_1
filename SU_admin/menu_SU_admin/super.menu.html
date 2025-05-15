@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Super administrador</title>
+    <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/menu.menu.css">
+    <link rel="icon" href="/img/Logotipo_Datasena.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- Fondo oscuro cuando un menú está activo -->
+<div id="overlay" class="overlay" onclick="closeAllDropdowns()"></div>
+
+<!-- BOTONES SUPERIORES CON MENÚS DESPLEGABLES -->
+<div class="top-buttons">
+    <div class="dropdown-container">
+        <button class="top-btn" onclick="toggleDropdown('usuariosMenu')">Usuarios</button>
+        <div id="usuariosMenu" class="submenu">
+            <a href="#">Crear usuarios</a>
+            <a href="#">Actualizar usuarios</a>
+            <a href="#">Listar usuarios</a>
+            <a href="#">Habilitar usuarios</a>
+        </div>
+    </div>
+
+    <div class="dropdown-container">
+        <button class="top-btn" onclick="toggleDropdown('empresaMenu')">Empresa</button>
+        <div id="empresaMenu" class="submenu">
+            <a href="#">Ver empresas</a>
+            <a href="#">Crear empresa</a>
+        </div>
+    </div>
+
+    <div class="dropdown-container">
+        <button class="top-btn" onclick="toggleDropdown('adminMenu')">Crear administrador</button>
+        <div id="adminMenu" class="submenu">
+            <a href="#">Nuevo administrador</a>
+            <a href="#">Listado</a>
+        </div>
+    </div>
+
+    <div class="dropdown-container">
+        <button class="top-btn" onclick="toggleDropdown('programaMenu')">Crear programa de formación</button>
+        <div id="programaMenu" class="submenu">
+            <a href="#">Nuevo programa</a>
+            <a href="#">Listar programas</a>
+        </div>
+    </div>
+</div>
+
+<!-- MENÚ LATERAL DE LAS TRES LÍNEAS -->
+<div class="container">
+    <div class="menu-wrapper">
+        <div class="dropdown">
+            <button onclick="toggleDropdown('menuLateral')" class="dropdown-btn">&#9776;</button>
+            <div id="menuLateral" class="dropdown-content">
+                <button onclick="location.href='menu_opciones_SU.html'">Inicio</button>
+                <button>Configuración</button>
+                <button>Ayuda</button>
+                <button onclick="location.href='../../inicio/inicio_todos.html'">Cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDER DE IMÁGENES -->
+        <div class="center-box">
+            <h2>Quienes somos</h2>
+            <p>Somos un sistema para la gestion de las relaciones corporativas del CDITI.</p>
+            <!-- Aquí podrías agregar cualquier formulario o contenido que desees -->
+        </div>
+
+<footer>
+    © 2025 Todos los derechos reservados - Proyecto SENA
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+    let currentIndex = 0;
+
+    function showSlide(index) {
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        currentIndex = (index + totalSlides) % totalSlides;
+        slider.style.transform = translateX(-${currentIndex * 100}%);
+    }
+
+    function nextSlide() { showSlide(currentIndex + 1); }
+    function prevSlide() { showSlide(currentIndex - 1); }
+    setInterval(nextSlide, 5000);
+    showSlide(currentIndex);
+
+    // Función para mostrar/ocultar el menú correspondiente
+    function toggleDropdown(menuId) {
+        closeAllDropdowns(menuId); // Cierra todos excepto el actual
+        const menu = document.getElementById(menuId);
+        const overlay = document.getElementById("overlay");
+        if (menu && !menu.classList.contains("show")) {
+            menu.classList.add("show");
+            overlay.style.display = "block";
+        } else {
+            menu.classList.remove("show");
+            overlay.style.display = "none";
+        }
+    }
+
+    // Cierra todos los menús abiertos
+    function closeAllDropdowns(exceptId = null) {
+        const menus = document.querySelectorAll(".submenu, .dropdown-content");
+        menus.forEach(menu => {
+            if (menu.id !== exceptId) {
+                menu.classList.remove("show");
+            }
+        });
+        document.getElementById("overlay").style.display = "none";
+    }
+
+    // Cierra menús al hacer clic fuera
+    window.onclick = function(event) {
+        if (!event.target.matches('.top-btn') && !event.target.matches('.dropdown-btn')) {
+            closeAllDropdowns();
+        }
+    };
+</script>
+
+</body>
+</html>
