@@ -107,7 +107,7 @@ body {
 .form-container h2 {
     margin-bottom: 20px;
     font-size: 18px;
-    color: #333;
+    color: var(--gray-600);
 }
 
 .form-container select,
@@ -122,7 +122,7 @@ body {
 
 .form-container button {
     background-color: var(--primary-950);
-    color: white;
+    color: var(--white);
     border: none;
     border-radius: 5px;
     padding: 10px;
@@ -152,7 +152,7 @@ body {
     margin: 0 auto;
     padding: 30px;
     border-radius: 10px;
-    background-color: #f9f9f9;
+    background-color: var(--white);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -179,20 +179,20 @@ h4 {
     text-align: right;
     margin-right: 15px;
     font-weight: bold;
-    color: #333;
+    color: var(--gray-600);
 }
 
 input, select {
     flex: 1;
     padding: 10px;
     border-radius: 4px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--white);
     font-size: 16px;
 }
 
 input:focus, select:focus {
     outline: none;
-    border-color: #000000;
+    border-color: var(--black);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -212,7 +212,7 @@ input:focus, select:focus {
 
 .verification-container p {
     font-size: 14px;
-    color: #555;
+    color: var(--gray-700);
     margin-bottom: 20px;
 }
 
@@ -266,8 +266,8 @@ input:focus, select:focus {
 
 /* Tarjetas de usuario */
 .user-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: var(--white);
+    border: 1px solid var(--white);
     border-radius: 8px;
     padding: 25px;
     text-align: center;
@@ -300,7 +300,7 @@ input:focus, select:focus {
     display: block;
     font-size: 14px;
     margin-bottom: 5px;
-    color: #333;
+    color: var(--gray-600);
 }
 
 .report__form textarea {
@@ -309,14 +309,14 @@ input:focus, select:focus {
     resize: none;
     padding: 10px;
     font-size: 14px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--white);
     border-radius: 4px;
 }
 
 .container_rep {
     background-color: var(--white);
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--gray-600);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
@@ -326,7 +326,7 @@ input:focus, select:focus {
 /* Footer Styles */
 footer {
     background-color: var(--primary-950);
-    color: white;
+    color: var(--white);
     text-align: center;
     /* padding: 10px 5px; */
     font-size: 14px;
@@ -377,7 +377,7 @@ header .logo {
 
 .verification-container p {
     font-size: 14px;
-    color: #555;
+    color: var(--gray-500);
     margin-bottom: 20px;
 }
 
@@ -385,7 +385,7 @@ header .logo {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--white);
     border-radius: 5px;
     font-size: 14px;
 }
@@ -420,7 +420,7 @@ header .logo {
 
 /* Sidebar Styles */
 .sidebar {
-    background-color: #f2f2f2;
+    background-color: var(--white);
     width: 250px;
     padding: 20px;
     display: flex;
@@ -442,7 +442,7 @@ header .logo {
 }
 
 .user-profile span {
-    color: #28a745;
+    color: var(--primary-950);
 }
 
 .menu {
@@ -478,13 +478,13 @@ header .logo {
 
 .main-content h1 {
     font-size: 32px;
-    color: #333;
+    color: var(--gray-500);
 }
 
 /* User Card */
 .user-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: var(--white);
+    border: 1px solid var(--white);
     border-radius: 8px;
     padding: 25px;
     text-align: center;
@@ -517,7 +517,7 @@ header .logo {
     display: block;
     font-size: 14px;
     margin-bottom: 5px;
-    color: #333;
+    color: var(--gray-500);
 }
 
 .report__form textarea {
@@ -526,7 +526,7 @@ header .logo {
     resize: none;
     padding: 10px;
     font-size: 14px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--white);
     border-radius: 4px;
     box-sizing: border-box;
 }
@@ -534,7 +534,7 @@ header .logo {
 .container_rep {
     background-color: var(--white);
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--white);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
