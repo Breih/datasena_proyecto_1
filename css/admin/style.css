@@ -76,6 +76,7 @@ header {
     margin-top: 30px;
     font-size: 24px;
     font-weight: bold;
+    margin-bottom: auto;
 }
 
 /* Main Container Styles */
@@ -129,10 +130,12 @@ body {
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
+    
 }
 
 .form-container button:hover {
     background-color: var(--primary-950);
+    margin-top: 10%;
 }
 
 .form-container a {
@@ -553,7 +556,7 @@ header .logo {
 }
 
 /* Buttons and Positioning */
-.habilitar-btn, .listar-btn, .m-btn {
+.habilitar-btn, .listar-btn,.lis-btn, .m-btn {
     background-color: var(--primary-950);
     color: var(--white);
     border: none;
@@ -628,7 +631,11 @@ header .logo {
     bottom: 40px;
     right: 10px;
 }
-
+.lis-btn{
+    bottom: 40px;
+    
+    
+}
 .m-btn {
     bottom: 55px;
     right: 10px;
