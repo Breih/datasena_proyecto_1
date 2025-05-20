@@ -275,6 +275,7 @@ select:focus {
     font-size: 12px;
     margin-bottom: 10px;
     border-radius: 4px;
+    
 }
 
 .verification-container button {
@@ -318,7 +319,7 @@ select:focus {
 .buttons-container {
     display: flex;
     justify-content: center;
-    margin-top: 15px;
+    margin-top: 15%;
 }
 
 .back_crear:hover {
