@@ -193,7 +193,7 @@ h1 {
 
 /* Form Container (Un poco más pequeño que promedio) */
 .form-container {
-    max-width: 850px; /* Ancho máximo ligeramente reducido */
+    max-width: 1000px; /* Ancho máximo ligeramente reducido */
     margin: 15px auto; /* Margen ligeramente reducido */
     padding: 30px; /* Padding ligeramente reducido */
     border-radius: 1.2rem; /* Radio del borde ligeramente reducido */
@@ -216,7 +216,7 @@ h2 {
 }
 
 .form-row {
-    display: grid;
+    display: flex;
     align-items: center;
     margin-bottom: 15px; /* Margen inferior ligeramente reducido */
     padding: 0 8px; /* Padding horizontal ligeramente reducido */
