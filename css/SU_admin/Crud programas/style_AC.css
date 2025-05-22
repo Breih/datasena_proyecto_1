@@ -212,7 +212,10 @@ input, select {
     border: 1px solid #ccc;
     font-size: 16px;
 }
-
+input,
+select {
+    max-width: 250px;
+}
 input:focus, select:focus {
     outline: none;
     border-color: #000000;
