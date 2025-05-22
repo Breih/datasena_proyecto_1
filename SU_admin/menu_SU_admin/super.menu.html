@@ -20,7 +20,7 @@
             <a href="crear_usuario_SU.html">Crear usuarios</a>
             <a href="actualiza_usuario_SU.html">Actualizar usuarios</a>
             <a href="listar_usuario_SU.html">Listar usuarios</a>
-            <a href="habilitar_inhabilitar_SU.html">Habilitar usuarios</a>
+            <a href="habilitar_inhabilitar_SU.html">Habilitar/Inhabilitar usuarios</a>
             <a href="reportar_SU.html">Reportar usuarios</a>
         </div>
     </div>
@@ -28,32 +28,29 @@
     <div class="dropdown-container">
         <button class="top-btn" onclick="toggleDropdown('empresaMenu')">Empresa</button>
         <div id="empresaMenu" class="submenu">
-            <a href="#">Ver empresas</a>
             <a href="empresaRe_SU.html">Crear empresa</a>
-            <a href="#">Crear empresa</a>
             <a href="#">Actualizar empresa</a>
             <a href="">Listar empresa</a>
-            <a href="estado_empresa_SU.html">Habilitar empresa</a>
+            <a href="estado_empresa_SU.html">Habilitar/Inhabilitar empresa</a>
         </div>
     </div>
 
     <div class="dropdown-container">
-        <button class="top-btn" onclick="toggleDropdown('adminMenu')">Crear administrador</button>
+        <button class="top-btn" onclick="toggleDropdown('adminMenu')">Administrador</button>
         <div id="adminMenu" class="submenu">
-            <a href="crear_administrador_SU.html">Nuevo administrador</a>
+            <a href="crear_administrador_SU.html">Crear administrador</a> 
             <a href="">Listado</a>
             <a href="#">Vizualizar</a>
         </div>
     </div>
 
     <div class="dropdown-container">
-        <button class="top-btn" onclick="toggleDropdown('programaMenu')">Crear programa de formación</button>
+        <button class="top-btn" onclick="toggleDropdown('programaMenu')">Programa de formación</button>
         <div id="programaMenu" class="submenu">
-            <a href="#">Nuevo programa</a>
              <a href="../Crud programas/crear_programa.html">Crear programa</a>
             <a href="../Crud programas/actualiza_programa.html">Actualizar programa</a>
             <a href="../Crud programas/listar_programa.html">Listar programa</a>
-            <a href="../Crud programas/habili_inhabilit_programa.html">Habilitar programa</a>
+            <a href="../Crud programas/habili_inhabilit_programa.html">Habilitar/Inhabilitar programa</a>
         </div>
     </div>
 </div>
@@ -64,10 +61,9 @@
         <div class="dropdown">
             <button onclick="toggleDropdown('menuLateral')" class="dropdown-btn">&#9776;</button>
             <div id="menuLateral" class="dropdown-content">
-                <button onclick="location.href='menu_opciones_SU.html'">Inicio</button>
                 <button>Configuración</button>
                 <button>Ayuda</button>
-                <button onclick="location.href='../../inicio/inicio_todos.html'">Cerrar sesión</button>
+                <button onclick="location.href='/inicio_todos.html'">Cerrar sesión</button>
             </div>
         </div>
     </div>

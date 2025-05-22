@@ -14,38 +14,18 @@
 
 <!-- BOTONES SUPERIORES CON MENÚS DESPLEGABLES -->
 <div class="top-buttons">
+
     <div class="dropdown-container">
-        <button class="top-btn" onclick="toggleDropdown('usuariosMenu')">Usuarios</button>
-        <div id="usuariosMenu" class="submenu">
-            <a href="/SU_admin/menu_SU_admin/crear_usuario_SU.html">Crear usuarios</a>
-            <a href="/admin/actualiza_usuario.html">Actualizar usuarios</a>
-            <a href="/admin/listar_usuario.html">Listar usuarios</a>
-            <a href="/admin/habili_inhabilit.html">Habilitar usuarios</a>
-            <a href="/admin/habili_inhabilit.html">Reportar usuarios</a>
+        <button class="top-btn" onclick="toggleDropdown('diagnosticoMenu')">Diagnostico empresarial</button>
+        <div id="diagnosticoMenu" class="submenu">
+            <a href="#">Realizar diagnostico empresarial</a>
         </div>
     </div>
 
     <div class="dropdown-container">
-        <button class="top-btn" onclick="toggleDropdown('empresaMenu')">Empresa</button>
-        <div id="empresaMenu" class="submenu">
-            <a href="#">Ver empresas</a>
-            <a href="#">Crear empresa</a>
-            <a href="#">Crear usuario</a>
-            <a href="#">Actualizar usuarios</a>
-            <a href="#">Listar usuarios</a>
-            <a href="#">Habilitar usuarios</a>
-        </div>
-    </div>
-
-    <div class="dropdown-container">
-        <button class="top-btn" onclick="toggleDropdown('programaMenu')">Crear programa de formación</button>
+        <button class="top-btn" onclick="toggleDropdown('programaMenu')">Programas de formación</button>
         <div id="programaMenu" class="submenu">
-            <a href="#">Nuevo programa</a>
             <a href="#">Listar programas</a>
-             <a href="#">Crear usuario</a>
-            <a href="#">Actualizar usuarios</a>
-            <a href="#">Listar usuarios</a>
-            <a href="#">Habilitar usuarios</a>
         </div>
     </div>
 </div>
@@ -59,7 +39,7 @@
                 <button onclick="location.href='menu_opciones_SU.html'">Inicio</button>
                 <button>Configuración</button>
                 <button>Ayuda</button>
-                <button onclick="location.href='../../inicio/inicio_todos.html'">Cerrar sesión</button>
+                <button onclick="location.href='../inicio_todos.html'">Cerrar sesión</button>
             </div>
         </div>
     </div>
