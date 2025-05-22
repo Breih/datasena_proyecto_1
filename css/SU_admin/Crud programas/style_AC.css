@@ -251,9 +251,11 @@ select {
     border: 1px solid var(--gray-600);
     font-size: 14px; /* Tamaño de fuente ligeramente reducido */
 }
-
-input:focus,
-select:focus {
+input,
+select {
+    max-width: 250px;
+}
+input:focus, select:focus {
     outline: none;
     border-color: var(--black);
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);

@@ -1,21 +1,36 @@
+<?php
+// Conexión a la base de datos
+try {
+    $conexion = new PDO("mysql:host=localhost;dbname=datasenn_db", "root", "");
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Error de conexión: " . $e->getMessage());
+}
+
+// Consulta para obtener todos los usuarios
+$sql = "SELECT nombre_completo, tipo_documento, numero_identidad, residencia, tipo_sangre, correo, telefono, estado FROM usuarios";
+$stmt = $conexion->prepare($sql);
+$stmt->execute();
+$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$conexion = null; // Cerrar la conexión
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar Usuario</title>
-    <link rel="icon" href="../../img/Logotipo_Datasena.png" type="image/x-icon">
+    <link rel="icon" href="/img/Logotipo_Datasena.png" type="image/x-icon">
     <!-- <link rel="stylesheet" href="style.css"> -->
-    <link rel="stylesheet" href="../../css/admin/style.css">
-
+    <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/style.css">
 </head>
 <body>
     <header>DATASENA</header>
-    <div class="logo-container">
-        <img src="../../img/logo-sena.png" alt="Logo">
-    </div>
+    <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+
     <div class="form-container">
-        <h4>Listar Usuario</h4>
+        <h2>Listar Usuario</h2>
         <form action="#" method="post">
 
             <!-- Visualizar usuario con readonly -->
@@ -35,7 +50,7 @@
             <input type="text" id="ver_informacion_5" name="ver_informacion_5" value="dato de Usuario" readonly>
 
             <div class="">
-                <button class="lis-btn">Listar</button>
+                <button class="back_listar" onclick="window.location.href='super.menu.html'">listar</button>
             </div>
 
             <!-- Botón "Ver usuario" centrado -->
@@ -43,7 +58,7 @@
 
         </form>
         <div class="">
-            <button class="listar-btn" onclick="window.location.href='admin.menu.html'">Regresar</button>
+            <button class="listar-btn" onclick="window.location.href='super.menu.html'">Regresar</button>
         </div>
     </div>
 
