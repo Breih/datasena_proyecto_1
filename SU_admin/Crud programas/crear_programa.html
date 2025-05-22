@@ -13,51 +13,54 @@
   <header>DATASENA</header>
   <img src="img/download-removebg-preview.png" alt="Logo SENA" class="img">
 
-  <div class="forma-container">
+ <div class="forma-container">
     <h3>Crear Programa</h3>
-    <form action="#" method="post">
-      <div class="forma-grid">
-        <!-- Única columna -->
-        <div>
+    <form action="registrar_programa.php" method="post">
+        <div class="forma-grid">
+
             <div class="forma-row">
-            <label for="nombre_programa">Nombre del Programa</label>
-            <input type="text" id="nombre_programa" name="nombre_programa" placeholder="Ingrese el nombre del programa de formación" class="md-input" required>
-          </div>
-          <div class="forma-row">
-            <label for="tipo_programa">Tipo de Programa</label>
-            <form action="registrar_programa.php" method="post">
-            <select name="tipo_programa" required>
-                <option value="Tecnico">Técnico</option>
-                <option value="Tecnologo">Tecnólogo</option>
-                <option value="Operario">Operario</option>
-            </select>
-          </div> 
-          <div class="forma-row">
-            <label for="numero_ficha">Numero de ficha</label>
-            <input type="text" id="numero_ficha" name="numero_ficha" placeholder="Ingrese numero de ficha" class="md-input" required>
-          </div>
-          <div class="forma-row">
-            <label for="duracion_programa">Duración</label>
-            <input type="tel" id="duracion_programa" name="duracion_programa" placeholder="Ingrese la duración del programa de formación" class="md-input" required>
-          </div>
+                <label for="nombre_programa">Nombre del Programa</label>
+                <input type="text" id="nombre_programa" name="nombre_programa" placeholder="Ingrese el nombre del programa de formación" required>
+            </div>
 
-          <div class="forma-row">
-            <label for="activacion">Activación</label>
-            <select id="activacion" name="activacion" class="md-input" required>
-              <option value="">Seleccione estado</option>
-              <option value="activo">Activo</option>
-              <option value="inactivo">Inactivo</option>
-            </select>
-          </div>
-        </div>
-      </div>
+            <div class="forma-row">
+                <label for="tipo_programa">Tipo de Programa</label>
+                <select id="tipo_programa" name="tipo_programa" required>
+                    <option value="Tecnico">Técnico</option>
+                    <option value="Tecnologo">Tecnólogo</option>
+                    <option value="Operario">Operario</option>
+                </select>
+            </div>
 
+            <div class="forma-row">
+                <label for="numero_ficha">Número de ficha</label>
+                <input type="text" id="numero_ficha" name="numero_ficha" placeholder="Ingrese número de ficha" required>
+            </div>
+
+            <div class="forma-row">
+                <label for="duracion_programa">Duración</label>
+                <input type="tel" id="duracion_programa" name="duracion_programa" placeholder="Ingrese la duración del programa de formación" required>
+            </div>
+
+            <div class="forma-row">
+                <label for="activacion">Activación</label>
+                <select id="activacion" name="activacion" required>
+                    <option value="">Seleccione estado</option>
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
+                </select>
+            </div>
       <div class="buttons-container">
-        <button type="submit" class="back">Registrar</button>
-        <button type="button" class="logout-btn" onclick="window.location.href='menu_programas.html'">Regresar</button>
+        <button type="submit" class="registrar">crear programa</button>
+        <button type="button" class="registrar" onclick="window.location.href='menu_programas.html'">Regresar</button>
       </div>
     </form>
   </div>
+        </div>
+    </form>
+</div>
+
+
 
   <footer>
     <a>&copy; Todos los derechos reservados al SENA</a>
