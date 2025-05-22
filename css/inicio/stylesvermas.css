@@ -98,10 +98,6 @@ body {
     width: 300%;
 }
 
-
-
-
-
 /* Reset de estilos */
 * {
     margin: 0;
@@ -145,23 +141,6 @@ body {
     100% { transform: translateX(0); } /* Vuelve a la primera imagen */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .user-info { /*centra la foto del usuario */
     display: flex;
     flex-direction: column;
@@ -189,7 +168,6 @@ body {
     width: 80px; /* Tamaño del logo del SENA */
     height: auto; /*Mantener la relación de aspecto*/
 }
-
 
 .sidebar {
   
