@@ -1,5 +1,5 @@
 <?php
-$conexion = new mysqli("localhost", "root", "123456", "datasenn_db");
+$conexion = new mysqli("localhost", "root", "", "datasenn_db");
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
@@ -60,7 +60,7 @@ $stmt->bind_param("sssssssss", $nombre_completo, $tipo_documento, $numero_identi
 if ($stmt->execute()) {
     echo "<script>
         alert('✅ Usuario creado con éxito.');
-        window.location.href = 'super_menu.html';
+        window.location.href = 'super.menu.html';
     </script>";
 } else {
     echo "<script>
