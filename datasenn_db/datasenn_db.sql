@@ -83,20 +83,24 @@ UNLOCK TABLES;
 -- Table structure for table `programa_formacion`
 --
 
+-- Table structure for table `programa_formacion`
+--
+
 DROP TABLE IF EXISTS `programa_formacion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `programa_formacion` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `tipo_programa` enum('Tecnico','Tecnologo','Operario') NOT NULL,
-  `nombre_programa` varchar(255) NOT NULL,
+  `tipo_programa` enum('Tecnico','Tecnologo','Operario') COLLATE utf8mb4_general_ci NOT NULL,
+  `nombre_programa` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `duracion_programa` int NOT NULL,
-  `estado` enum('Activo','Inactivo') NOT NULL,
+  `estado` enum('Activo','Inactivo') COLLATE utf8mb4_general_ci NOT NULL,
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre_programa` (`nombre_programa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Dumping data for table `programa_formacion`
