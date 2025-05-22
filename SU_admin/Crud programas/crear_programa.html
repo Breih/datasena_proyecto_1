@@ -11,20 +11,20 @@
 </head>
 <body>
   <header>DATASENA</header>
-  <img src="img/download-removebg-preview.png" alt="Logo SENA" class="img">
+  <img src="/img/logo-sena.png" alt="Logo SENA" class="img">
 
  <div class="forma-container">
-    <h3>Crear Programa</h3>
+    <h4>Crear Programa</h4>
     <form action="registrar_programa.php" method="post">
         <div class="forma-grid">
 
             <div class="forma-row">
-                <label for="nombre_programa">Nombre del Programa</label>
+                <label for="nombre_programa">Nombre del <br> Programa</label>
                 <input type="text" id="nombre_programa" name="nombre_programa" placeholder="Ingrese el nombre del programa de formación" required>
             </div>
 
             <div class="forma-row">
-                <label for="tipo_programa">Tipo de Programa</label>
+                <label for="tipo_programa">Tipo de <br> Programa</label>
                 <select id="tipo_programa" name="tipo_programa" required>
                     <option value="Tecnico">Técnico</option>
                     <option value="Tecnologo">Tecnólogo</option>
@@ -33,7 +33,7 @@
             </div>
 
             <div class="forma-row">
-                <label for="numero_ficha">Número de ficha</label>
+                <label for="numero_ficha">Número de <br> ficha</label>
                 <input type="text" id="numero_ficha" name="numero_ficha" placeholder="Ingrese número de ficha" required>
             </div>
 
@@ -51,7 +51,7 @@
                 </select>
             </div>
       <div class="buttons-container">
-        <button type="submit" class="registrar">crear programa</button>
+        <button type="submit" class="registrar">Crear programa</button>
         <button type="button" class="registrar" onclick="window.location.href='menu_programas.html'">Regresar</button>
       </div>
     </form>
