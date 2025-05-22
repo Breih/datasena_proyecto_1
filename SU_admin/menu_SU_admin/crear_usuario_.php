@@ -60,7 +60,7 @@ $stmt->bind_param("sssssssss", $nombre_completo, $tipo_documento, $numero_identi
 if ($stmt->execute()) {
     echo "<script>
         alert('✅ Usuario creado con éxito.');
-        window.location.href = 'super_menu.html';
+        window.location.href = 'super.menu.html';
     </script>";
 } else {
     echo "<script>
