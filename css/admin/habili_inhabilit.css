@@ -156,10 +156,10 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
+h3 {
     text-align: center;
     margin-bottom: 30px;
-    font-size: var(--font-size-h2);
+    font-size: var(--font-size-h3);
     border-bottom: 1px solid #ddd;
     padding-bottom: 15px;
 }
@@ -245,7 +245,7 @@ input:focus, select:focus {
 }
 
 /* Botones */
-.logout-btn, .back, .back_crear {
+.logout-btn, .back{
     background-color: var(--primary-950);
     color: var(--white);
     border: none;
@@ -261,7 +261,7 @@ input:focus, select:focus {
     right: 10px;
 }
 
-.back,.back_crear {
+.back {
     bottom: 3%;
     right: 48%;
 }
@@ -570,7 +570,7 @@ header .logo {
 }
 
 .back {
-    bottom: 27%;
+    /* bottom: 27%; */
     right: 48%;
     background-color: var(--primary-950);
     color: var(--white);
@@ -651,7 +651,7 @@ header .logo {
         margin-bottom: 5px;
     }
 
-    .logout-btn, .back, .back_crear {
+    .logout-btn, .back {
         position: static;
         margin: 10px auto;
         display: block;
