@@ -63,6 +63,7 @@ $conexion->close();
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
     <title>Visualizar y Actualizar Usuario</title>
     <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/visualizar_usuario.css">
 </head>
@@ -135,7 +136,7 @@ $conexion->close();
 </form>
 
     <div class="back_visual">
-        <button class="logout-btn" onclick="window.location.href='super_menu.html'">Regresar</button>
+        <button class="logout-btn" onclick="window.location.href='super.menu.html'">Regresar</button>
     </div>
 </div>
 

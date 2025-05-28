@@ -81,8 +81,10 @@ header {
 /* Main Container Styles */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: var(--white);
+    font-family: var(--main-font);
+    background-image: url(../../img/fondo.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
