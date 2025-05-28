@@ -3,28 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habilitar/Inhabilitar Usuario</title>
-    <link rel="icon" href=../img/Logotipo_Datasena.png" type="image/x-icon">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <link rel="stylesheet" href=../css/admin/style.css">
+    <title>Habilitar Inhabilitar Usuario</title>
+    <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="habilitar_inhabilitar_SU.css"> -->
+    <link rel="stylesheet" href="../css/SU_admin/menu_SU_admin/habilitar_inhabilitar_SU.css">
 </head>
 <body>
-    <h4>DATASENA</h4>
-    <img src=../img/logo-sena.png" alt="Logo" class="img">
+    <h1>DATASENA</h1>
+    <img src="../img/logo-sena.png" alt="Logo SENA" class="img">
 
     <div class="forma-container">
-        <h3>Habilitar-Inhabilitar</h3>
+        <h3>Habilitar Inhabilitar Usuario</h3>
         <form action="#" method="post">
             <div class="forma-grid">
                 <!-- Primera columna -->
                 <div>
                     <div class="forma-row">
-                        <label for="nombre_completo">Nombre <br> Completo:</label>
-                        <input type="text" id="nombre_completo" name="nombre_completo" value="Juan Pérez" placeholder="Ingrese el nombre completo" readonly class="md-input">
-                    </div>
-
-                    <div class="forma-row">
-                        <label for="tipo_documento">Tipo de <br> Documento:</label>
+                        <label for="tipo_documento">Tipo de Documento:</label>
                         <select name="tipo_documento" id="tipo_documento" required class="md-input">
                             <option value="">Ingrese su tipo de documento</option>
                             <option value="cc">Cédula de ciudadanía</option>
@@ -33,64 +28,66 @@
                         </select>
                     </div>
 
-                    
+                    <div class="forma-row">
+                        <label for="nombre_completo">Nombre completo:</label>
+                        <input type="text" id="nombre_completo" name="nombre_completo" value="Juan Pérez" readonly class="md-input">
+                    </div>
 
                     <div class="forma-row">
-                        <label for="tarjeta_identidad">Número de <br> Doumento:</label>
-                        <input type="text" id="tarjeta_identidad" name="tarjeta_identidad" value="123456789" placeholder="Ingrese la tarjeta de identidad" readonly class="md-input">
+                        <label for="tarjeta_identidad">Tarjeta de identidad:</label>
+                        <input type="text" id="tarjeta_identidad" name="tarjeta_identidad" value="123456789" readonly class="md-input">
                     </div>
 
                     <div class="forma-row">
                         <label for="recidencia">Residencia:</label>
-                        <input type="text" id="recidencia" name="recidencia" value="Bogotá" placeholder="Ingrese la residencia" readonly class="md-input">
+                        <input type="text" id="recidencia" name="recidencia" value="Bogotá" readonly class="md-input">
                     </div>
                     <div class="forma-row">
                         <label for="correo">Correo:</label>
-                        <input type="text" id="correo" name="correo" value="juanperez@email.com" placeholder="Ingrese el correo" readonly class="md-input">
+                        <input type="text" id="correo" name="correo" value="juanperez@email.com" readonly class="md-input">
                     </div>
-
                 </div>
-                
 
                 <!-- Segunda columna -->
                 <div>
                     
+
                     <div class="forma-row">
                         <label for="validacion">Validación:</label>
-                        <input type="text" id="validacion" name="validacion" value="Verificado" placeholder="Ingrese la validación" readonly class="md-input">
+                        <input type="text" id="validacion" name="validacion" value="Verificado" readonly class="md-input">
                     </div>
 
                     <div class="forma-row">
                         <label for="contrasena">Contraseña:</label>
-                        <input type="text" id="contrasena" name="contrasena" value="********" placeholder="Ingrese la contraseña" readonly class="md-input">
+                        <input type="text" id="contrasena" name="contrasena" value="********" readonly class="md-input">
                     </div>
 
                     <div class="forma-row">
-                        <label for="tipo_de_sangre">Tipo de <br> sangre:</label>
-                        <input type="text" id="tipo_de_sangre" name="tipo_de_sangre" value="O+" placeholder="Ingrese el tipo de sangre" readonly class="md-input">
+                        <label for="tipo_de_sangre">Tipo de sangre:</label>
+                        <input type="text" id="tipo_de_sangre" name="tipo_de_sangre" value="O+" readonly class="md-input">
                     </div>
 
                     <div class="forma-row">
-                        <label for="activacion">Estado <br> actual:</label>
-                        <input type="text" id="activacion" name="activacion" value="Activo" placeholder="Estado de activación" readonly class="md-input">
+                        <label for="activacion">Estado actual:</label>
+                        <input type="text" id="activacion" name="activacion" value="Activo" readonly class="md-input">
                     </div>
 
                     <div class="forma-row">
-                        <label for="nuevo_estado">Nuevo <br> estado:</label>
+                        <label for="nuevo_estado">Nuevo estado:</label>
                         <select name="nuevo_estado" id="nuevo_estado" required class="md-input">
-                            <option value="">Seleccione estado</option>
-                            <option value="habilitado">Habilitado</option>
+                            <option value="">Habilitado</option>
                             <option value="inhabilitado">Inhabilitado</option>
                         </select>
                     </div>
                 </div>
             </div>
 
-            <div class="buttons-container">
-                <button type="submit" class="back_crear">Actualizar</button>
-                <button type="button" class="logout-btn" onclick="window.location.href='../../SU_admin/menu_SU_admin/super.menu.html'">Regresar</button>
-            </div>
+           
         </form>
+        <div class="buttons-container">
+                <button type="submit" class="back" onclick="window.location.href='super.menu.html'">Actualizar</button>
+                <button type="button" class="habilitar-btn" onclick="window.location.href='super.menu.html'">Regresar</button>
+        </div>
     </div>
 
     <footer>
