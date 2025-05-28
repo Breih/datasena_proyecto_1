@@ -42,15 +42,15 @@
     --secundary-3-300: #b3c1ca;
     --secundary-3-200: #ccd6db;
 
-    --secundary-4-950: #fdc300;
-    --secundary-4-900: #fdc91a;
-    --secundary-4-800: #fdcf33;
-    --secundary-4-700: #fed54d;
-    --secundary-4-600: #fedb66;
-    --secundary-4-500: #fee180;
-    --secundary-4-400: #fee799;
-    --secundary-4-300: #feedb3;
-    --secundary-4-200: #fff3cc;
+    --secondary-4-950: #fdc300;
+    --secondary-4-900: #fdc91a;
+    --secondary-4-800: #fdcf33;
+    --secondary-4-700: #fed54d;
+    --secondary-4-600: #fedb66;
+    --secondary-4-500: #fee180;
+    --secondary-4-400: #fee799;
+    --secondary-4-300: #feedb3;
+    --secondary-4-200: #fff3cc;
 
     /* Basic colors */
     --white: #ffffff;
@@ -279,7 +279,7 @@ input {
 }
 
 .back_listar:hover, .listar-btn:hover, .view-btn:hover {
-    background-color: var(--secundary-4-950);
+    background-color: var(--secondary-4-950);
 }
 
 
