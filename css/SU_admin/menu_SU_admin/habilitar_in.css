@@ -206,6 +206,22 @@ input, select {
     font-size: 16px;
 }
 
+.buttons-container button {
+    background-color: var(--primary-950);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px; /* Reduced padding for smaller buttons */
+    font-size: 14px; /* Reduced font size */
+    cursor: pointer;
+    min-width: 100px; /* Reduced minimum width */
+    margin-right: 10px; /* Added margin for more separation */
+}
+
+.buttons-container button:last-child {
+    margin-right: 0; /* Remove margin for the last button */
+}
+
 input:focus, select:focus {
     outline: none;
     border-color: var(--primary-950);
@@ -224,7 +240,7 @@ input:focus, select:focus {
     
 }
 
-.buttons-container button {
+/* .buttons-container button {
     background-color: var(--primary-950);
     color: var(--white);
     border: none;
@@ -238,7 +254,7 @@ input:focus, select:focus {
 
 .buttons-container button:hover {
     background-color: var(--primary-900);
-}
+} */
 
 footer {
     background-color: var(--primary-950);
