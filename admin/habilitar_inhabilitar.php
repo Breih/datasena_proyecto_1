@@ -81,7 +81,7 @@ $conexion->close();
     <link rel="stylesheet" href="../css/SU_admin/menu_SU_admin/habilitar_in.css">
 </head>
 <body>
-    <h1>DATASENA</h1>
+    <header>DATASENA</header>
     <img src="../img/logo-sena.png" alt="Logo SENA" class="img">
 
     <div class="forma-container">
@@ -92,7 +92,7 @@ $conexion->close();
             <h4>🔍 Buscar Usuario</h4>
             <form class="search-form" action="" method="get">
                 <div class="search-group">
-                    <label for="buscar_identidad">Número de Identidad:</label>
+                    <label for="buscar_identidad">Número de <br> Identidad:</label>
                     <input type="text" 
                            id="buscar_identidad" 
                            name="numero_identidad" 
@@ -120,7 +120,7 @@ $conexion->close();
                     <!-- Primera columna -->
                     <div>
                         <div class="forma-row">
-                            <label for="tipo_documento">Tipo de Documento:</label>
+                            <label for="tipo_documento">Tipo de <br> Documento:</label>
                             <input type="text" 
                                    id="tipo_documento" 
                                    name="tipo_documento" 
@@ -130,7 +130,7 @@ $conexion->close();
                         </div>
 
                         <div class="forma-row">
-                            <label for="nombre_completo">Nombre completo:</label>
+                            <label for="nombre_completo">Nombre <br> completo:</label>
                             <input type="text" 
                                    id="nombre_completo" 
                                    name="nombre_completo" 
@@ -140,7 +140,7 @@ $conexion->close();
                         </div>
 
                         <div class="forma-row">
-                            <label for="tarjeta_identidad">Número de identidad:</label>
+                            <label for="tarjeta_identidad">Número de <br> identidad:</label>
                             <input type="text" 
                                    id="tarjeta_identidad" 
                                    name="tarjeta_identidad" 
@@ -193,7 +193,7 @@ $conexion->close();
                         </div>
 
                         <div class="forma-row">
-                            <label for="tipo_de_sangre">Tipo de sangre:</label>
+                            <label for="tipo_de_sangre">Tipo de <br> sangre:</label>
                             <input type="text" 
                                    id="tipo_de_sangre" 
                                    name="tipo_de_sangre" 
@@ -203,7 +203,7 @@ $conexion->close();
                         </div>
 
                         <div class="forma-row">
-                            <label for="estado_actual">Estado actual:</label>
+                            <label for="estado_actual">Estado <br> actual:</label>
                             <input type="text" 
                                    id="estado_actual" 
                                    name="estado_actual" 
@@ -213,7 +213,7 @@ $conexion->close();
                         </div>
 
                         <div class="forma-row">
-                            <label for="nuevo_estado">Cambiar estado a:</label>
+                            <label for="nuevo_estado">Cambiar <br> estado a:</label>
                             <select name="nuevo_estado" id="nuevo_estado" required class="md-input">
                                 <option value="">-- Seleccione nuevo estado --</option>
                                 <option value="Activo" <?= ($usuario['estado'] === 'Inactivo' || $usuario['estado'] === 'Inhabilitado') ? 'selected' : '' ?>>
