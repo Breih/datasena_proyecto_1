@@ -50,14 +50,16 @@ $conexion = null; // Cerrar la conexión
         }
 
         #search-input {
-            width: 60%;
+            width: 93%;
             padding: 10px;
             font-size: 16px;
-            border-radius: 25px;
+            border-radius: 5px;
             border: 1px solid #ccc;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-right: 10px;
+            margin-bottom: 5px;
         }
+
 
         .search-btn {
             padding: 10px 20px;
