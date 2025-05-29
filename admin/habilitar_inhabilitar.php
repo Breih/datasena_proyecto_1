@@ -130,7 +130,7 @@ $conexion->close();
                         </div>
 
                         <div class="forma-row">
-                            <label for="nombre_completo">Nombre <br> completo:</label>
+                            <label for="nombre_completo">Nombre  <br> completo:</label>
                             <input type="text" 
                                    id="nombre_completo" 
                                    name="nombre_completo" 
@@ -193,7 +193,7 @@ $conexion->close();
                         </div>
 
                         <div class="forma-row">
-                            <label for="tipo_de_sangre">Tipo de <br> sangre:</label>
+                            <label for="tipo_de_sangre">Tipo de  <br> sangre:</label>
                             <input type="text" 
                                    id="tipo_de_sangre" 
                                    name="tipo_de_sangre" 
@@ -203,7 +203,7 @@ $conexion->close();
                         </div>
 
                         <div class="forma-row">
-                            <label for="estado_actual">Estado <br> actual:</label>
+                            <label for="estado_actual">Estado  <br> actual:</label>
                             <input type="text" 
                                    id="estado_actual" 
                                    name="estado_actual" 
