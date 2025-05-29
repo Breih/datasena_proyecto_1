@@ -66,7 +66,7 @@ $conexion = null; // Cerrar la conexión
             background-color: var(--primary-950);
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
