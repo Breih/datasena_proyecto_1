@@ -70,234 +70,439 @@
     --font-size-h6: 1.2rem;
 
 }
-/* General Styles */
+
+/* Header Styles */
+header {
+    margin-top: 100px;
+    font-size: 2.0rem;
+    font-weight: bold;
+}
+
+/* Main Container Styles */
 body {
     margin: 0;
     font-family: var(--main-font);
-    background-color: var(--white);
+    background-color: var(--gray-950);
+    background-image: url('../../img/fondo.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    overflow-x: hidden;
 }
-
-/* Fondo oscuro cuando un menú está activo */
-.overlay {
-    position: fixed;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10;
-}
-
-/* Botones superiores */
-.top-buttons {
-    display: flex;
-    gap: 15px;
-    padding: 15px 20px;
-    background-color: var(--primary-950);
-    position: relative;
-    z-index: 20;
-    margin-bottom: 50px;
-}
-
-.top-btn {
+/* Form Container */
+.form-container {
     background-color: var(--white);
-    border: 2px solid var(--primary-950);
-    padding: 12px 25px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.top-btn:hover {
-    background-color: var(--white);
-    transform: scale(1.05);
-}
-
-/* Contenedor de cada botón con submenu */
-.dropdown-container {
-    position: relative;
-}
-
-/* Submenú */
-.submenu {
-    display: none;
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px var(--black);
+    width: 90%;
+    max-width: 400px;
+    padding: 20px 30px;
     position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--primary-800);
-    border-radius: 10px;
-    margin-top: 10px;
-    min-width: 220px;
-    box-shadow: 0 4px 8px var(--secundary-1-950);
-    z-index: 30;
-    transition: opacity 0.3s ease;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 15px;
+    text-align: center ;
+
 }
 
-.submenu a {
-    display: block;
-    padding: 12px;
-    text-decoration: none;
-    color: var(--white);
-    font-weight: normal;
-    transition: background-color 0.3s ease;
-    border-bottom: 1px solid var(--primary-800);
-    border-radius: 10px;
-}
-
-.submenu a:hover {
-    background-color: var(--secundary-1-900);
-    border-radius: 10px;
-}
-
-/* Mostrar submenú */
-.submenu.show {
-    display: block;
-    opacity: 1;
-}
-
-/* Contenedor del menú desplegable */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-btn {
-    background-color: transparent;
-    color: var(--white);
-    padding: 10px 15px;
-    font-size: 24px;
-    border: none;
-    cursor: pointer;
-}
-
-/* Contenedor del menú desplegable */
-.dropdown-content {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    min-width: 180px;
-    box-shadow: 0 8px 16px var(--white);
-    z-index: 1;
-    border-radius: 10px;
-    margin-top: 10px;
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-    transition: all 0.3s ease;
-    left: 0;
-}
-
-/* Estilo de los botones dentro del menú */
-.dropdown-content button {
-    width: 100%;
-    padding: 15px 20px;
-    text-align: left;
-    border: none;
-    background-color: var(--primary-800);
-    cursor: pointer;
-    font-size: 16px;
-    color: var(--white);
-    border-bottom: 2px solid var(--primary-950);
-    border-radius: 10px;
-}
-
-/* Efecto hover de los botones */
-.dropdown-content button:hover {
-    background-color: var(--secundary-1-800);
-}
-
-/* Clase para mostrar el menú */
-.show {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-/* Cuadro centrado */
-.center-box {
-    width: 80%;
-    max-width: 600px;
-    margin: 20% auto;
-    padding: 20px;
-    background-color: var(--secundary-3-300);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px var(--secundary-3-950);
-    text-align: center;
-}
-
-.center-box h2 {
+.form-container h2 {
+    margin-bottom: 20px;
+    font-size: 18px;
     color: #333;
 }
 
-.center-box p {
-    color: #555;
-    font-size: 16px;
+.form-container select,
+.form-container input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--white);
+    border-radius: 5px;
+    font-size: 14px;
 }
 
-/* Footer */
+.form-container button {
+    background-color: var(--primary-950);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: var(--secundary-1-900);
+}
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: var(--primary-900);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.form-container a {
+    display: block;
+    margin-top: 15px;
+    font-size: 14px;
+    color: var(--black);
+    text-decoration: none;
+}
+
+.form-container a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styles */
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     background-color: var(--primary-950);
     color: var(--white);
     text-align: center;
+    /* padding: 10px 5px; */
     font-size: 1.0rem;
+    width: 100%;
+    margin-top: auto;
     padding: 5px 0;
-    z-index: 1000;
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-    .top-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+/* Image Positioning */
+img {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 80px;
+    height: auto;
+}
+
+header .logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: auto;
+}
+
+/* Verification Container */
+.verification-container {
+    background-color: var(--white);
+    border: 2px solid var(--white);
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    padding: 30px 100px;
+    text-align: center;
+    margin: auto;
+    position: relative;
+}
+
+.verification-container p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.verification-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.verification-container button {
+    background-color: var(--primary-950);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.verification-container button:hover {
+    background-color: var(--primary-950);
+}
+
+.verification-container a {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--primary-950);
+    text-decoration: none;
+    text-align: center;
+}
+
+.verification-container a:hover {
+    text-decoration: underline;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: #f2f2f2;
+    width: 250px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    height: 80%;
+    left: 0;
+}
+
+.user-profile {
+    text-align: left;
+}
+
+.user-icon {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.user-profile span {
+    color: #28a745;
+}
+
+.menu {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+.menu-btn {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: var(--white);
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5%;
+}
+
+.menu-btn:hover {
+    background-color: var(--primary-950);
+    color: var(--white);
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.main-content h1 {
+    font-size: 32px;
+    color: #333;
+}
+
+/* User Card */
+.user-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-icon img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+.container_card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Espaciado entre los elementos */
+    padding: 20px;
+}
+
+
+/* Report Form */
+.report__form .form_group {
+    margin-bottom: 20px;
+}
+
+.report__form label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.report__form textarea {
+    width: 100%;
+    height: 150px;
+    resize: none;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.container_rep {
+    background-color: var(--white);
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+/* Buttons and Positioning */
+.logout-btn, .back, .habilitar-btn, .listar-btn, .m-btn {
+    background-color: var(--primary-950);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+}
+.back-estado-empresa{
+    background-color: var(--primary-950);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+}
+.back-modificar{
+    background-color: var(--primary-950);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+}
+
+.logout-btn {
+    bottom: -20px;
+    right: 10px;
+}
+
+.back {
+    bottom: 6%;
+    right:47%;
+}
+.back-modificar {
+    bottom: 35%;
+    right:47%;
+}
+.back-estado-empresa{
+    bottom: 35%;
+    right:47%;
+}
+
+.habilitar-btn {
+    bottom: 3%;
+    right: 10px;
+}
+
+.listar-btn {
+    bottom: 40px;
+    right: 10px;
+}
+
+.sena-logo {
+    width: 80px; /* Tamaño del logo del SENA */
+    height: auto; /*Mantener la relación de aspecto*/
+}
+
+.m-btn {
+    bottom: 55px;
+    right: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 468px) {
+    /* Mobile and tablet adjustments */
+    .sidebar {
+        width: 200px;
     }
 
-    .top-btn {
+    .main-content {
+        margin-left: 200px;
+    }
+
+    .form-container, .verification-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .user-card {
         width: 100%;
+        padding: 15px;
+    }
+
+    .container_card {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .menu-btn {
+        font-size: 14px;
+    }
+
+    .logout-btn, .back, .habilitar-btn, .listar-btn, .m-btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    /* Mobile adjustments */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+    }
+
+    .main-content {
+        margin-left: 0;
         padding: 10px;
     }
 
-    .submenu {
-        min-width: 180px;
-    }
-
-    .center-box {
-        margin: 10% auto;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .top-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .top-btn {
+    .form-container, .verification-container {
         width: 100%;
+        padding: 20px;
+    }
+
+    .user-card {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .container_card {
+        grid-template-columns: 1fr;
+    }
+
+    .logout-btn, .back, .habilitar-btn, .listar-btn, .m-btn {
+        font-size: 14px;
         padding: 8px;
     }
-
-    .submenu {
-        min-width: 150px;
-    }
-
-    .center-box {
-        margin: 5% auto;
-    }
-    .center-box h2 {
-        font-size: 1.8rem;
-    }  
 }
