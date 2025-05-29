@@ -76,27 +76,58 @@
     --hover-color: #218838;
 
 }
-    
+:root {
+    /* Primary color */
+    --primary-950: #39A900;
+    --primary-900: #4db21a;
+
+    /* Basic colors */
+    --white: #ffffff;
+    --black: #000000;
+    --gray-500: #8d8d8d;
+
+    /* Fonts */
+    --main-font: Arial, sans-serif;
+    --font-size-h3: 2.0rem;
+
+    /* Layout */
+    --padding: 20px;
+    --margin-bottom: 15px;
+    --border-radius: 4px;
+    --hover-color: #218838;
+}
+
 body {
     margin: 0;
-    font-family: var(--font-family);
-    background-color: var(--background-color);
-    color: var(--text-color);
+    font-family: var(--main-font);
+    background-color: var(--white);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 100vh;
     padding: 20px;
     box-sizing: border-box;
 }
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--primary-950);
+    color: var(--white);
+}
+
 .main-content {
-    position: absolute; /* Para posicionarlo de manera independiente */
-    top: 0; /* Ajusta según tu diseño */
+    position: absolute;
+    top: 0;
     left: 50%;
-    transform: translateX(-50%); /* Centra horizontalmente */
-    text-align: center; /* Centra el texto */
-    font-size: 24px; /* Tamaño ajustable */
-    font-weight: bold; /* Negrita, si es necesario */
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .logo-container {
@@ -105,44 +136,36 @@ body {
     right: 10px;
 }
 
-/* Imagen flotante */
 img {
-    position: absolute;
-    top: 10px;
-    right: 10px;
     width: 80px;
     height: auto;
 }
 
-
-.sena-logo {
-    width: 80px; /* Tamaño del logo del SENA */
-    height: auto; /* Mantener la relación de aspecto */
-}
 .container1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff;
-    border: 2px solid var(--border-color);
+    background-color: var(--white);
+    border: 2px solid var(--gray-500);
     border-radius: var(--border-radius);
     padding: var(--padding);
     width: 100%;
     max-width: 800px;
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .profile-container1 {
     width: 100%;
     padding: var(--padding);
     background-color: #f0f0f0;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--gray-500);
     border-radius: var(--border-radius);
 }
 
 .profile-container1 h2 {
     text-align: center;
     margin-bottom: var(--margin-bottom);
+    font-size: var(--font-size-h3);
 }
 
 .content-box {
@@ -154,7 +177,7 @@ img {
 }
 
 .info-box {
-    background-color: #ccc; /* Color de fondo gris más oscuro */
+    background-color: #ccc;
     padding: var(--padding);
     border-radius: var(--border-radius);
     flex: 1;
@@ -176,8 +199,8 @@ img {
 
 .edit-button, .delete-button {
     background-color: var(--white);
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
+    color: var(--primary-950);
+    border: 1px solid var(--primary-950);
     padding: 5px 10px;
     border-radius: var(--border-radius);
     cursor: pointer;
@@ -188,12 +211,12 @@ img {
 }
 
 .edit-button:hover, .delete-button:hover {
-    background-color: var(--primary-color);
+    background-color: var(--primary-950);
     color: var(--white);
 }
 
 .save-button {
-    background-color: var(--primary-color);
+    background-color: var(--primary-950);
     color: var(--white);
     border: none;
     padding: 10px 10px;
@@ -205,7 +228,6 @@ img {
     margin-right: auto;
 }
 
-/* Footer */
 footer {
     background-color: var(--primary-950);
     color: var(--white);
