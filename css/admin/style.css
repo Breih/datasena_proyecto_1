@@ -10,8 +10,8 @@
     --primary-400: #b0dd99;
     --primary-300: #c4e5b3;
     --primary-200: #d7eecc;
-
-    /* Secondary colors */
+    
+    /* Secondary color */
     --secundary-1-950: #007832;
     --secundary-1-900: #1A8647;
     --secundary-1-800: #33935B;
@@ -21,7 +21,6 @@
     --secundary-1-400: #99C9AD;
     --secundary-1-300: #B3D7C2;
     --secundary-1-200: #cce4d6;
-
     --secundary-2-950: #71277a;
     --secundary-2-900: #7f3d86;
     --secundary-2-800: #8d5295;
@@ -31,7 +30,6 @@
     --secundary-2-400: #c6a9ca;
     --secundary-2-300: #dabed7;
     --secundary-2-200: #e3daea;
-
     --secundary-3-950: #00304d;
     --secundary-3-900: #1a455f;
     --secundary-3-800: #335971;
@@ -41,7 +39,6 @@
     --secundary-3-400: #99acb8;
     --secundary-3-300: #b3c1ca;
     --secundary-3-200: #ccd6db;
-
     --secundary-4-950: #fdc300;
     --secundary-4-900: #fdc91a;
     --secundary-4-800: #fdcf33;
@@ -51,8 +48,8 @@
     --secundary-4-400: #fee799;
     --secundary-4-300: #feedb3;
     --secundary-4-200: #fff3cc;
-
-    /* Basic colors */
+    
+    /* Basic color */
     --white: #ffffff;
     --black: #000000;
     --gray-950: #f6f6f6;
@@ -61,126 +58,206 @@
     --gray-700: #b7b7b7;
     --gray-600: #a2a2a2;
     --gray-500: #8d8d8d;
-
-    /* Fonts */
+    
+    /* Font-family */
     --main-font: Arial, sans-serif;
     --font-size-h1-plus: 4.8rem;
     --font-size-h1: 3.2rem;
     --font-size-h2: 2.4rem;
-    --font-size-h3: 2rem;
+    --font-size-h3: 2.0rem;
     --font-size-h4: 1.6rem;
     --font-size-h5: 1.4rem;
     --font-size-h6: 1.2rem;
+
 }
 
-/* General Styles */
+/* Header Styles */
+header {
+    margin-top: 30px;
+    font-size: 2.0rem;
+    font-weight: bold;
+}
+
 body {
     margin: 0;
     font-family: var(--main-font);
     background-color: var(--white);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     min-height: 100vh;
 }
 
-/* Header */
-/* Centrar el header */
-header {
-    text-align: center; /* Centra el texto */
-    font-size: var(--font-size-h1); /* Tamaño de fuente más grande */
-    font-weight: bold;
-    margin-top: 20px;
-    color: var(--black); /* Color que deseas para el texto */
-}
 
-
-header .logo {
+img {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 40px;
+    top: 10px;
+    right: 10px;
+    width: 80px;
     height: auto;
 }
 
-/* Estilos para la barra de búsqueda */
-.search-container {
-    margin-bottom: 20px;
-    text-align: center;
+.form-container {
+    max-width: 750px;
+    margin: 20px auto;
+    padding: 15px;
+    padding-bottom: 80px;
+    border-radius: 10px;
+    background-color: var(--secundary-3-300);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 90%;
 }
 
-/* Barra de búsqueda */
-.search-container {
-    margin-bottom: 20px;
+h4 {
     text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.0rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
 }
 
-#search-input {
-    width: 50%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+.search-container {
+    background: var(--gray-950);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid var(--gray-800);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.search-container h4 {
+    color: var(--black);
+    margin-bottom: 15px;
+}
+
+.search-form {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+    flex-wrap: wrap;
+}
+
+.search-form .search-group {
+    flex: 1;
+    min-width: 250px;
+}
+
+.search-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: var(--black);
+}
+
+.search-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--gray-700);
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
 .search-btn {
+    padding: 10px 15px;
     background-color: var(--primary-950);
-    color: var(--white);
+    color: white;
     border: none;
+    padding: 10px 20px;
     border-radius: 4px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    margin-left: 10px;
+    transition: background-color 0.3s;
 }
 
 .search-btn:hover {
-    background-color: var(--primary-800);
+    background: var(--secundary-2-400);
 }
 
-/* Tabla de usuarios */
-.user-list {
-    margin-top: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #f2f2f2;
-    font-weight: bold;
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
-tr:hover {
-    background-color: #f9f9f9;
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
 }
 
-/* Estilo para el botón de eliminar */
-.delete-btn {
-    background-color: var(--secundary-2-950);
+.form-row label {
+    min-width: 100px;
+    margin-right: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+input, select {
+    flex: 1;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.listar-btn{
+    background: var(--primary-950);
     color: var(--white);
     border: none;
+    padding: 10px 20px;
     border-radius: 4px;
-    padding: 8px 16px;
-    font-size: 14px;
     cursor: pointer;
+    font-size: 1.0rem;
 }
 
-.delete-btn:hover {
-    background-color: var(--secundary-2-900);
+.listar-btn:hover{
+    background: var(--secundary-2-500);
 }
 
-/* Footer */
+
+.lis-btn:hover {
+    margin-right: 0; /* Remove margin for the last button */
+    background: var(--secundary-2-500);
+}
+
+input:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(57, 169, 0, 0.3);
+}
+
+.lis-btn{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
+    
+}
+
+/* .buttons-container button {
+    background-color: var(--primary-950);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 120px;
+    margin-bottom: -5em;
+}
+
+.buttons-container button:hover {
+    background-color: var(--primary-900);
+} */
+
 footer {
     background-color: var(--primary-950);
     color: var(--white);
@@ -270,7 +347,7 @@ input {
 
 .back_listar, .listar-btn, .view-btn {
     background-color: var(--primary-950);
-    color: var(--secundary-3-950);
+    color: var(--white);
     border: none;
     border-radius: 4px;
     padding: 8px 16px;
@@ -287,21 +364,28 @@ input {
 /* Responsivo para pantallas pequeñas */
 @media screen and (max-width: 768px) {
     .form-grid {
-        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
-        gap: 15px; /* Espacio más pequeño entre los elementos */
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .form-row label {
-        font-size: 12px; /* Tamaño más pequeño para etiquetas */
+        text-align: left;
+        margin-bottom: 5px;
     }
 
-    input {
-        font-size: 12px; /* Tamaño más pequeño para los inputs */
-    }
-
-    .buttons-container {
+    .lis-btn{
         flex-direction: column;
         align-items: center;
+        padding: 0 10px;
+    }
+
+    .listar-btn{
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 10px;
     }
 }
-/* Estilo para el botón de eliminar */

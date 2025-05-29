@@ -34,7 +34,7 @@ $conexion = null; // Cerrar la conexión
         /* Centrar el header */
         header {
             text-align: center; /* Centra el texto */
-            font-size: 2.5rem; /* Tamaño de fuente más grande */
+            font-size: 2.0rem; /* Tamaño de fuente más grande */
             font-weight: bold;
             margin-top: 20px;
             color: var(--black); /* Color que deseas para el texto */

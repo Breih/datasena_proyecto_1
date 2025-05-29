@@ -89,8 +89,8 @@ body {
     min-height: 100vh;
 }
 
-h1 {
-    font-size: 24px;
+header {
+    font-size: 2.0rem;
     font-weight: bold;
 }
 
@@ -108,7 +108,7 @@ img {
     padding: 30px;
     padding-bottom: 80px;
     border-radius: 10px;
-    background-color: #f9f9f9;
+    background-color: var(--secundary-3-300);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     width: 90%;
@@ -171,11 +171,11 @@ h3 {
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 1.0rem;
 }
 
 .search-btn:hover {
-    background: var(--primary-900);
+    background: var(--secundary-2-400);
 }
 
 .forma-grid {
@@ -191,9 +191,9 @@ h3 {
 }
 
 .forma-row label {
-    min-width: 150px;
-    text-align: right;
-    margin-right: 15px;
+    min-width: 100px;
+    margin-right: 5px;
+    text-align: center;
     font-weight: bold;
     color: #333;
 }
@@ -207,19 +207,23 @@ input, select {
 }
 
 .buttons-container button {
-    background-color: var(--primary-950);
+    background: var(--primary-950);
     color: var(--white);
     border: none;
-    border-radius: 5px;
-    padding: 8px 20px; /* Reduced padding for smaller buttons */
-    font-size: 14px; /* Reduced font size */
+    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
-    min-width: 100px; /* Reduced minimum width */
-    margin-right: 10px; /* Added margin for more separation */
+    font-size: 1.0rem;
 }
 
-.buttons-container button:last-child {
+.buttons-container button:hover{
+    background: var(--secundary-2-500);
+}
+
+
+.buttons-container button:last-child:hover {
     margin-right: 0; /* Remove margin for the last button */
+    background: var(--secundary-2-500);
 }
 
 input:focus, select:focus {
@@ -258,13 +262,14 @@ input:focus, select:focus {
 
 footer {
     background-color: var(--primary-950);
-    color: white;
+    color: var(--white);
     text-align: center;
-    padding: 5px 0;
     font-size: 1.0rem;
     width: 100%;
     margin-top: auto;
+    padding: 5px 0;
 }
+
 
 @media screen and (max-width: 768px) {
     .forma-grid {
