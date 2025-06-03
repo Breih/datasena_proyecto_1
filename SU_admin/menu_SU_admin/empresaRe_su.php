@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $host = "localhost";
     $db = "datasenn_db";
     $user = "root";
-    $pass = "";
+    $pass = ""; // Sin contraseña
 
     try {
         $conexion = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
@@ -23,7 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $actividad_economica = $_POST['actividad_economica'] ?? '';
 
         // Validar campos obligatorios
-        if (empty($tipo_documento) || empty($nit) || empty($nickname) || empty($telefono) || empty($correo) || empty($direccion) || empty($rol) || empty($actividad_economica)) {
+        if (
+            empty($tipo_documento) || empty($nit) || empty($nickname) ||
+            empty($telefono) || empty($correo) || empty($direccion) ||
+            empty($rol) || empty($actividad_economica)
+        ) {
             $error = "Por favor completa todos los campos obligatorios.";
         } else {
             // Insertar datos
@@ -40,11 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bindParam(':actividad_economica', $actividad_economica);
 
             $stmt->execute();
-
             $success = "Registro guardado correctamente.";
         }
     } catch (PDOException $e) {
         $error = "Error en la base de datos: " . $e->getMessage();
+
+        // Sugerencia si se detecta error por contraseña
+        if (strpos($error, 'Access denied') !== false) {
+            $error .= "<br>Verifica que el usuario 'root' tenga acceso sin contraseña y esté usando el plugin 'mysql_native_password'.";
+        }
     }
 }
 ?>
@@ -66,11 +74,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h3>Registro de Empresa</h3>
 
         <?php if (!empty($error)): ?>
-            <div style="color: red; margin-bottom: 1em;"><?= htmlspecialchars($error) ?></div>
+            <div style="color: red; margin-bottom: 1em;"><?= $error ?></div>
         <?php endif; ?>
 
         <?php if (!empty($success)): ?>
-            <div style="color: green; margin-bottom: 1em;"><?= htmlspecialchars($success) ?></div>
+            <div style="color: green; margin-bottom: 1em;"><?= $success ?></div>
         <?php endif; ?>
 
         <form action="empresaRe_su.php" method="POST">
@@ -89,16 +97,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </select>
                     </div>
                     <div class="forma-row">
-                        <label for="nit">Numero de documento:</label>
-                        <input type="text" id="nit" name="nit" required class="md-input" value="<?= isset($_POST['nit']) ? htmlspecialchars($_POST['nit']) : '' ?>">
+                        <label for="nit">Número de documento:</label>
+                        <input type="text" id="nit" name="nit" required class="md-input" value="<?= htmlspecialchars($_POST['nit'] ?? '') ?>">
                     </div>
                     <div class="forma-row">
                         <label for="nickname">Nombre de la empresa:</label>
-                        <input type="text" id="nickname" name="nickname" required class="md-input" value="<?= isset($_POST['nickname']) ? htmlspecialchars($_POST['nickname']) : '' ?>">
+                        <input type="text" id="nickname" name="nickname" required class="md-input" value="<?= htmlspecialchars($_POST['nickname'] ?? '') ?>">
                     </div>
                     <div class="forma-row">
                         <label for="telefono">Teléfono:</label>
-                        <input type="text" id="telefono" name="telefono" required class="md-input" value="<?= isset($_POST['telefono']) ? htmlspecialchars($_POST['telefono']) : '' ?>">
+                        <input type="text" id="telefono" name="telefono" required class="md-input" value="<?= htmlspecialchars($_POST['telefono'] ?? '') ?>">
                     </div>
                 </div>
 
@@ -106,19 +114,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div>
                     <div class="forma-row">
                         <label for="correo">Correo:</label>
-                        <input type="email" id="correo" name="correo" required class="md-input" value="<?= isset($_POST['correo']) ? htmlspecialchars($_POST['correo']) : '' ?>">
+                        <input type="email" id="correo" name="correo" required class="md-input" value="<?= htmlspecialchars($_POST['correo'] ?? '') ?>">
                     </div>
                     <div class="forma-row">
                         <label for="direccion">Dirección:</label>
-                        <input type="text" id="direccion" name="direccion" required class="md-input" value="<?= isset($_POST['direccion']) ? htmlspecialchars($_POST['direccion']) : '' ?>">
+                        <input type="text" id="direccion" name="direccion" required class="md-input" value="<?= htmlspecialchars($_POST['direccion'] ?? '') ?>">
                     </div>
                     <div class="forma-row">
                         <label for="rol">Rol:</label>
-                        <input type="text" id="rol" name="rol" required class="md-input" value="<?= isset($_POST['rol']) ? htmlspecialchars($_POST['rol']) : '' ?>">
+                        <input type="text" id="rol" name="rol" required class="md-input" value="<?= htmlspecialchars($_POST['rol'] ?? '') ?>">
                     </div>
                     <div class="forma-row">
                         <label for="actividad_economica">Actividad Económica:</label>
-                        <input type="text" id="actividad_economica" name="actividad_economica" required class="md-input" value="<?= isset($_POST['actividad_economica']) ? htmlspecialchars($_POST['actividad_economica']) : '' ?>">
+                        <input type="text" id="actividad_economica" name="actividad_economica" required class="md-input" value="<?= htmlspecialchars($_POST['actividad_economica'] ?? '') ?>">
                     </div>
                 </div>
             </div>
