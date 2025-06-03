@@ -1,3 +1,55 @@
+<?php
+include("diagnostico_empresarial_conexion.php");
+// Conexión a la base de datos
+$conn = new mysqli("localhost", "root", "", "datasenn_db");
+
+// Verifica la conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Inserción al enviar el formulario
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $empresa = $_POST["empresa"];
+    $nit = $_POST["nit"];
+    $sector = $_POST["sector"];
+    $tamano = $_POST["tamano"];
+    $ubicacion = $_POST["ubicacion"];
+    $empleados = $_POST["empleados"];
+    $contrataciones = $_POST["contrataciones"];
+    $contrato_frecuente = $_POST["contrato_frecuente"];
+    $tiene_proceso = $_POST["tiene_proceso"];
+    $perfiles_definidos = $_POST["perfiles_definidos"];
+    $publicacion = $_POST["publicacion"];
+    $aprendices = $_POST["aprendices"];
+    $programa_apoyo = $_POST["programa_apoyo"];
+    $perfiles_necesarios = $_POST["perfiles_necesarios"];
+    $infraestructura = $_POST["infraestructura"];
+    $apoyo_seleccion = $_POST["apoyo_seleccion"];
+    $beneficios = $_POST["beneficios"];
+
+    $sql = "INSERT INTO diagnostico_empresarial (
+        empresa, nit, sector, tamano, ubicacion,
+        empleados, contrataciones, contrato_frecuente,
+        tiene_proceso, perfiles_definidos, publicacion,
+        aprendices, programa_apoyo, perfiles_necesarios,
+        infraestructura, apoyo_seleccion, beneficios
+    ) VALUES (
+        '$empresa', '$nit', '$sector', '$tamano', '$ubicacion',
+        '$empleados', '$contrataciones', '$contrato_frecuente',
+        '$tiene_proceso', '$perfiles_definidos', '$publicacion',
+        '$aprendices', '$programa_apoyo', '$perfiles_necesarios',
+        '$infraestructura', '$apoyo_seleccion', '$beneficios'
+    )";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>alert('Diagnóstico enviado exitosamente');</script>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>

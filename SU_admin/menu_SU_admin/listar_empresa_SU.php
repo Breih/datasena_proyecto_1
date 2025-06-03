@@ -14,14 +14,13 @@ if (isset($_POST['search'])) {
 }
 
 // Consulta para obtener las empresas, con búsqueda si es necesario
-$sql = "SELECT id, tipo_documento, nit, nickname FROM empresas WHERE 
-        tipo_documento LIKE :search OR 
-        nit LIKE :search OR 
+$sql = "SELECT id, tipo_documento, nickname FROM empresa WHERE 
+        tipo_documento LIKE :search OR   
         nickname LIKE :search";
 $stmt = $conexion->prepare($sql);
 $stmt->bindValue(':search', "%$searchQuery%");
 $stmt->execute();
-$empresas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$empresa = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $conexion = null; // Cerrar la conexión
 ?>
@@ -127,7 +126,7 @@ $conexion = null; // Cerrar la conexión
                 type="text"
                 id="search-input"
                 name="search"
-                placeholder="Buscar por tipo documento, NIT o nickname"
+                placeholder="Buscar por tipo documento o nickname"
                 value="<?= htmlspecialchars($searchQuery) ?>"
             />
             <button type="submit" class="search-btn">Buscar</button>
@@ -141,7 +140,6 @@ $conexion = null; // Cerrar la conexión
                     <thead>
                         <tr>
                             <th>Tipo Documento</th>
-                            <th>NIT</th>
                             <th>Nickname</th>
                             <th>Acciones</th>
                         </tr>
@@ -150,7 +148,6 @@ $conexion = null; // Cerrar la conexión
                         <?php foreach ($empresas as $empresa): ?>
                             <tr>
                                 <td><?= htmlspecialchars($empresa['tipo_documento']) ?></td>
-                                <td><?= htmlspecialchars($empresa['nit']) ?></td>
                                 <td><?= htmlspecialchars($empresa['nickname']) ?></td>
                                 <td>
                                     <button class="listar-btn" onclick="openModal(<?= $empresa['id'] ?>)">Visualizar</button>
@@ -201,7 +198,6 @@ $conexion = null; // Cerrar la conexión
                 } else {
                     modalBody.innerHTML = `
                         <p><strong>Tipo Documento:</strong> ${data.tipo_documento}</p>
-                        <p><strong>NIT:</strong> ${data.nit}</p>
                         <p><strong>Nickname:</strong> ${data.nickname}</p>
                         <p><strong>Teléfono:</strong> ${data.telefono}</p>
                         <p><strong>Correo:</strong> ${data.correo}</p>
