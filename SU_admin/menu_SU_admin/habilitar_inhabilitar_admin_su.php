@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos
-$conexion = new mysqli("localhost", "root", "123456", "datasenn_db");
+$conexion = new mysqli("localhost", "root", "", "datasenn_db");
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
@@ -77,7 +77,7 @@ $conexion->close();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Habilitar / Inhabilitar Administrador</title>
-    <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/habilitar_inhabilitar_SU.css" />
+    <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/habilitar_in_SU.css" />
 </head>
 <body>
     <h1>DATASENA - Administración de Administradores</h1>

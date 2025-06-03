@@ -2,7 +2,7 @@
 // Conexión a la base de datos (ajusta estos datos según tu configuración)
 $host = "localhost";
 $user = "root";
-$password = "123456"; // Cambia a tu contraseña
+$password = ""; // Cambia a tu contraseña
 $dbname = "datasenn_db";
 
 $conn = new mysqli($host, $user, $password, $dbname);
