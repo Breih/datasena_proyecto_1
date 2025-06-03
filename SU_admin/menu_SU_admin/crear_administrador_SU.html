@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Crear Administrador</title>
-    <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
-    <!-- <link rel="stylesheet" href="crear_administrador.css"> -->
-    <link rel="stylesheet" href="../css/SU_admin/menu_SU_admin/crear_administrador.css">
+    <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/crear_administrador.css" />
 </head>
 <body>
     <h1>DATASENA</h1>
-    <img src="../img/logo-sena.png" alt="Logo de la Empresa" class="img">
+    <img src="../img/logo-sena.png" alt="Logo de la Empresa" class="img" />
 
     <div class="forma-container">
         <h3>Crear Administrador</h3>
-        <form action="../crear_administrador.php" method="post">
+        <form action="crear_administrador_conexion_SU.php" method="post">
             <div class="forma-grid">
                 <!-- Primera columna -->
                 <div>
@@ -22,60 +21,65 @@
                         <label for="tipo_documento">Tipo de Documento:</label>
                         <select name="tipo_documento" id="tipo_documento" required class="md-input">
                             <option value="">Seleccione el tipo de documento</option>
-                            <option value="ti">Tarjeta de identidad</option>
-                            <option value="ti">Tarjeta de extranjería</option>
-                            <option value="cc">Cédula de ciudadanía</option>
-                            <option value="ce">Cédula de extranjería</option>
-                            <option value="ti">Pasaporte</option>
-                            <option value="ti">Registro civil</option>
-
+                            <option value="CC">Cédula de ciudadanía (CC)</option>
+                            <option value="TI">Tarjeta de identidad (TI)</option>
+                            <option value="CE">Cédula de extranjería (CE)</option>
+                            <option value="Otro">Otro</option>
                         </select>
                     </div>
-                    <div class="forma-row">
-                        <label for="nombre_completo">Nombre completo:</label>
-                        <input type="text" name="nombre_completo" id="nombre_completo" placeholder="Ingrese el nombre completo" required class="md-input">
-                    </div>
+
                     <div class="forma-row">
                         <label for="numero_documento">Número de documento:</label>
-                        <input type="text" name="numero_documento" id="numero_documento" placeholder="Ingrese el número de documento" required class="md-input">
+                        <input type="text" name="numero_documento" id="numero_documento" placeholder="Ingrese el número de documento" required class="md-input" maxlength="20" />
                     </div>
+
                     <div class="forma-row">
-                        <label for="correo">Correo electrónico (usuario):</label>
-                        <input type="email" name="correo" id="correo" placeholder="Ingrese el correo electrónico" required class="md-input">
+                        <label for="nombres">Nombres:</label>
+                        <input type="text" name="nombres" id="nombres" placeholder="Ingrese los nombres" required class="md-input" maxlength="100" />
                     </div>
+
                     <div class="forma-row">
-                        <label for="contrasena">Contraseña:</label>
-                        <input type="password" name="contrasena" id="contrasena" placeholder="Ingrese la contraseña" required class="md-input">
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" name="apellidos" id="apellidos" placeholder="Ingrese los apellidos" required class="md-input" maxlength="100" />
+                    </div>
+
+                    <div class="forma-row">
+                        <label for="nickname">Nickname (usuario):</label>
+                        <input type="text" name="nickname" id="nickname" placeholder="Ingrese el nickname" required class="md-input" maxlength="50" />
                     </div>
                 </div>
 
                 <!-- Segunda columna -->
                 <div>
                     <div class="forma-row">
-                        <label for="confirmar_contrasena">Confirmar Contraseña:</label>
-                        <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" placeholder="Confirme la contraseña" required class="md-input">
+                        <label for="correo_electronico">Correo electrónico:</label>
+                        <input type="email" name="correo_electronico" id="correo_electronico" placeholder="Ingrese el correo electrónico" required class="md-input" maxlength="100" />
                     </div>
+
                     <div class="forma-row">
-                        <label for="telefono">Teléfono:</label>
-                        <input type="tel" name="telefono" id="telefono" placeholder="Ingrese el número de teléfono" required class="md-input">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" name="contrasena" id="contrasena" placeholder="Ingrese la contraseña" required class="md-input" />
                     </div>
+
                     <div class="forma-row">
-                        <label for="tipo_sangre">Tipo de sangre:</label>
-                        <input type="text" name="tipo_sangre" id="tipo_sangre" placeholder="Ingrese el tipo de sangre" required class="md-input">
+                        <label for="confirmar_contrasena">Confirmar contraseña:</label>
+                        <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" placeholder="Confirme la contraseña" required class="md-input" />
                     </div>
+
                     <div class="forma-row">
-                        <label for="estado">Estado:</label>
-                        <select name="estado" id="estado" required class="md-input">
-                            <option value="">Seleccione el estado</option>
-                            <option value="activo">Activo</option>
-                            <option value="inactivo">Inactivo</option>
+                        <label for="rol_id">Rol:</label>
+                        <select name="rol_id" id="rol_id" class="md-input">
+                            <option value="">Seleccione el rol</option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Usuario</option>
+                            <!-- Puedes agregar más roles según tu tabla rol -->
                         </select>
                     </div>
                 </div>
             </div>
 
             <div class="buttons-container">
-                <button type="submit" class="back_crear"onclick="window.location.href='super.menu.html'">Crear Administrador</button>
+                <button type="submit" class="back_crear">Crear Administrador</button>
                 <button type="button" class="logout-btn" onclick="window.location.href='super.menu.html'">Regresar al Menú</button>
             </div>
         </form>
