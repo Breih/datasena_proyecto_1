@@ -1,7 +1,7 @@
 <?php
 // Conexión a la base de datos
 try {
-    $conexion = new PDO("mysql:host=localhost;dbname=datasenn_db", "root", "");
+    $conexion = new PDO("mysql:host=localhost;dbname=datasenn_db", "root", "123456");
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
@@ -50,23 +50,21 @@ $conexion = null; // Cerrar la conexión
         }
 
         #search-input {
-            width: 93%;
+            width: 60%;
             padding: 10px;
             font-size: 16px;
-            border-radius: 5px;
+            border-radius: 25px;
             border: 1px solid #ccc;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-right: 10px;
-            margin-bottom: 5px;
         }
-
 
         .search-btn {
             padding: 10px 20px;
             background-color: var(--primary-950);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 25px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
