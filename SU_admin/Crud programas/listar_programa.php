@@ -1,7 +1,7 @@
 <?php
 // Conexión
 try {
-    $conexion = new PDO("mysql:host=localhost;dbname=datasenn_db", "root", "123456");
+    $conexion = new PDO("mysql:host=localhost;dbname=datasenn_db", "root", "");
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
@@ -15,7 +15,7 @@ if (isset($_POST['search'])) {
 
 // Consulta con búsqueda en nombre_programa y tipo_programa
 $sql = "SELECT id, nombre_programa, tipo_programa, numero_ficha, duracion_programa, activacion FROM programas 
-        WHERE nombre_programa LIKE :search OR tipo_programa LIKE :search";
+        WHERE nombre_programa LIKE :search LIKE :search";
 $stmt = $conexion->prepare($sql);
 $stmt->bindValue(':search', "%$searchQuery%");
 $stmt->execute();
