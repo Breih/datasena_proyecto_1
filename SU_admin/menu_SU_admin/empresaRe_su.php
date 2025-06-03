@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $host = "localhost";
     $db = "datasenn_db";
     $user = "root";
-    $pass = "123456";
+    $pass = "";
 
     try {
         $conexion = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
