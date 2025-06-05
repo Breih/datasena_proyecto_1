@@ -323,7 +323,7 @@ textarea:focus {
 .back_listar,
 .back_crear,
 .back_actualizar {
-    background-color: var(--primary-950);
+    background-color: var(--primary-200);
     color: var(--white);
     border: none;
     border-radius: 4px;
@@ -337,7 +337,7 @@ textarea:focus {
 .buttons-container {
     display: flex;
     justify-content: center;
-    margin-top: 16px;
+    margin-top: 15px;
 }
 
 .back_crear:hover {
