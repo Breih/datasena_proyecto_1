@@ -68,6 +68,8 @@ $conexion = null; // Cerrar la conexión
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin-left: auto;
+            margin-top: 1rem;
         }
 
         .search-btn:hover {

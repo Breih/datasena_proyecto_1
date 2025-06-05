@@ -33,14 +33,16 @@ $conexion = null; // Cerrar la conexión
     <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon" />
     <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/style.css" />
     <style>
-        /* Copia los estilos de tu archivo anterior, por ejemplo: */
+        /* Centrar el header */
         header {
-            text-align: center;
-            font-size: 2.5rem;
+            text-align: center; /* Centra el texto */
+            font-size: 2.0rem; /* Tamaño de fuente más grande */
             font-weight: bold;
             margin-top: 20px;
-            color: var(--black);
+            color: var(--black); /* Color que deseas para el texto */
         }
+
+        /* Estilos para la barra de búsqueda */
         .search-container {
             margin-bottom: 20px;
             text-align: center;
@@ -48,38 +50,50 @@ $conexion = null; // Cerrar la conexión
             justify-content: center;
             align-items: center;
         }
+
         #search-input {
-            width: 60%;
+            width: 93%;
             padding: 10px;
             font-size: 16px;
-            border-radius: 25px;
+            border-radius: 5px;
             border: 1px solid #ccc;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-right: 10px;
+            margin-bottom: 5px;
         }
+
         .search-btn {
             padding: 10px 20px;
             background-color: var(--primary-950);
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin-left: auto;
+            margin-top: 1rem;
         }
+
         .search-btn:hover {
             background-color: var(--primary-800);
         }
+
         /* Modal */
         .modal {
-            display: none;
+            display: none; /* Hidden by default */
             position: fixed;
-            z-index: 1;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
             padding-top: 60px;
         }
+
+        /* Modal content */
         .modal-content {
             background-color: #fefefe;
             margin: 5% auto;
@@ -90,26 +104,32 @@ $conexion = null; // Cerrar la conexión
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
+
+        /* Close button */
         .close {
             color: #aaa;
             float: right;
             font-size: 28px;
             font-weight: bold;
         }
+
         .close:hover,
         .close:focus {
             color: black;
             text-decoration: none;
             cursor: pointer;
         }
+
         .modal-header {
             font-size: 20px;
             font-weight: bold;
             margin-bottom: 10px;
         }
+
         .modal-body {
             font-size: 16px;
         }
+
     </style>
 </head>
 <body>
