@@ -165,7 +165,7 @@ $conexion->close();
                 <p>Use la barra de búsqueda de arriba para encontrar el programa que desea habilitar o inhabilitar.</p>
             </div>
             <div class="buttons-container">
-                <button type="button" class="habilitar-btn" onclick="window.location.href='super.menu.html'">Regresar al Menú</button>
+                <button type="button" class="habilitar-btn" onclick="window.location.href='../menu_SU_admin/super.menu.html'">Regresar al Menú</button>
             </div>
         <?php endif; ?>
     </div>
