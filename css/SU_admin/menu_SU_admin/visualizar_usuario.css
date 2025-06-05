@@ -72,7 +72,7 @@
     --padding: 20px;
     --margin-bottom: 15px;
     --border-radius: 4px;
-    --hover-color: #218838;
+    --hover-color: var(--primary-950);
     --input-height: 56px; /* Altura de los inputs y selects */
     --button-size: 48px; /* Tamaño mínimo de los botones */
     --button-spacing: 20px; /* Espaciado mínimo entre el último campo y el botón */
@@ -91,7 +91,7 @@ body {
 /* Header */
 header {
     margin-top: 20px;
-    font-size: 24px;
+    font-size: 2.0rem;
     font-weight: bold;
     text-align: center;
 }
@@ -130,10 +130,11 @@ h1 {
     font-size: 24px;
     margin-bottom: 15px;
 }
+
 h2 {
     text-align: center;
     margin-bottom: 25px;
-    font-size: var(--font-size-h5);
+    font-size: var(--font-size-h2);
     border-bottom: 1px solid #ddd;
     padding-bottom: 12px;
 }
