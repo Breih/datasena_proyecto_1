@@ -72,7 +72,7 @@ $conexion->close();
 <head>
     <meta charset="UTF-8">
     <title>Visualizar / Actualizar Administrador</title>
-    <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/visualizar_usuario.css">
+    <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/visualizar_usuario.css">
     <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
 </head>
 <body>

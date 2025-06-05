@@ -29,7 +29,7 @@ $conexion = null;
 <head>
     <meta charset="UTF-8">
     <title>Listar Programas</title>
-    <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/style.css">
+    <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/style.css">
     <style>
         header { text-align: center; font-size: 2.5rem; font-weight: bold; margin-top: 20px; color: var(--black); }
         .search-container { text-align: center; margin-bottom: 20px; display: flex; justify-content: center; }

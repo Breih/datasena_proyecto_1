@@ -13,14 +13,15 @@ if (isset($_POST['search'])) {
     $searchQuery = $_POST['search'];
 }
 
-// Consulta para obtener las empresas, con búsqueda si es necesario
-$sql = "SELECT id, tipo_documento, nickname FROM empresa WHERE 
-        tipo_documento LIKE :search OR   
-        nickname LIKE :search";
+// Consulta para obtener los administradores, con búsqueda si es necesario
+$sql = "SELECT id, tipo_documento, nombres, apellidos, correo_electronico FROM admin WHERE 
+        numero_documento LIKE :search OR 
+        nombres LIKE :search OR 
+        correo_electronico LIKE :search";
 $stmt = $conexion->prepare($sql);
 $stmt->bindValue(':search', "%$searchQuery%");
 $stmt->execute();
-$empresa = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$admins = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $conexion = null; // Cerrar la conexión
 ?>
@@ -29,9 +30,9 @@ $conexion = null; // Cerrar la conexión
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Listar Empresas</title>
+    <title>Listar Administradores</title>
     <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon" />
-    <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/style.css" />
+    <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/style.css" />
     <style>
         /* Centrar el header */
         header {
@@ -137,7 +138,7 @@ $conexion = null; // Cerrar la conexión
 <img src="../../img/logo-sena.png" alt="Logo SENA" class="img" />
 
 <div class="form-container">
-    <h2>Listar Empresas</h2>
+    <h2>Listar Administradores</h2>
 
     <!-- Barra de búsqueda -->
     <div class="search-container">
@@ -146,7 +147,7 @@ $conexion = null; // Cerrar la conexión
                 type="text"
                 id="search-input"
                 name="search"
-                placeholder="Buscar por tipo documento o nickname"
+                placeholder="Buscar por documento, nombres o correo_electronico"
                 value="<?= htmlspecialchars($searchQuery) ?>"
             />
             <button type="submit" class="search-btn">Buscar</button>
@@ -155,29 +156,33 @@ $conexion = null; // Cerrar la conexión
 
     <?php if (isset($searchQuery) && !empty($searchQuery)): ?>
         <div class="user-list">
-            <?php if (isset($empresas[0])): ?>
+            <?php if (isset($admins[0])): ?>
                 <table>
                     <thead>
                         <tr>
-                            <th>Tipo Documento</th>
-                            <th>Nickname</th>
+                            <th>Documento</th>
+                            <th>nombres</th>
+                            <th>apellidos</th>
+                            <th>correo_electronico</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($empresas as $empresa): ?>
+                        <?php foreach ($admins as $admin): ?>
                             <tr>
-                                <td><?= htmlspecialchars($empresa['tipo_documento']) ?></td>
-                                <td><?= htmlspecialchars($empresa['nickname']) ?></td>
+                                <td><?= htmlspecialchars($admin['tipo_documento']) ?></td>
+                                <td><?= htmlspecialchars($admin['nombres']) ?></td>
+                                <td><?= htmlspecialchars($admin['apellidos']) ?></td>
+                                <td><?= htmlspecialchars($admin['correo_electronico']) ?></td>
                                 <td>
-                                    <button class="listar-btn" onclick="openModal(<?= $empresa['id'] ?>)">Visualizar</button>
+                                    <button class="listar-btn" onclick="openModal(<?= $admin['id'] ?>)">Visualizar</button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             <?php else: ?>
-                <p>No se encontraron empresas con ese criterio de búsqueda.</p>
+                <p>No se encontraron administradores con ese criterio de búsqueda.</p>
             <?php endif; ?>
         </div>
     <?php endif; ?>
@@ -195,7 +200,7 @@ $conexion = null; // Cerrar la conexión
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <div class="modal-header">Información de la Empresa</div>
+        <div class="modal-header">Información del Administrador</div>
         <div class="modal-body" id="modal-body">
             <!-- Información cargada dinámicamente por AJAX -->
         </div>
@@ -208,7 +213,7 @@ $conexion = null; // Cerrar la conexión
         var modalBody = document.getElementById("modal-body");
 
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "get_empresa.php?id=" + id, true);
+        xhr.open("GET", "get_admin.php?id=" + id, true);
         xhr.onload = function() {
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
@@ -217,13 +222,11 @@ $conexion = null; // Cerrar la conexión
                     modalBody.innerHTML = '<p>' + data.error + '</p>';
                 } else {
                     modalBody.innerHTML = `
-                        <p><strong>Tipo Documento:</strong> ${data.tipo_documento}</p>
-                        <p><strong>Nickname:</strong> ${data.nickname}</p>
-                        <p><strong>Teléfono:</strong> ${data.telefono}</p>
-                        <p><strong>Correo:</strong> ${data.correo}</p>
-                        <p><strong>Dirección:</strong> ${data.direccion}</p>
+                        <p><strong>tipo_documento:</strong> ${data.tipo_documento}</p>
+                        <p><strong>nombres:</strong> ${data.nombres}</p>
+                        <p><strong>apellidos:</strong> ${data.apellidos}</p>
+                        <p><strong>correo_electronico:</strong> ${data.correo_electronico}</p>
                         <p><strong>Rol:</strong> ${data.rol}</p>
-                        <p><strong>Actividad Económica:</strong> ${data.actividad_economica}</p>
                     `;
                 }
             }
