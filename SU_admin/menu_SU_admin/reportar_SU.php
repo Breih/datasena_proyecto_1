@@ -33,19 +33,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Reporte</title>
-    <link rel="icon" href="../../img/Logotipo_Datasena.png" type="image/x-icon" />
-    <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/style.css" />
+    <link rel="icon" href="../../img/Logotipo_Datasena.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/style.css"/>
 </head>
 <body>
     <div class="logo-container">
         <img src="../../img/logo-sena.png" alt="Logo" />
     </div>
+    <header>
+        <h1 class="report__title">DATASENA</h1>
+    </header>
     <div class="form-container">
         <div class="report_box">
-            <header>
-                <h1 class="report__title">DATASENA</h1>
-                <h2 class="report__subtitle">Reporte</h2>
-            </header>
+            <h2 class="report__subtitle">Reporte</h2>
             <form class="report__form" id="formReporte" method="POST">
                 <div class="form_group">
                     <label for="documento">Buscar por documento</label>
