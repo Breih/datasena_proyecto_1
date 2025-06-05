@@ -34,7 +34,7 @@ $conexion = null; // Cerrar la conexión
         /* Centrar el header */
         header {
             text-align: center; /* Centra el texto */
-            font-size: 2.5rem; /* Tamaño de fuente más grande */
+            font-size: 2.0rem; /* Tamaño de fuente más grande */
             font-weight: bold;
             margin-top: 20px;
             color: var(--black); /* Color que deseas para el texto */
@@ -50,13 +50,14 @@ $conexion = null; // Cerrar la conexión
         }
 
         #search-input {
-            width: 60%;
+            width: 93%;
             padding: 10px;
             font-size: 16px;
-            border-radius: 25px;
+            border-radius: 5px;
             border: 1px solid #ccc;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-right: 10px;
+            margin-bottom: 5px;
         }
 
         .search-btn {
@@ -64,9 +65,11 @@ $conexion = null; // Cerrar la conexión
             background-color: var(--primary-950);
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin-left: auto;
+            margin-top: 1rem;
         }
 
         .search-btn:hover {

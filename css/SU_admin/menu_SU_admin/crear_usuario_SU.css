@@ -122,12 +122,12 @@ h1 {
     text-align: center;
     margin-bottom: 30px;
     font-size: var(--font-size-h1);
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--white);
     padding-bottom: 15px;
 }
 /* Sidebar */
 .sidebar {
-    background-color: #f2f2f2;
+    background-color: var(--white);
     width: 200px;
     padding: 15px;
     display: flex;
@@ -150,8 +150,8 @@ h1 {
 }
 
 .user-profile span {
-    color: #28a745;
-    font-size: 14px;
+    color: var(--primary-950);
+    font-size: 1.0rem;
 }
 
 .menu {
@@ -249,16 +249,30 @@ select {
 input:focus,
 select:focus {
     outline: none;
-    border-color: #000000;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    border-color: var(--black);
+    box-shadow: 0 0 3px ;
+}
+/*
+input,
+select,
+textarea {
+  border: 1px solid #ccc; Borde base claro 
+  box-shadow: none;  Sin sombra por defecto 
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  border: 1px solid var(--primary-800) !important;  Verde suave 
+  box-shadow: none !important; Quita completamente cualquier sombra 
+}
 /* Verification Container */
 .verification-container {
     background-color: var(--white);
     border: 1.5px solid var(--black);
     border-radius: 12px;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 3px 5px;
     width: 85%;
     max-width: 350px;
     padding: 20px 60px;
@@ -313,9 +327,9 @@ select:focus {
     color: var(--white);
     border: none;
     border-radius: 4px;
-    padding: 8px;
+    padding: 10px;
     margin: 0.3%;
-    font-size: 14px;
+    font-size: 1.0rem;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.1s ease;
 }
@@ -327,12 +341,12 @@ select:focus {
 }
 
 .back_crear:hover {
-    background-color: var(--secundary-4-950);
+    background-color: var(--secundary-2-400);
     transform: scale(0.98);
 }
 
 .logout-btn:hover {
-    background-color: var(--secundary-4-950);
+    background-color: var(--secundary-2-400);
     transform: scale(0.98);
 }
 
@@ -347,18 +361,18 @@ select:focus {
 .back_actualizar {
     bottom: 2%;
     right: 45%;
-    font-size: 12px;
+    font-size: 1.0rem;
     padding: 6px;
 }
 
 /* Tarjetas de usuario */
 .user-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: var(--white);
+    border: 1px solid var(--white);
     border-radius: 6px;
     padding: 15px;
     text-align: center;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 6px ;
 }
 
 .user-icon img {
@@ -404,7 +418,7 @@ select:focus {
     background-color: var(--white);
     padding: 15px;
     border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px ;
     width: 300px;
     text-align: center;
 }
@@ -464,7 +478,7 @@ select:focus {
         position: static;
         margin: 8px auto;
         display: block;
-        font-size: 12px;
+        font-size: 1.0rem;
         padding: 6px;
     }
 
