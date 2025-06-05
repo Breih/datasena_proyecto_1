@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
                         required
                         value="<?= isset($_POST['documento']) ? htmlspecialchars($_POST['documento']) : '' ?>"
                     />
-                    <button type="submit" name="buscar" class="btn-submit" style="margin-top:10px;">Buscar</button>
+                    <button type="" name="buscar" class="btn-bus">Buscar</button>
                 </div>
 
                 <div class="form_group">
