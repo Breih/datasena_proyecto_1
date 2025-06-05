@@ -252,7 +252,21 @@ select:focus {
     border-color: #000000;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
+/*
+input,
+select,
+textarea {
+  border: 1px solid #ccc; Borde base claro 
+  box-shadow: none;  Sin sombra por defecto 
+}
 
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  border: 1px solid var(--primary-800) !important;  Verde suave 
+  box-shadow: none !important; Quita completamente cualquier sombra 
+}
 /* Verification Container */
 .verification-container {
     background-color: var(--white);
