@@ -30,7 +30,7 @@ $conexion = null;
     <meta charset="UTF-8">
     <title>Listar Programas</title>
     <link rel="icon" href="../../../img/Logotipo_Datasena.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/style.css">
+    <link rel="stylesheet" href="../css/empresa/styles_listar_programa.css">
     <style>
         /* Centrar el header */
         header {
@@ -175,7 +175,7 @@ $conexion = null;
     <?php endif; ?>
 
     <div class="buttons-container">
-        <button class="back_listar" type="button" onclick="window.location.href='super.menu.html'">Regresar</button>
+        <button class="back_listar" type="button" onclick="window.location.href='empresa.menu.html'">Regresar</button>
     </div>
 </div>
 
