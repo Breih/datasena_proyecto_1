@@ -337,7 +337,7 @@ textarea:focus {
 .buttons-container {
     display: flex;
     justify-content: center;
-    margin-top: 15px;
+    margin-top: 16px;
 }
 
 .back_crear:hover {
