@@ -35,8 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
     <title>Reporte</title>
     <link rel="icon" href="../../img/Logotipo_Datasena.png" type="image/x-icon"/>
     <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/style.css"/>
-    <link rel="icon" href="../../img/Logotipo_Datasena.png" type="image/x-icon" />
-    <link rel="stylesheet" href="../css/admin/style.css" />
 </head>
 <body>
     <header>DATASENA</header>
@@ -44,9 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
     <div class="logo-container">
         <img src="../../img/logo-sena.png" alt="Logo" />
     </div>
-    <header>
-        <h1 class="report__title">DATASENA</h1>
-    </header>
+
     <div class="form-container">
         <div class="report_box">
             <h2 class="report__subtitle">Reporte</h2>
@@ -60,51 +56,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
                         placeholder="Número de documento" 
                         required
                         value="<?= isset($_POST['documento']) ? htmlspecialchars($_POST['documento']) : '' ?>"
-                    >
-                    <button type="submit" name="buscar" class="btn btn-buscar" style="margin-top:10px;">Buscar</button>
+                    />
+                    <button type="submit" name="buscar" class="btn-submit" style="margin-top:10px;">Buscar</button>
                 </div>
 
-        <form class="report__form" id="formReporte" method="POST">
-            <div class="form_group">
-                <label for="documento">Buscar por documento</label>
-                <input 
-                    type="text" 
-                    id="documento" 
-                    name="documento" 
-                    placeholder="Número de documento" 
-                    required
-                    value="<?= isset($_POST['documento']) ? htmlspecialchars($_POST['documento']) : '' ?>"
-                />
-                <button type="submit" name="buscar" class="btn-submit" style="margin-top:10px;">Buscar</button>
-            </div>
+                <div class="form_group">
+                    <label for="nombre">Nombre</label>
+                    <input 
+                        type="text" 
+                        id="nombre" 
+                        name="nombre" 
+                        placeholder="Nombre completo" 
+                        readonly
+                        value="<?= htmlspecialchars($nombre_usuario) ?>"
+                    />
+                </div>
 
-            <div class="form_group">
-                <label for="nombre">Nombre</label>
-                <input 
-                    type="text" 
-                    id="nombre" 
-                    name="nombre" 
-                    placeholder="Nombre completo" 
-                    readonly
-                    value="<?= htmlspecialchars($nombre_usuario) ?>"
-                />
-            </div>
+                <div class="form_group">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" id="fecha" name="fecha" />
+                </div>
 
-            <div class="form_group">
-                <label for="fecha">Fecha</label>
-                <input type="date" id="fecha" name="fecha" />
-            </div>
+                <div class="form_group" style="grid-column: 1 / -1;">
+                    <label for="contenido">Contenido</label>
+                    <textarea id="contenido" name="contenido" placeholder="Escribe aquí..."></textarea>
+                </div>
 
-            <div class="form_group" style="grid-column: 1 / -1;">
-                <label for="contenido">Contenido</label>
-                <textarea id="contenido" name="contenido" placeholder="Escribe aquí..."></textarea>
-            </div>
-
-            <div class="button">
-                <button type="button" id="btnReportar" class="btn-submit">Reportar</button>
-                <button class="logout-btn" type="button" onclick="window.location.href='super.menu.html'">Regresar</button>
-            </div>
-        </form>
+                <div class="button">
+                    <button type="button" id="btnReportar" class="btn-submit">Reportar</button>
+                    <button class="logout-btn" type="button" onclick="window.location.href='super.menu.html'">Regresar</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <footer class="footer">
