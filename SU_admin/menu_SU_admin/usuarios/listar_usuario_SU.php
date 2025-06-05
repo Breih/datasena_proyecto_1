@@ -28,7 +28,7 @@ $conexion = null; // Cerrar la conexión
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar Usuario</title>
-    <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
+    <link rel="icon" href="../../../img/Logotipo_Datasena.png" type="image/x-icon">
     <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/style.css">
     <style>
         /* Centrar el header */
@@ -132,7 +132,7 @@ $conexion = null; // Cerrar la conexión
 </head>
 <body>
     <header>DATASENA</header>
-    <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+    <img src="../../../img/logo-sena.png" alt="Logo SENA" class="img">
 
     <div class="form-container">
         <h2>Listar Usuario</h2>
