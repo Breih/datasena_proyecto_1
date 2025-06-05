@@ -177,7 +177,7 @@ $conexion = null; // Cerrar la conexión
         <?php endif; ?>
 
         <div class="buttons-container">
-            <button class="back_listar" type="button" onclick="window.location.href='super.menu.html'">Regresar</button>
+            <button class="back_listar" type="button" onclick="window.location.href='../super.menu.html'">Regresar</button>
         </div>
     </div>
 

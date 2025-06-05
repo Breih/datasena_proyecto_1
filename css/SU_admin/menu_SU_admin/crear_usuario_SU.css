@@ -246,12 +246,12 @@ select {
     font-size: 14px; /* Tamaño de fuente ligeramente reducido */
 }
 
-input:focus,
+/*input:focus,
 select:focus {
     outline: none;
-    border-color: var(--black);
+    border-color: var(--primary-950);
     box-shadow: 0 0 3px ;
-}
+}*/
 /*
 input,
 select,
