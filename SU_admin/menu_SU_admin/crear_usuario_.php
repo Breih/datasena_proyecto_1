@@ -25,6 +25,7 @@ if (empty($nombre_completo) || empty($tipo_documento) || empty($numero_identidad
     exit;
 }
 
+// Validación de la contraseña
 if ($contrasena !== $validacion) {
     echo "<script>
         alert('❌ Las contraseñas no coinciden.');
@@ -33,7 +34,46 @@ if ($contrasena !== $validacion) {
     exit;
 }
 
-// Verificar si ya existe el numero de identidad
+// Expresión regular para validar la contraseña
+$patron_contrasena = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
+
+if (!preg_match($patron_contrasena, $contrasena)) {
+    echo "<script>
+        alert('❌ La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales.');
+        window.history.back();
+    </script>";
+    exit;
+}
+
+// Validación de correo electrónico
+if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+    echo "<script>
+        alert('❌ El correo electrónico no es válido.');
+        window.history.back();
+    </script>";
+    exit;
+}
+
+// Validación de número de teléfono (solo números y 10 dígitos)
+if (!preg_match('/^\d{10}$/', $telefono)) {
+    echo "<script>
+        alert('❌ El número de teléfono debe tener 10 dígitos.');
+        window.history.back();
+    </script>";
+    exit;
+}
+
+// Validación de tipo de sangre
+$tipos_sangre_validos = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+if (!in_array($tipo_sangre, $tipos_sangre_validos)) {
+    echo "<script>
+        alert('❌ El tipo de sangre no es válido.');
+        window.history.back();
+    </script>";
+    exit;
+}
+
+// Verificar si ya existe el número de identidad
 $verificar_sql = "SELECT id FROM usuarios WHERE numero_identidad = ?";
 $verificar_stmt = $conexion->prepare($verificar_sql);
 $verificar_stmt->bind_param("s", $numero_identidad);

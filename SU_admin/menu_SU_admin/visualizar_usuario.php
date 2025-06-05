@@ -30,14 +30,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $telefono = $_POST['telefono'];
     $estado = $_POST['estado'];
 
-    $stmt = $conexion->prepare("UPDATE usuarios SET nombre_completo=?, tipo_documento=?, residencia=?, tipo_sangre=?, correo=?, telefono=?, estado=? WHERE numero_identidad=?");
-    $stmt->bind_param("ssssssss", $nombre_completo, $tipo_documento, $residencia, $tipo_sangre, $correo, $telefono, $estado, $numero_identidad);
-    if ($stmt->execute()) {
-        $mensaje = "Usuario actualizado correctamente.";
-    } else {
-        $mensaje = "Error al actualizar el usuario.";
+    // Validación: Nombre completo solo debe contener letras y espacios
+    if (!preg_match("/^[a-zA-Z\s]+$/", $nombre_completo)) {
+        $mensaje = "El nombre completo solo debe contener letras y espacios.";
     }
-    $stmt->close();
+    // Validación: Número de identidad solo debe contener números
+    elseif (!preg_match("/^[0-9]+$/", $numero_identidad)) {
+        $mensaje = "El número de identidad solo debe contener números.";
+    } else {
+        // Verificar si el nuevo número de identidad ya existe
+        $stmt = $conexion->prepare("SELECT COUNT(*) FROM usuarios WHERE numero_identidad = ?");
+        $stmt->bind_param("s", $numero_identidad);
+        $stmt->execute();
+        $stmt->bind_result($count);
+        $stmt->fetch();
+        $stmt->close();
+
+        if ($count > 0) {
+            $mensaje = "El número de identidad ya está en uso.";
+        } else {
+            // Actualizar usuario
+            $stmt = $conexion->prepare("UPDATE usuarios SET nombre_completo=?, tipo_documento=?, numero_identidad=?, residencia=?, tipo_sangre=?, correo=?, telefono=?, estado=? WHERE numero_identidad=?");
+            $stmt->bind_param("sssssssss", $nombre_completo, $tipo_documento, $numero_identidad, $residencia, $tipo_sangre, $correo, $telefono, $estado, $numero_identidad);
+            if ($stmt->execute()) {
+                $mensaje = "Usuario actualizado correctamente.";
+            } else {
+                $mensaje = "Error al actualizar el usuario.";
+            }
+            $stmt->close();
+        }
+    }
 }
 
 // Si se envió por GET (para buscar usuario)
@@ -58,7 +80,6 @@ if ($numero_identidad !== '') {
 $conexion->close();
 ?>
 
-<!-- HTML -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -89,51 +110,66 @@ $conexion->close();
     <hr>
 
     <!-- Formulario de edición -->
-<form class="form-grid" action="visualizar_usuario.php" method="post">
-    <div class="form-row">
-        <label>Nombre completo:</label>
-        <input type="text" name="nombre_completo" value="<?= htmlspecialchars($usuario['nombre_completo']) ?>" required>
-    </div>
+    <form class="form-grid" action="visualizar_usuario.php" method="post">
+        <div class="form-row">
+            <label>Nombre completo:</label>
+            <input type="text" name="nombre_completo" value="<?= htmlspecialchars($usuario['nombre_completo']) ?>" required pattern="[A-Za-z\s]+" title="El nombre completo solo puede contener letras y espacios">
+        </div>
 
-    <div class="form-row">
-        <label>Tipo de documento:</label>
-        <input type="text" name="tipo_documento" value="<?= htmlspecialchars($usuario['tipo_documento']) ?>" required>
-    </div>
+        <div class="form-row">
+            <label>Tipo de documento:</label>
+            <select name="tipo_documento" required>
+                <option value="Cédula de Ciudadanía" <?= $usuario['tipo_documento'] == 'Cédula de Ciudadanía' ? 'selected' : '' ?>>Cédula de Ciudadanía</option>
+                <option value="Tarjeta de Identidad" <?= $usuario['tipo_documento'] == 'Tarjeta de Identidad' ? 'selected' : '' ?>>Tarjeta de Identidad</option>
+                <option value="Pasaporte" <?= $usuario['tipo_documento'] == 'Pasaporte' ? 'selected' : '' ?>>Pasaporte</option>
+                <option value="Cédula de Extranjería" <?= $usuario['tipo_documento'] == 'Cédula de Extranjería' ? 'selected' : '' ?>>Cédula de Extranjería</option>
+            </select>
+        </div>
+        <div class="form-row">
+            <label>Número de identidad:</label>
+            <input type="text" name="numero_identidad" value="<?= htmlspecialchars($usuario['numero_identidad']) ?>">
+        </div>
+        <div class="form-row">
+            <label>Residencia:</label>
+            <input type="text" name="residencia" value="<?= htmlspecialchars($usuario['residencia']) ?>" required>
+        </div>
 
-    <div class="form-row">
-        <label>Número de identidad:</label>
-        <input type="text" name="numero_identidad" value="<?= htmlspecialchars($usuario['numero_identidad']) ?>" readonly>
-    </div>
+        <div class="form-row">
+            <label>Correo:</label>
+            <input type="email" name="correo" value="<?= htmlspecialchars($usuario['correo']) ?>" required>
+        </div>
 
-    <div class="form-row">
-        <label>Residencia:</label>
-        <input type="text" name="residencia" value="<?= htmlspecialchars($usuario['residencia']) ?>" required>
-    </div>
+        <div class="form-row">
+            <label>Teléfono:</label>
+            <input type="text" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" required>
+        </div>
 
-    <div class="form-row">
-        <label>Correo:</label>
-        <input type="email" name="correo" value="<?= htmlspecialchars($usuario['correo']) ?>" required>
-    </div>
+        <div class="form-row">
+            <label>Tipo de sangre:</label>
+            <select name="tipo_sangre" required>
+                <option value="A+" <?= $usuario['tipo_sangre'] == 'A+' ? 'selected' : '' ?>>A+</option>
+                <option value="A-" <?= $usuario['tipo_sangre'] == 'A-' ? 'selected' : '' ?>>A-</option>
+                <option value="B+" <?= $usuario['tipo_sangre'] == 'B+' ? 'selected' : '' ?>>B+</option>
+                <option value="B-" <?= $usuario['tipo_sangre'] == 'B-' ? 'selected' : '' ?>>B-</option>
+                <option value="AB+" <?= $usuario['tipo_sangre'] == 'AB+' ? 'selected' : '' ?>>AB+</option>
+                <option value="AB-" <?= $usuario['tipo_sangre'] == 'AB-' ? 'selected' : '' ?>>AB-</option>
+                <option value="O+" <?= $usuario['tipo_sangre'] == 'O+' ? 'selected' : '' ?>>O+</option>
+                <option value="O-" <?= $usuario['tipo_sangre'] == 'O-' ? 'selected' : '' ?>>O-</option>
+            </select>
+        </div>
 
-    <div class="form-row">
-        <label>Teléfono:</label>
-        <input type="text" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" required>
-    </div>
+        <div class="form-row">
+            <label>Estado:</label>
+            <select name="estado" required>
+                <option value="Activo" <?= $usuario['estado'] == 'Activo' ? 'selected' : '' ?>>Activo</option>
+                <option value="Inactivo" <?= $usuario['estado'] == 'Inactivo' ? 'selected' : '' ?>>Inactivo</option>
+            </select>
+        </div>
 
-    <div class="form-row">
-        <label>Tipo de sangre:</label>
-        <input type="text" name="tipo_sangre" value="<?= htmlspecialchars($usuario['tipo_sangre']) ?>" required>
-    </div>
-
-    <div class="form-row">
-        <label>Estado:</label>
-        <input type="text" name="estado" value="<?= htmlspecialchars($usuario['estado']) ?>" required>
-    </div>
-
-    <div class="form-row">
-        <button class="logout-btn" type="submit">Actualizar</button>
-    </div>
-</form>
+        <div class="form-row">
+            <button class="logout-btn" type="submit">Actualizar</button>
+        </div>
+    </form>
 
     <div class="back_visual">
         <button class="logout-btn" onclick="window.location.href='super.menu.html'">Regresar</button>
