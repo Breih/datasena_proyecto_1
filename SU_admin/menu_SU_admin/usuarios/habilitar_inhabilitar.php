@@ -78,13 +78,13 @@ $conexion->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habilitar Inhabilitar Usuario</title>
     <link rel="icon" href="../../../img/Logotipo_Datasena.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/habilitar_in.css">
+    <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/habilitar_in.css">
 
 
 </head>
 <body>
     <h1>DATASENA</h1>
-    <img src="../../../logo-sena.png" alt="Logo SENA" class="img">
+    <img src="../../../img/logo-sena.png" alt="Logo SENA" class="img">
 
     <div class="forma-container">
         <h3>Habilitar / Inhabilitar Usuario</h3>

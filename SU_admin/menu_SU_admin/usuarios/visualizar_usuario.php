@@ -21,6 +21,7 @@ $mensaje = "";
 
 // Si se envió el formulario para actualizar (método POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recuperar datos del formulario
     $nombre_completo = $_POST['nombre_completo'];
     $tipo_documento = $_POST['tipo_documento'];
     $numero_identidad = $_POST['numero_identidad'];
@@ -30,6 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $telefono = $_POST['telefono'];
     $estado = $_POST['estado'];
 
+    // Recuperar el número de identidad original desde el GET o el formulario
+    $numero_identidad_original = $_POST['numero_identidad_original'] ?? $_GET['numero_identidad'];
+
     // Validación: Nombre completo solo debe contener letras y espacios
     if (!preg_match("/^[a-zA-Z\s]+$/", $nombre_completo)) {
         $mensaje = "El nombre completo solo debe contener letras y espacios.";
@@ -38,20 +42,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     elseif (!preg_match("/^[0-9]+$/", $numero_identidad)) {
         $mensaje = "El número de identidad solo debe contener números.";
     } else {
-        // Verificar si el nuevo número de identidad ya existe
-        $stmt = $conexion->prepare("SELECT COUNT(*) FROM usuarios WHERE numero_identidad = ?");
-        $stmt->bind_param("s", $numero_identidad);
-        $stmt->execute();
-        $stmt->bind_result($count);
-        $stmt->fetch();
-        $stmt->close();
+        // Si el número de identidad ha cambiado, verificar si ya está en uso
+        if ($numero_identidad !== $numero_identidad_original) {
+            $stmt = $conexion->prepare("SELECT COUNT(*) FROM usuarios WHERE numero_identidad = ?");
+            $stmt->bind_param("s", $numero_identidad);
+            $stmt->execute();
+            $stmt->bind_result($count);
+            $stmt->fetch();
+            $stmt->close();
 
-        if ($count > 0) {
-            $mensaje = "El número de identidad ya está en uso.";
+            if ($count > 0) {
+                $mensaje = "El número de identidad ya está en uso.";
+            } else {
+                // Actualizar usuario
+                $stmt = $conexion->prepare("UPDATE usuarios SET nombre_completo=?, tipo_documento=?, numero_identidad=?, residencia=?, tipo_sangre=?, correo=?, telefono=?, estado=? WHERE numero_identidad=?");
+                $stmt->bind_param("sssssssss", $nombre_completo, $tipo_documento, $numero_identidad, $residencia, $tipo_sangre, $correo, $telefono, $estado, $numero_identidad_original);
+                if ($stmt->execute()) {
+                    $mensaje = "Usuario actualizado correctamente.";
+                } else {
+                    $mensaje = "Error al actualizar el usuario.";
+                }
+                $stmt->close();
+            }
         } else {
-            // Actualizar usuario
-            $stmt = $conexion->prepare("UPDATE usuarios SET nombre_completo=?, tipo_documento=?, numero_identidad=?, residencia=?, tipo_sangre=?, correo=?, telefono=?, estado=? WHERE numero_identidad=?");
-            $stmt->bind_param("sssssssss", $nombre_completo, $tipo_documento, $numero_identidad, $residencia, $tipo_sangre, $correo, $telefono, $estado, $numero_identidad);
+            // Si el número de identidad no cambió, solo actualizamos los demás campos
+            $stmt = $conexion->prepare("UPDATE usuarios SET nombre_completo=?, tipo_documento=?, residencia=?, tipo_sangre=?, correo=?, telefono=?, estado=? WHERE numero_identidad=?");
+            $stmt->bind_param("ssssssss", $nombre_completo, $tipo_documento, $residencia, $tipo_sangre, $correo, $telefono, $estado, $numero_identidad_original);
+
             if ($stmt->execute()) {
                 $mensaje = "Usuario actualizado correctamente.";
             } else {
@@ -86,7 +103,7 @@ $conexion->close();
     <meta charset="UTF-8">
     <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
     <title>Visualizar y Actualizar Usuario</title>
-    <link rel="stylesheet" href="../../css/SU_admin/menu_SU_admin/visualizar_usuario.css">
+    <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/visualizar_usuario.css">
 </head>
 <body>
 <header>DATASENA</header>
@@ -127,7 +144,8 @@ $conexion->close();
         </div>
         <div class="form-row">
             <label>Número de identidad:</label>
-            <input type="text" name="numero_identidad" value="<?= htmlspecialchars($usuario['numero_identidad']) ?>">
+            <input type="text" name="numero_identidad" value="<?= htmlspecialchars($usuario['numero_identidad']) ?>" required>
+            <input type="hidden" name="numero_identidad_original" value="<?= htmlspecialchars($usuario['numero_identidad']) ?>">
         </div>
         <div class="form-row">
             <label>Residencia:</label>

@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 
 try {
-    $conexion = new PDO("mysql:host=localhost;dbname=datasenn_db", "root", "123456");
+    $conexion = new PDO("mysql:host=localhost;dbname=datasenn_db", "root", "");
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $documento = $_POST['documento'] ?? '';

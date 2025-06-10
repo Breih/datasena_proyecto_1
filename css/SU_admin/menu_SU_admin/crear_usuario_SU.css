@@ -325,7 +325,7 @@ textarea:focus {
 .back_listar,
 .back_crear,
 .back_actualizar {
-    background-color: var(--primary-200);
+    background-color: var(--primary-950);
     color: var(--white);
     border: none;
     border-radius: 4px;
