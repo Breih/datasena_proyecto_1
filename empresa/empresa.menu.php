@@ -41,7 +41,7 @@ if (!isset($_SESSION['usuario'])) {
 </div>
 
 <!-- MENÚ LATERAL DE LAS TRES LÍNEAS -->
-<div class="container">
+<div class="container"><----<!-- CONTENEDOR PRINCIPAL -->
     <div class="menu-wrapper">
         <div class="dropdown">
             <button onclick="toggleDropdown('menuLateral')" class="dropdown-btn">&#9776;</button>
