@@ -1,9 +1,19 @@
+<?php
+session_start();
+
+// Verificar si hay sesión iniciada
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login_view.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Administrador</title>
-    <link rel="stylesheet" href="../css/admin/menu.admin.css">
+    <title>Super administrador</title>
+    <link rel="stylesheet" href="../css/empresa/menu.empresa.css">
     <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -14,34 +24,18 @@
 
 <!-- BOTONES SUPERIORES CON MENÚS DESPLEGABLES -->
 <div class="top-buttons">
+
     <div class="dropdown-container">
-        <button class="top-btn" onclick="toggleDropdown('usuariosMenu')">Usuarios</button>
-        <div id="usuariosMenu" class="submenu">
-            <a href="../admin/crear_usuario.html">Crear usuarios</a>
-            <a href="../admin/actualiza_usuario.html">Actualizar usuarios</a>
-            <a href="../admin/listar_usuario_SU.php">Listar usuarios</a>
-            <a href="../admin/habilitar_inhabilitar.php">Habilitar usuarios</a>
-            <a href="../admin/reportar_usuario.php">Reportar usuarios</a>
+        <button class="top-btn" onclick="toggleDropdown('diagnosticoMenu')">Diagnóstico empresarial</button>
+        <div id="diagnosticoMenu" class="submenu">
+            <a href="diagnostico_empresarial.php">Realizar diagnóstico empresarial</a>
         </div>
     </div>
 
     <div class="dropdown-container">
-        <button class="top-btn" onclick="toggleDropdown('empresaMenu')">Empresa</button>
-        <div id="empresaMenu" class="submenu">
-            <a href="empresaRe_SU.html">Crear empresa</a>
-            <a href="#">Actualizar empresa</a>
-            <a href="">Listar empresa</a>
-            <a href="../SU_admin/menu_SU_admin/estado_empresa_SU.html">Habilitar/Inhabilitar empresa</a>
-        </div>
-    </div>
-
-    <div class="dropdown-container">
-        <button class="top-btn" onclick="toggleDropdown('programaMenu')">Programa de formación</button>
+        <button class="top-btn" onclick="toggleDropdown('programaMenu')">Programas de formación</button>
         <div id="programaMenu" class="submenu">
-            <a href="../Crud programas/crear_programa.html">Crear programa</a>
-            <a href="../Crud programas/actualiza_programa.html">Actualizar programa</a>
-            <a href="../Crud programas/listar_programa.php">Listar programa</a>
-            <a href="../Crud programas/habili_inhabilit_programa.html">Habilitar/Inhabilitar programa</a>
+            <a href="../empresa/listar_programa.php">Listar programas</a>
         </div>
     </div>
 </div>
@@ -54,17 +48,17 @@
             <div id="menuLateral" class="dropdown-content">
                 <button>Configuración</button>
                 <button>Ayuda</button>
-                <button onclick="location.href='../inicio_todos.html'">Cerrar sesión</button>
+                <button onclick="location.href='logout.php'">Cerrar sesión</button>
             </div>
         </div>
     </div>
 
-    <!-- SLIDER DE IMÁGENES -->
-        <div class="center-box">
-            <h2>Quienes somos</h2>
-            <p>Somos un sistema para la gestion de las relaciones corporativas del CDITI.</p>
-            <!-- Aquí podrías agregar cualquier formulario o contenido que desees -->
-        </div>
+    <!-- ÁREA CENTRAL -->
+    <div class="center-box">
+        <h2>Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario']); ?> 👋</h2>
+        <p>Somos un sistema para la gestión de las relaciones corporativas del CDITI.</p>
+    </div>
+</div>
 
 <footer>
     © 2025 Todos los derechos reservados - Proyecto SENA
@@ -80,7 +74,7 @@
         const totalSlides = slides.length;
 
         currentIndex = (index + totalSlides) % totalSlides;
-        slider.style.transform = 'translateX(-${currentIndex * 100}%)';
+        slider.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
     }
 
     function nextSlide() { showSlide(currentIndex + 1); }
@@ -88,9 +82,8 @@
     setInterval(nextSlide, 5000);
     showSlide(currentIndex);
 
-    // Función para mostrar/ocultar el menú correspondiente
     function toggleDropdown(menuId) {
-        closeAllDropdowns(menuId); // Cierra todos excepto el actual
+        closeAllDropdowns(menuId);
         const menu = document.getElementById(menuId);
         const overlay = document.getElementById("overlay");
         if (menu && !menu.classList.contains("show")) {
@@ -102,7 +95,6 @@
         }
     }
 
-    // Cierra todos los menús abiertos
     function closeAllDropdowns(exceptId = null) {
         const menus = document.querySelectorAll(".submenu, .dropdown-content");
         menus.forEach(menu => {
@@ -113,7 +105,6 @@
         document.getElementById("overlay").style.display = "none";
     }
 
-    // Cierra menús al hacer clic fuera
     window.onclick = function(event) {
         if (!event.target.matches('.top-btn') && !event.target.matches('.dropdown-btn')) {
             closeAllDropdowns();
