@@ -35,7 +35,7 @@ if (!isset($_SESSION['usuario'])) {
     <div class="dropdown-container">
         <button class="top-btn" onclick="toggleDropdown('programaMenu')">Programas de formación</button>
         <div id="programaMenu" class="submenu">
-            <a href="../listar_programa.php">Listar programas</a>
+            <a href="listar_programa.php">Listar programas</a>
         </div>
     </div>
 </div>
