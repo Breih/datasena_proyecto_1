@@ -30,7 +30,7 @@ $conexion = null; // Cerrar la conexión
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Listar Empresas</title>
-    <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon" />
+    <link rel="icon" href="../../../img/Logotipo_Datasena.png" type="image/x-icon" />
     <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/style.css" />
     <style>
         /* Centrar el header */
