@@ -63,12 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Registro de Empresa</title>
-    <link rel="icon" href="../../img/Logotipo_Datasena.png" type="image/x-icon" />
+    <link rel="icon" href="../../../img/Logotipo_Datasena.png" type="image/x-icon" />
     <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/empresa_registro.css" >
 </head>
 <body>
     <h1>DATASENA</h1>
-    <img src="../../img/logo-sena.png" alt="Logo" class="img" />
+    <img src="../../../img/logo-sena.png" alt="Logo" class="img" />
 
     <div class="forma-container">
         <h3>Registro de Empresa</h3>
@@ -132,7 +132,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="buttons-container">
-                <button type="submit" class="back_crear">Registrar</button>
+                <button type="submit" class="logout-btn" onclick="window.location.href='crear_usuario_.php'">Crear</button>
+                <button type="button" class="logout-btn" onclick="window.location.href='../super.menu.html'">Regresar</button>
             </div>
         </form>
     </div>

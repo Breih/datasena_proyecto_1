@@ -84,7 +84,7 @@ $conexion->close();
 </head>
 <body>
     <h1>DATASENA</h1>
-    <img src="../../../logo-sena.png" alt="Logo SENA" class="img">
+    <img src="../../../img/logo-sena.png" alt="Logo SENA" class="img">
 
     <div class="forma-container">
         <h3>Habilitar / Inhabilitar Usuario</h3>

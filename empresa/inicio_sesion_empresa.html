@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
     <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
-    <!-- <link rel="stylesheet" href="super.css"> -->
     <link rel="stylesheet" href="../css/empresa/empresa.css">
 </head>
 <body>
@@ -14,21 +13,26 @@
 
     <div class="form-container">
         <h2>Inicio de Sesión</h2>
-        <form action="empresa.menu.html" method="get">
+
+        <!-- Cambiado a POST y dirigido a login.php -->
+        <form action="login.php" method="POST">
             <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario" required>
 
-            <label for="contraseña">Contraseña</label>
-            <input type="tel" id="contraseña" name="contraseña" placeholder="Ingrese su contraseña" required>
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required>
 
             <button type="submit">Ingresar</button>
-            <button type="submit"onclick="window.location.href='../inicio_todos.html'">Regresar</button>
         </form>
+
+        <!-- Botón de regreso fuera del formulario -->
+        <button onclick="window.location.href='../inicio_todos.html'">Regresar</button>
+
         <a href="recuperarCon.html">Restaurar contraseña</a>
     </div>
+
     <footer>
         <a>&copy; Todos los derechos reservados al SENA</a>
     </footer>
-    
 </body>
 </html>

@@ -16,10 +16,37 @@ $contrasena = $_POST['contrasena'] ?? '';
 $validacion = $_POST['validacion'] ?? '';
 $estado = $_POST['activacion'] ?? '';
 
-// Validaciones
+// Validaciones: Asegurarse de que no estén vacíos
 if (empty($nombre_completo) || empty($tipo_documento) || empty($numero_identidad) || empty($residencia) || empty($tipo_sangre) || empty($correo) || empty($telefono) || empty($contrasena) || empty($validacion) || empty($estado)) {
     echo "<script>
         alert('❌ Todos los campos son obligatorios.');
+        window.history.back();
+    </script>";
+    exit;
+}
+
+// Validación del nombre completo (solo letras y espacios)
+if (!preg_match('/^[a-zA-Z\s]+$/', $nombre_completo)) {
+    echo "<script>
+        alert('❌ El nombre solo debe contener letras y espacios.');
+        window.history.back();
+    </script>";
+    exit;
+}
+
+// Validación del número de identidad (solo números)
+if (!ctype_digit($numero_identidad)) {
+    echo "<script>
+        alert('❌ El número de identidad solo debe contener números.');
+        window.history.back();
+    </script>";
+    exit;
+}
+
+// Validar que el número de identidad tenga exactamente 10 dígitos
+if (strlen($numero_identidad) !== 10) {
+    echo "<script>
+        alert('❌ El número de identidad debe tener exactamente 10 dígitos.');
         window.history.back();
     </script>";
     exit;
@@ -36,7 +63,6 @@ if ($contrasena !== $validacion) {
 
 // Expresión regular para validar la contraseña
 $patron_contrasena = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
-
 if (!preg_match($patron_contrasena, $contrasena)) {
     echo "<script>
         alert('❌ La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales.');
@@ -100,7 +126,7 @@ $stmt->bind_param("sssssssss", $nombre_completo, $tipo_documento, $numero_identi
 if ($stmt->execute()) {
     echo "<script>
         alert('✅ Usuario creado con éxito.');
-        window.location.href = 'super.menu.html';
+        window.location.href = '../super.menu.html';
     </script>";
 } else {
     echo "<script>
