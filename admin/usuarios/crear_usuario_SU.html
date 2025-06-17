@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear usuario</title>
+    <link rel="icon" href="../../img/Logotipo_Datasena.png" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="crear_usuario_SU.css"> -->
+    <link rel="stylesheet" href="css/crear_usuarios.css">
+</head>
+<body>
+    <h2>DATASENA</h2>
+    <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+    
+    <div class="form-container">
+        <h1>Crear usuario</h1>
+            <form action="../usuarios/crear_usuario_conexion.php" method="post">
+            <div class="form-grid">
+                <!-- Primera columna -->
+                <div>
+                    <div class="form-row">
+                        <label for="nombre_completo">Nombre  <br> completo:</label>
+                        <input type="text" id="nombre_completo" name="nombre_completo" placeholder="Ingrese el nombre completo" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="tipo_documento">Tipo de <br> documento:</label>
+                        <select id="tipo_documento" name="tipo_documento" required>
+                            <option value="">Seleccione</option>
+                            <option value="cc">Cédula de ciudadanía</option>
+                            <option value="ce">Cédula de extranjería</option>
+                            <option value="ti">Tarjeta de identidad</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="numero_identidad">Número de <br> identidad:</label>
+                        <input type="text" id="numero_identidad" name="numero_identidad" placeholder="Ingrese número" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="residencia">Residencia:</label>
+                        <input type="text" id="residencia" name="residencia" placeholder="Ingrese dirección" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="tipo_sangre">Tipo de <br>  sangre:</label>
+                        <select id="tipo_sangre" name="tipo_sangre" required>
+                            <option value="">Seleccione</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Segunda columna -->
+                <div>
+                    <div class="form-row">
+                        <label for="correo">Correo <br> electrónico:</label>
+                        <input type="email" id="correo" name="correo" placeholder="Ingrese correo" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ingrese teléfono" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese contraseña" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="validacion">Confirmar <br> contraseña:</label>
+                        <input type="password" id="validacion" name="validacion" placeholder="Confirme contraseña" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="activacion">Estado:</label>
+                        <select id="activacion" name="activacion" required>
+                            <option value="">Seleccione</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="buttons-container">
+                <button type="submit" class="logout-btn" onclick="window.location.href='crear_usuario_.php'">Crear</button>
+                <button type="button" class="logout-btn" onclick="window.location.href='../admin.menu.html'">Regresar</button>
+            </div>
+        </form>
+    </div>
+    
+    <footer>
+        <a>&copy; Todos los derechos reservados al SENA</a>
+    </footer>
+</body>
+</html>
