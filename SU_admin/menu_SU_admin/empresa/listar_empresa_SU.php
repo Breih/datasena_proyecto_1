@@ -134,7 +134,7 @@ $conexion = null; // Cerrar la conexión
 </head>
 <body>
 <header>DATASENA</header>
-<img src="../../img/logo-sena.png" alt="Logo SENA" class="img" />
+<img src="../../../img/logo-sena.png" alt="Logo SENA" class="img" />
 
 <div class="form-container">
     <h2>Listar Empresas</h2>

@@ -135,7 +135,7 @@ $conexion = null;
 
 <div class="form-container">
     <h2>Listar Programas</h2>
-    <img src="../../../img/logo-sena.png" alt="Logo SENA" class="img">
+    <img src=../../../img/logo-sena.png" alt="Logo SENA" class="img">
 
     <div class="search-container">
         <form method="post">
