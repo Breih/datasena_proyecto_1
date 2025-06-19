@@ -9,48 +9,52 @@
 </head>
 <body>
 
-<!-- Fondo oscuro cuando un menú está activo -->
-<div id="overlay" class="overlay" onclick="closeAllDropdowns()"></div>
-
-<!-- BOTONES SUPERIORES CON MENÚS DESPLEGABLES -->
-<div class="top-buttons">
-    <div class="dropdown-container">
-        <button class="top-btn" onclick="toggleDropdown('usuariosMenu')">Usuarios</button>
-        <div id="usuariosMenu" class="submenu">
-            <a href="usuarios/crear_usuario_SU.html">Crear usuarios</a>
-            <a href="usuarios/visualizar_actualizar_usuario.php">Visualizar/Actualizar usuarios</a>
-            <a href="usuarios/listar_usuario.php">Listar usuarios</a>
-            <a href="usuarios/habilitar_inhabilitar.php">Habilitar usuarios</a>
-            <a href="usuarios/reportar.php">Reportar usuarioa</a>
-        </div>
-    </div>
-
-    <div class="dropdown-container">
-        <button class="top-btn" onclick="toggleDropdown('empresaMenu')">Empresa</button>
-        <div id="empresaMenu" class="submenu">
-            <a href="empresa/crear_empresa.php">Crear empresas</a>
-            <a href="empresa/visualizar_actualizar_empresa.php">Visualizar/Actualizar empresas</a>
-            <a href="empresa/listar_empresa.php">Listar empresas</a>
-            <a href="">Habilitar/Inhabilitar empresas</a>
-        </div>
-    </div>
-
-    <div class="dropdown-container">
-        <button class="top-btn" onclick="toggleDropdown('programaMenu')">Programa de formación</button>
-        <div id="programaMenu" class="submenu">
-            <a href="programas_formacion/crear_programa.html">Crear programas</a>
-            <a href="programas_formacion/visualizar_actualizar_programa.php">Visualizar/Actualizar programas</a>
-            <a href="programas_formacion/listar_programa.php">Listar programas</a>
-            <a href="programas_formacion/habilitar_inhabilitar_programa.php">Habilitar/Inhabilitar programas</a>
-        </div>
-    </div>
-
-<div class="img-container">
-    <img src="../img/gov.png" alt="Logo" class="top-logo">
-</div>
+<!-- Línea azul superior con logo del gobierno -->
+<div class="blue-line-top">
+    <img src="../img/gov.png" alt="gov" class="gov-logo">
 </div>
 
-<!-- MENÚ LATERAL DE LAS TRES LÍNEAS -->
+<!-- CONTENEDOR DEL HEADER VERDE -->
+<div class="barra-verde">
+    <!-- Fondo oscuro cuando un menú está activo -->
+    <div id="overlay" class="overlay" onclick="closeAllDropdowns()"></div>
+
+    <!-- BOTONES SUPERIORES CON MENÚS DESPLEGABLES -->
+    <div class="top-buttons">
+        <div class="dropdown-container">
+            <button class="top-btn" onclick="toggleDropdown('usuariosMenu')">Usuarios</button>
+            <div id="usuariosMenu" class="submenu">
+                <a href="usuarios/crear_usuario_SU.html">Crear usuarios</a>
+                <a href="usuarios/visualizar_actualizar_usuario.php">Visualizar/Actualizar usuarios</a>
+                <a href="usuarios/listar_usuario.php">Listar usuarios</a>
+                <a href="usuarios/habilitar_inhabilitar.php">Habilitar usuarios</a>
+                <a href="usuarios/reportar.php">Reportar usuarios</a>
+            </div>
+        </div>
+
+        <div class="dropdown-container">
+            <button class="top-btn" onclick="toggleDropdown('empresaMenu')">Empresa</button>
+            <div id="empresaMenu" class="submenu">
+                <a href="empresa/crear_empresa.php">Crear empresas</a>
+                <a href="empresa/visualizar_actualizar_empresa.php">Visualizar/Actualizar empresas</a>
+                <a href="empresa/listar_empresa.php">Listar empresas</a>
+                <a href="">Habilitar/Inhabilitar empresas</a>
+            </div>
+        </div>
+
+        <div class="dropdown-container">
+            <button class="top-btn" onclick="toggleDropdown('programaMenu')">Programa de formación</button>
+            <div id="programaMenu" class="submenu">
+                <a href="programas_formacion/crear_programa.html">Crear programas</a>
+                <a href="programas_formacion/visualizar_actualizar_programa.php">Visualizar/Actualizar programas</a>
+                <a href="programas_formacion/listar_programa.php">Listar programas</a>
+                <a href="programas_formacion/habilitar_inhabilitar_programa.php">Habilitar/Inhabilitar programas</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MENÚ LATERAL Y CONTENIDO -->
 <div class="container">
     <div class="menu-wrapper">
         <div class="dropdown">
@@ -63,13 +67,19 @@
         </div>
     </div>
 
-    <!-- SLIDER DE IMÁGENES -->
-        <div class="center-box">
-            <h2>Quienes somos</h2>
-            <p>Somos un sistema para la gestion de las relaciones corporativas del CDITI.</p>
-            <!-- Aquí podrías agregar cualquier formulario o contenido que desees -->
-        </div>
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="center-box">
+        <h2>Quienes somos</h2>
+        <p>Somos un sistema para la gestión de las relaciones corporativas del CDITI.</p>
+    </div>
+</div>
 
+<!-- Línea azul inferior con logo del gobierno -->
+<div class="blue-line-bottom">
+    <img src="../img/gov.png" alt="gov" class="gov-logo">
+</div>
+
+<!-- FOOTER PEGADO ABAJO -->
 <footer>
     © 2025 Todos los derechos reservados - Proyecto SENA
 </footer>
@@ -80,33 +90,35 @@
 
     function showSlide(index) {
         const slider = document.getElementById('slider');
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-
-        currentIndex = (index + totalSlides) % totalSlides;
-        slider.style.transform = 'translateX(-${currentIndex * 100}%)';
+        if (slider) {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            currentIndex = (index + totalSlides) % totalSlides;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
     }
 
     function nextSlide() { showSlide(currentIndex + 1); }
     function prevSlide() { showSlide(currentIndex - 1); }
-    setInterval(nextSlide, 5000);
-    showSlide(currentIndex);
 
-    // Función para mostrar/ocultar el menú correspondiente
+    if (document.getElementById('slider')) {
+        setInterval(nextSlide, 5000);
+        showSlide(currentIndex);
+    }
+
     function toggleDropdown(menuId) {
-        closeAllDropdowns(menuId); // Cierra todos excepto el actual
+        closeAllDropdowns(menuId);
         const menu = document.getElementById(menuId);
         const overlay = document.getElementById("overlay");
         if (menu && !menu.classList.contains("show")) {
             menu.classList.add("show");
             overlay.style.display = "block";
         } else {
-            menu.classList.remove("show");
+            if (menu) menu.classList.remove("show");
             overlay.style.display = "none";
         }
     }
 
-    // Cierra todos los menús abiertos
     function closeAllDropdowns(exceptId = null) {
         const menus = document.querySelectorAll(".submenu, .dropdown-content");
         menus.forEach(menu => {
@@ -117,7 +129,6 @@
         document.getElementById("overlay").style.display = "none";
     }
 
-    // Cierra menús al hacer clic fuera
     window.onclick = function(event) {
         if (!event.target.matches('.top-btn') && !event.target.matches('.dropdown-btn')) {
             closeAllDropdowns();
