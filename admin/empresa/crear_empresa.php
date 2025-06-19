@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <!-- Primera columna -->
                     <div>
                         <div class="forma-row">
-                            <label for="tipo_documento">Tipo de Documento:</label>
+                            <label for="tipo_documento">Tipo de<br> Documento:</label>
                             <select id="tipo_documento" name="tipo_documento" required class="md-input">
                                 <option value="">Seleccione una opción</option>
                                 <option value="NIT">NIT</option>
@@ -97,11 +97,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </select>
                         </div>
                         <div class="forma-row">
-                            <label for="nit">Número de documento:</label>
+                            <label for="nit">Número de <br>documento:</label>
                             <input type="text" id="nit" name="nit" required class="md-input" value="<?= htmlspecialchars($_POST['nit'] ?? '') ?>">
                         </div>
                         <div class="forma-row">
-                            <label for="nickname">Nombre de la empresa:</label>
+                            <label for="nickname">Nombre de <br>la empresa:</label>
                             <input type="text" id="nickname" name="nickname" required class="md-input" value="<?= htmlspecialchars($_POST['nickname'] ?? '') ?>">
                         </div>
                         <div class="forma-row">
@@ -125,13 +125,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="text" id="rol" name="rol" required class="md-input" value="<?= htmlspecialchars($_POST['rol'] ?? '') ?>">
                         </div>
                         <div class="forma-row">
-                            <label for="actividad_economica">Actividad Económica:</label>
+                            <label for="actividad_economica">Actividad<br> Económica:</label>
                             <input type="text" id="actividad_economica" name="actividad_economica" required class="md-input" value="<?= htmlspecialchars($_POST['actividad_economica'] ?? '') ?>">
                         </div>
                     </div>
                 </div>
 
-                <div class="buttons-container">
+                <div class="logout-buttons-container">
                     <button type="submit" class="logout-btn" onclick="window.location.href='crear_usuario_.php'">Crear</button>
                     <button type="button" class="logout-btn" onclick="window.location.href='../admin.menu.html'">Regresar</button>
                 </div>

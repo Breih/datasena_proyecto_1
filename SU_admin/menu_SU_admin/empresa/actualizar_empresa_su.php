@@ -5,11 +5,11 @@ if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-// Inicializar datos de empresa vacíos
+// Datos por defecto
 $empresa = [
     'id' => '',
     'tipo_documento' => '',
-    'nit' => '',
+    'numero_documento' => '',
     'nickname' => '',
     'telefono' => '',
     'correo' => '',
@@ -20,11 +20,11 @@ $empresa = [
 
 $mensaje = "";
 
-// Si se envió el formulario para actualizar (POST con id)
+// Actualizar empresa
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && !empty($_POST['id'])) {
     $id = $_POST['id'];
     $tipo_documento = $_POST['tipo_documento'];
-    $nit = $_POST['nit'];
+    $numero_documento = $_POST['numero_documento'];
     $nickname = $_POST['nickname'];
     $telefono = $_POST['telefono'];
     $correo = $_POST['correo'];
@@ -32,29 +32,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && !empty($_POS
     $rol = $_POST['rol'];
     $actividad_economica = $_POST['actividad_economica'];
 
-    $stmt = $conexion->prepare("UPDATE empresas SET tipo_documento=?, nit=?, nickname=?, telefono=?, correo=?, direccion=?, rol=?, actividad_economica=? WHERE id=?");
-    $stmt->bind_param("sissssssi", $tipo_documento, $nit, $nickname, $telefono, $correo, $direccion, $rol, $actividad_economica, $id);
+    $stmt = $conexion->prepare("UPDATE empresa SET tipo_documento=?, numero_documento=?, nickname=?, numero_telefono=?, correo_electronico=?, direccion=?, rol_id=?, actividad_economica=? WHERE id=?");
+    $stmt->bind_param("ssssssssi", $tipo_documento, $numero_documento, $nickname, $telefono, $correo, $direccion, $rol, $actividad_economica, $id);
+
     if ($stmt->execute()) {
         $mensaje = "Empresa actualizada correctamente.";
     } else {
         $mensaje = "Error al actualizar la empresa.";
     }
+
     $stmt->close();
 }
 
-// Si se envió el formulario para buscar (POST sin id pero con nit)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['nit']) && empty($_POST['id']))) {
-    $nit = $_POST['nit'];
+// Buscar empresa por número_documento o nickname
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST['id']) && isset($_POST['dato_busqueda'])) {
+    $dato = $_POST['dato_busqueda'];
 
-    $stmt = $conexion->prepare("SELECT * FROM empresas WHERE nit = ?");
-    $stmt->bind_param("i", $nit);
+    $sql = "SELECT * FROM empresa WHERE numero_documento = ? OR nickname = ?";
+    $stmt = $conexion->prepare($sql);
+
+    if (!$stmt) {
+        die("Error al preparar la consulta: " . $conexion->error);
+    }
+
+    $stmt->bind_param("ss", $dato, $dato);
     $stmt->execute();
     $resultado = $stmt->get_result();
 
     if ($resultado->num_rows > 0) {
         $empresa = $resultado->fetch_assoc();
     } else {
-        $mensaje = "No se encontró empresa con ese NIT.";
+        $mensaje = "No se encontró empresa con ese número de documento o nickname.";
     }
 
     $stmt->close();
@@ -82,17 +90,17 @@ $conexion->close();
         <p style="color:green; font-weight:bold;"><?= htmlspecialchars($mensaje) ?></p>
     <?php endif; ?>
 
-    <!-- Buscar empresa por NIT -->
+    <!-- Buscar empresa -->
     <form action="actualizar_empresa_su.php" method="post">
-        <label for="buscar_nit">Buscar por NIT:</label>
-        <input type="text" id="buscar_nit" name="nit" placeholder="Ingrese el NIT de la empresa" required>
+        <label for="buscar_dato">Buscar por número de documento o nickname:</label>
+        <input type="text" id="buscar_dato" name="dato_busqueda" placeholder="Ingrese número de documento o nickname" required>
         <button class="logout-btn" type="submit">Buscar</button>
     </form>
 
     <hr>
 
     <?php if (!empty($empresa['id'])): ?>
-        <!-- Formulario de edición solo si hay empresa cargada -->
+        <!-- Formulario de edición -->
         <form class="form-grid" action="actualizar_empresa_su.php" method="post">
             <input type="hidden" name="id" value="<?= htmlspecialchars($empresa['id']) ?>">
 
@@ -102,8 +110,8 @@ $conexion->close();
             </div>
 
             <div class="form-row">
-                <label>NIT:</label>
-                <input type="text" name="nit" value="<?= htmlspecialchars($empresa['nit']) ?>" required>
+                <label>Número de documento:</label>
+                <input type="text" name="numero_documento" value="<?= htmlspecialchars($empresa['numero_documento']) ?>" required>
             </div>
 
             <div class="form-row">
@@ -113,12 +121,12 @@ $conexion->close();
 
             <div class="form-row">
                 <label>Teléfono:</label>
-                <input type="text" name="telefono" value="<?= htmlspecialchars($empresa['telefono']) ?>" required>
+                <input type="text" name="telefono" value="<?= htmlspecialchars($empresa['numero_telefono'] ?? '') ?>" required>
             </div>
 
             <div class="form-row">
-                <label>Correo:</label>
-                <input type="email" name="correo" value="<?= htmlspecialchars($empresa['correo']) ?>" required>
+                <label>Correo electrónico:</label>
+                <input type="email" name="correo" value="<?= htmlspecialchars($empresa['correo_electronico'] ?? '') ?>" required>
             </div>
 
             <div class="form-row">
@@ -128,7 +136,7 @@ $conexion->close();
 
             <div class="form-row">
                 <label>Rol:</label>
-                <input type="text" name="rol" value="<?= htmlspecialchars($empresa['rol']) ?>" required>
+                <input type="text" name="rol" value="<?= htmlspecialchars($empresa['rol_id']) ?>" required>
             </div>
 
             <div class="form-row">

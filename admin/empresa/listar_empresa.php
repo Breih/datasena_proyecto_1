@@ -195,7 +195,7 @@ $conexion = null; // Cerrar la conexión
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <div class="modal-header">Información de la Empresa</div>
+        <div class="modal-header">Información de <br>la Empresa</div>
         <div class="modal-body" id="modal-body">
             <!-- Información cargada dinámicamente por AJAX -->
         </div>
