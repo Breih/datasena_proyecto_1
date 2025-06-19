@@ -77,7 +77,8 @@ $conexion->close();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Habilitar / Inhabilitar Programa</title>
-    <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/habilitar_in.css" />
+    <link rel="icon" href="../../img/Logotipo_Datasena.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/habilitar_inhabilitar_programa_formacion.css"/>
 </head>
 <body>
     <h1>DATASENA - Administración de Programas</h1>
@@ -143,7 +144,7 @@ $conexion->close();
 
                 <div class="buttons-container">
                     <button type="submit" name="actualizar_estado" class="back">Actualizar Estado</button>
-                    <button type="button" class="habilitar-btn" onclick="window.location.href='super.menu.html'">Regresar al Menú</button>
+                    <button type="button" class="habilitar-btn" onclick="window.location.href='../admin.menu.html'">Regresar al Menú</button>
                 </div>
             </form>
 
@@ -156,7 +157,7 @@ $conexion->close();
                 <p>Por favor, verifique el número e intente nuevamente.</p>
             </div>
             <div class="buttons-container">
-                <button type="button" class="habilitar-btn" onclick="window.location.href='super.menu.html'">Regresar al Menú</button>
+                <button type="button" class="habilitar-btn" onclick="window.location.href='../admin.menu.html'">Regresar al Menú</button>
             </div>
 
         <?php else: ?>
@@ -165,7 +166,7 @@ $conexion->close();
                 <p>Use la barra de búsqueda de arriba para encontrar el programa que desea habilitar o inhabilitar.</p>
             </div>
             <div class="buttons-container">
-                <button type="button" class="habilitar-btn" onclick="window.location.href='../menu_SU_admin/super.menu.html'">Regresar al Menú</button>
+                <button type="button" class="habilitar-btn" onclick="window.location.href='../admin.menu.html'">Regresar al Menú</button>
             </div>
         <?php endif; ?>
     </div>

@@ -59,87 +59,87 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Registro de Empresa</title>
-    <link rel="icon" href="../../../img/Logotipo_Datasena.png" type="image/x-icon" />
-    <link rel="stylesheet" href="css/registro_empresa.css" >
-</head>
-<body>
-    <h1>DATASENA</h1>
-    <img src="../../../img/logo-sena.png" alt="Logo" class="img" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Crear empresa</title>
+        <link rel="icon" href="../../img/Logotipo_Datasena.png" type="image/x-icon" />
+        <link rel="stylesheet" href="css/registro_empresa.css" >
+    </head>
+    <body>
+        <h1>DATASENA</h1>
+        <img src="../../img/logo-sena.png" alt="Logo" class="img" />
 
-    <div class="forma-container">
-        <h3>Registro de Empresa</h3>
+        <div class="forma-container">
+            <h3>Registro de Empresa</h3>
 
-        <?php if (!empty($error)): ?>
-            <div style="color: red; margin-bottom: 1em;"><?= $error ?></div>
-        <?php endif; ?>
+            <?php if (!empty($error)): ?>
+                <div style="color: red; margin-bottom: 1em;"><?= $error ?></div>
+            <?php endif; ?>
 
-        <?php if (!empty($success)): ?>
-            <div style="color: green; margin-bottom: 1em;"><?= $success ?></div>
-        <?php endif; ?>
+            <?php if (!empty($success)): ?>
+                <div style="color: green; margin-bottom: 1em;"><?= $success ?></div>
+            <?php endif; ?>
 
-        <form action="empresaRe_su.php" method="POST">
-            <div class="forma-grid">
-                <!-- Primera columna -->
-                <div>
-                    <div class="forma-row">
-                        <label for="tipo_documento">Tipo de Documento:</label>
-                        <select id="tipo_documento" name="tipo_documento" required class="md-input">
-                            <option value="">Seleccione una opción</option>
-                            <option value="NIT">NIT</option>
-                            <option value="CC">Cédula de Ciudadanía</option>
-                            <option value="CE">Cédula de Extranjería</option>
-                            <option value="Pasaporte">Pasaporte</option>
-                            <option value="Otro">Otro</option>
-                        </select>
+            <form action="empresaRe_su.php" method="POST">
+                <div class="forma-grid">
+                    <!-- Primera columna -->
+                    <div>
+                        <div class="forma-row">
+                            <label for="tipo_documento">Tipo de Documento:</label>
+                            <select id="tipo_documento" name="tipo_documento" required class="md-input">
+                                <option value="">Seleccione una opción</option>
+                                <option value="NIT">NIT</option>
+                                <option value="CC">Cédula de Ciudadanía</option>
+                                <option value="CE">Cédula de Extranjería</option>
+                                <option value="Pasaporte">Pasaporte</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="forma-row">
+                            <label for="nit">Número de documento:</label>
+                            <input type="text" id="nit" name="nit" required class="md-input" value="<?= htmlspecialchars($_POST['nit'] ?? '') ?>">
+                        </div>
+                        <div class="forma-row">
+                            <label for="nickname">Nombre de la empresa:</label>
+                            <input type="text" id="nickname" name="nickname" required class="md-input" value="<?= htmlspecialchars($_POST['nickname'] ?? '') ?>">
+                        </div>
+                        <div class="forma-row">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="text" id="telefono" name="telefono" required class="md-input" value="<?= htmlspecialchars($_POST['telefono'] ?? '') ?>">
+                        </div>
                     </div>
-                    <div class="forma-row">
-                        <label for="nit">Número de documento:</label>
-                        <input type="text" id="nit" name="nit" required class="md-input" value="<?= htmlspecialchars($_POST['nit'] ?? '') ?>">
-                    </div>
-                    <div class="forma-row">
-                        <label for="nickname">Nombre de la empresa:</label>
-                        <input type="text" id="nickname" name="nickname" required class="md-input" value="<?= htmlspecialchars($_POST['nickname'] ?? '') ?>">
-                    </div>
-                    <div class="forma-row">
-                        <label for="telefono">Teléfono:</label>
-                        <input type="text" id="telefono" name="telefono" required class="md-input" value="<?= htmlspecialchars($_POST['telefono'] ?? '') ?>">
+
+                    <!-- Segunda columna -->
+                    <div>
+                        <div class="forma-row">
+                            <label for="correo">Correo:</label>
+                            <input type="email" id="correo" name="correo" required class="md-input" value="<?= htmlspecialchars($_POST['correo'] ?? '') ?>">
+                        </div>
+                        <div class="forma-row">
+                            <label for="direccion">Dirección:</label>
+                            <input type="text" id="direccion" name="direccion" required class="md-input" value="<?= htmlspecialchars($_POST['direccion'] ?? '') ?>">
+                        </div>
+                        <div class="forma-row">
+                            <label for="rol">Rol:</label>
+                            <input type="text" id="rol" name="rol" required class="md-input" value="<?= htmlspecialchars($_POST['rol'] ?? '') ?>">
+                        </div>
+                        <div class="forma-row">
+                            <label for="actividad_economica">Actividad Económica:</label>
+                            <input type="text" id="actividad_economica" name="actividad_economica" required class="md-input" value="<?= htmlspecialchars($_POST['actividad_economica'] ?? '') ?>">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Segunda columna -->
-                <div>
-                    <div class="forma-row">
-                        <label for="correo">Correo:</label>
-                        <input type="email" id="correo" name="correo" required class="md-input" value="<?= htmlspecialchars($_POST['correo'] ?? '') ?>">
-                    </div>
-                    <div class="forma-row">
-                        <label for="direccion">Dirección:</label>
-                        <input type="text" id="direccion" name="direccion" required class="md-input" value="<?= htmlspecialchars($_POST['direccion'] ?? '') ?>">
-                    </div>
-                    <div class="forma-row">
-                        <label for="rol">Rol:</label>
-                        <input type="text" id="rol" name="rol" required class="md-input" value="<?= htmlspecialchars($_POST['rol'] ?? '') ?>">
-                    </div>
-                    <div class="forma-row">
-                        <label for="actividad_economica">Actividad Económica:</label>
-                        <input type="text" id="actividad_economica" name="actividad_economica" required class="md-input" value="<?= htmlspecialchars($_POST['actividad_economica'] ?? '') ?>">
-                    </div>
+                <div class="buttons-container">
+                    <button type="submit" class="logout-btn" onclick="window.location.href='crear_usuario_.php'">Crear</button>
+                    <button type="button" class="logout-btn" onclick="window.location.href='../admin.menu.html'">Regresar</button>
                 </div>
-            </div>
+            </form>
+        </div>
 
-            <div class="buttons-container">
-                <button type="submit" class="logout-btn" onclick="window.location.href='crear_usuario_.php'">Crear</button>
-                <button type="button" class="logout-btn" onclick="window.location.href='../admin.menu.html'">Regresar</button>
-            </div>
-        </form>
-    </div>
-
-    <footer>
-        <a>&copy; Todos los derechos reservados al SENA</a>
-    </footer>
-</body>
+        <footer>
+            <a>&copy; Todos los derechos reservados al SENA</a>
+        </footer>
+    </body>
 </html>

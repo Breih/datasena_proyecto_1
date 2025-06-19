@@ -29,7 +29,7 @@ $conexion = null;
 <head>
     <meta charset="UTF-8">
     <title>Listar Programas</title>
-    <link rel="icon" href="../../../img/Logotipo_Datasena.png" type="image/x-icon">
+    <link rel="icon" href="../../img/Logotipo_Datasena.png" type="image/x-icon">
     <link rel="stylesheet" href="css/listar_programa_formacion.css">
     <style>
         /* Centrar el header */
@@ -135,7 +135,7 @@ $conexion = null;
 
 <div class="form-container">
     <h2>Listar Programas</h2>
-    <img src="../../../img/logo-sena.png" alt="Logo SENA" class="img">
+    <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
 
     <div class="search-container">
         <form method="post">
@@ -175,7 +175,7 @@ $conexion = null;
     <?php endif; ?>
 
     <div class="buttons-container">
-        <button class="back_listar" type="button" onclick="window.location.href='super.menu.html'">Regresar</button>
+        <button class="back_listar" type="button" onclick="window.location.href='../admin.menu.html'">Regresar</button>
     </div>
 </div>
 

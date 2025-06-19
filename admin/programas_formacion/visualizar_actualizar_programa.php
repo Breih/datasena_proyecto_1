@@ -71,7 +71,7 @@ $conexion->close();
     <form method="GET" action="">
         <label for="nombre_programa">Buscar Programa por Nombre:</label>
         <input type="text" name="nombre_programa" id="nombre_programa" required>
-        <button type="submit">Buscar</button>
+        <button class="logout-btn" type="submit">Buscar</button>
     </form>
 
     <hr>
@@ -118,6 +118,9 @@ $conexion->close();
             </div>
         </form>
     <?php endif; ?>
+    <div class="back_visual">
+        <button class="logout-btn" onclick="window.location.href='../admin.menu.html'">Regresar</button>
+    </div>
 </div>
 
 <footer>
