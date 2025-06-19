@@ -43,11 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && !empty($_POS
 }
 
 // Si se envió el formulario para buscar (POST sin id pero con nit)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['nit']) && empty($_POST['id']))) {
-    $nit = $_POST['nit'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['nickname']) && empty($_POST['id']))) {
+    $nit = $_POST['nickname'];
 
-    $stmt = $conexion->prepare("SELECT * FROM empresas WHERE nit = ?");
-    $stmt->bind_param("i", $nit);
+    $stmt = $conexion->prepare("SELECT * FROM empresas WHERE nickname = ?");
+    $stmt->bind_param("i", $nickname);
     $stmt->execute();
     $resultado = $stmt->get_result();
 
