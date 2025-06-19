@@ -81,12 +81,12 @@ $conexion->close();
             <input type="hidden" name="id" value="<?= htmlspecialchars($programa['id']) ?>">
 
             <div class="forma-row">
-                <label for="nombre_programa">Nombre del Programa</label>
+                <label for="nombre_programa">Nombre del<br> Programa</label>
                 <input type="text" id="nombre_programa" name="nombre_programa" value="<?= htmlspecialchars($programa['nombre_programa']) ?>" required>
             </div>
 
             <div class="forma-row">
-                <label for="tipo_programa">Tipo de Programa</label>
+                <label for="tipo_programa">Tipo de <br>Programa</label>
                 <select id="tipo_programa" name="tipo_programa" required>
                     <option value="Tecnico" <?= $programa['tipo_programa'] == 'Tecnico' ? 'selected' : '' ?>>Técnico</option>
                     <option value="Tecnologo" <?= $programa['tipo_programa'] == 'Tecnologo' ? 'selected' : '' ?>>Tecnólogo</option>
@@ -95,7 +95,7 @@ $conexion->close();
             </div>
 
             <div class="forma-row">
-                <label for="numero_ficha">Número de ficha</label>
+                <label for="numero_ficha">Número de<br> ficha</label>
                 <input type="text" id="numero_ficha" name="numero_ficha" value="<?= htmlspecialchars($programa['numero_ficha']) ?>" required>
             </div>
 

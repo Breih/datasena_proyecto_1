@@ -93,18 +93,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div>
                     <div class="forma-row">
                         <label for="tipo_documento">Tipo de Documento:</label>
-                        <select id="tipo_documento" name="tipo_documento" required>
-                            <option value="">Seleccione</option>
-                            <option value="NIT" <?= (($_POST['tipo_documento'] ?? '') === 'NIT') ? 'selected' : '' ?>>NIT</option>
+                        <select id="tipo_documento" name="tipo_documento" required class="md-input">
+                            <option value="">Seleccione una opción</option>
+                            <option value="NIT">NIT</option>
+                            <option value="CC">Cédula de Ciudadanía</option>
+                            <option value="CE">Cédula de Extranjería</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                            <option value="Otro">Otro</option>
                         </select>
                     </div>
                     <div class="forma-row">
-                        <label for="numero_documento">Número de Documento:</label>
-                        <input type="text" id="numero_documento" name="numero_documento" required value="<?= htmlspecialchars($_POST['numero_documento'] ?? '') ?>">
+                        <label for="nit">Número de documento:</label>
+                        <input type="text" id="nit" name="nit" required class="md-input" value="<?= htmlspecialchars($_POST['nit'] ?? '') ?>">
                     </div>
                     <div class="forma-row">
                         <label for="nickname">Nombre de la empresa:</label>
-                        <input type="text" id="nickname" name="nickname" required value="<?= htmlspecialchars($_POST['nickname'] ?? '') ?>">
+                        <input type="text" id="nickname" name="nickname" required class="md-input" value="<?= htmlspecialchars($_POST['nickname'] ?? '') ?>">
                     </div>
                     <div class="forma-row">
                         <label for="numero_telefono">Teléfono:</label>
@@ -128,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="forma-row">
                         <label for="actividad_economica">Actividad Económica:</label>
-                        <input type="text" id="actividad_economica" name="actividad_economica" required value="<?= htmlspecialchars($_POST['actividad_economica'] ?? '') ?>">
+                        <input type="text" id="actividad_economica" name="actividad_economica" required class="md-input" value="<?= htmlspecialchars($_POST['actividad_economica'] ?? '') ?>">
                     </div>
                 </div>
             </div>
