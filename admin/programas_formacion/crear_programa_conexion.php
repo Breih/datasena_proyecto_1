@@ -57,7 +57,7 @@ $stmt->bind_param("ssss", $nombre_programa, $codigo_programa, $nivel_formacion, 
 if ($stmt->execute()) {
     echo "<script>
         alert('✅ Programa registrado con éxito.');
-        window.location.href = '../SU_admin/menu_SU_admin/super.menu.html';
+        window.location.href = '../../../SU_admin/menu_SU_admin/super.menu.html';
     </script>";
 } else {
     echo "<script>
