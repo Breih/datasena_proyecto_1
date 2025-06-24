@@ -698,7 +698,8 @@ body {
 .center-box p {
   color: #555;
   font-size: 16px;
-  }
+}
+
 footer {
   position: fixed;
   bottom: 40px; /* Justo encima de la línea azul inferior */

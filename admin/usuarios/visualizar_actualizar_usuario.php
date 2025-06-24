@@ -106,8 +106,13 @@ $conexion->close();
         <link rel="stylesheet" href="css/visualizar_actualizar_usuarios.css">
     </head>
     <body>
+        <!-- Línea azul superior con logo del gobierno -->
+        <div class="blue-line-top">
+            <img src="../../img/gov.png" alt="gov" class="gov-logo">
+        </div>
+
         <header>DATASENA</header>
-        <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+        <img src="../../img/logo-sena.png" alt="Logo SENA" class="logo-sena">
 
         <div class="form-container">
             <h2>Visualizar / Actualizar Usuario</h2>
@@ -192,6 +197,11 @@ $conexion->close();
             <div class="back_visual">
                 <button class="logout-btn" onclick="window.location.href='../admin.menu.html'">Regresar</button>
             </div>
+        </div>
+
+        <!-- Línea azul inferior con logo del gobierno -->
+        <div class="blue-line-bottom">
+            <img class="gov-logo"src="../../img/gov.png" alt="gov" >
         </div>
 
         <footer>
