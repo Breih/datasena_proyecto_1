@@ -41,7 +41,7 @@ if (isset($_SESSION['usuario'])) {
             <p style="color:red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
         <?php endif; ?>
 
-        <form action="super.menu.html" method="POST" onsubmit="return validarFormulario()">
+        <form action="super_menu.html" method="POST" onsubmit="return validarFormulario()">
             <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario" required />
 

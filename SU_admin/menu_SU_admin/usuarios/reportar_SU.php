@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
 
                 <div class="button">
                     <button type="button" id="btnReportar" class="btn-submit">Reportar</button>
-                    <button class="logout-btn" type="button" onclick="window.location.href='super.menu.html'">Regresar</button>
+                    <button class="logout-btn" type="button" onclick="window.location.href='../super_menu.html'">Regresar</button>
                 </div>
             </form>
         </div>

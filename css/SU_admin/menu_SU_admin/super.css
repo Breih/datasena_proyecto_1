@@ -134,6 +134,10 @@ body {
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
+    width: 80%; /* Igual que los inputs y selects */
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto 15px auto;
 }
 
 .form-container button:hover {

@@ -114,7 +114,7 @@ $conexion->close();
 
             <div class="buttons-container">
                 <button type="submit" class="registrar">Actualizar Programa</button>
-                <button type="button" class="registrar" onclick="window.location.href='super.menu.html'">Regresar</button>
+                <button type="button" class="registrar" onclick="window.location.href='../super_menu.html'">Regresar</button>
             </div>
         </form>
     <?php endif; ?>

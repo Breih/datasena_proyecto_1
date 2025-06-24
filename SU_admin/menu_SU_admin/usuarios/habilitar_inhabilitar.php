@@ -233,7 +233,7 @@ $conexion->close();
                     <button type="submit" name="actualizar_estado" class="back">
                          Actualizar Estado
                     </button>
-                    <button type="button" class="habilitar-btn" onclick="window.location.href='../super.menu.html'">
+                    <button type="button" class="habilitar-btn" onclick="window.location.href='../super_menu.html'">
                          Regresar al Menú
                     </button>
                 </div>
@@ -250,7 +250,7 @@ $conexion->close();
             </div>
             
             <div class="buttons-container">
-                <button type="button" class="habilitar-btn" onclick="window.location.href='super.menu.html'">
+                <button type="button" class="habilitar-btn" onclick="window.location.href='../super_menu.html'">
                     Regresar al Menú
                 </button>
             </div>
@@ -263,7 +263,7 @@ $conexion->close();
             </div>
             
             <div class="buttons-container">
-                <button type="button" class="habilitar-btn" onclick="window.location.href='super.menu.html'">
+                <button type="button" class="habilitar-btn" onclick="window.location.href='../super_menu.html'">
                  Regresar al Menú
                 </button>
             </div>

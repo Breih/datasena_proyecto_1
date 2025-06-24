@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="logout-buttons-container">
                 <button type="submit" class="logout-btn">Crear</button>
-                <button type="button" class="logout-btn" onclick="window.location.href='../super.menu.html'">Regresar</button>
+                <button type="button" class="logout-btn" onclick="window.location.href='../super_menu.html'">Regresar</button>
             </div>
         </form>
     </div>
