@@ -83,8 +83,14 @@ $conexion->close();
 
 </head>
 <body>
-    <h1>DATASENA</h1>
-    <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+
+    <!-- Línea azul superior con logo del gobierno -->
+    <div class="blue-line-top">
+        <img src="../../img/gov.png" alt="gov" class="gov-logo">
+    </div>
+
+    <header>DATASENA</header>
+    <img src="../../img/logo-sena.png" alt="Logo SENA" class="logo-sena">
 
     <div class="forma-container">
         <h3>Habilitar / Inhabilitar Usuario</h3>
@@ -268,6 +274,11 @@ $conexion->close();
                 </button>
             </div>
         <?php endif; ?>
+    </div>
+
+    <!-- Línea azul inferior con logo del gobierno -->
+    <div class="blue-line-bottom">
+        <img class="gov-logo"src="../../img/gov.png" alt="gov" >
     </div>
 
     <footer>

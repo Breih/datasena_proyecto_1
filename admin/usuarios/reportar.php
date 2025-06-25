@@ -37,11 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
     <link rel="stylesheet" href="css/reportar_usuarios.css" />
 </head>
 <body>
-    <header>DATASENA</header>
-
-    <div class="logo-container">
-        <img src="../../img/logo-sena.png" alt="Logo"/>
+    <!-- Línea azul superior con logo del gobierno -->
+    <div class="blue-line-top">
+        <img src="../../img/gov.png" alt="gov" class="gov-logo">
     </div>
+
+    <header>DATASENA</header>
+    <img src="../../img/logo-sena.png" alt="Logo SENA" class="logo-sena">
 
     <div class="form-container">
         <div class="report_box">
@@ -88,6 +90,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
                 </div>
             </form>
         </div>
+    </div>
+    
+    <!-- Línea azul inferior con logo del gobierno -->
+    <div class="blue-line-bottom">
+        <img class="gov-logo"src="../../img/gov.png" alt="gov" >
     </div>
 
     <footer class="footer">

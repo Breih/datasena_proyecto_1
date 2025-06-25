@@ -2,35 +2,71 @@
 // empresaRe_su.php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Conexión a la base de datos
     $host = "localhost";
     $db = "datasenn_db";
     $user = "root";
-    $pass = ""; // Sin contraseña
+    $pass = "";
 
     try {
         $conexion = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Recoger datos del formulario
-        $tipo_documento = $_POST['tipo_documento'] ?? '';
-        $nit = $_POST['nit'] ?? '';
-        $nickname = $_POST['nickname'] ?? '';
-        $telefono = $_POST['telefono'] ?? '';
-        $correo = $_POST['correo'] ?? '';
-        $direccion = $_POST['direccion'] ?? '';
-        $rol = $_POST['rol'] ?? '';
-        $actividad_economica = $_POST['actividad_economica'] ?? '';
+        // Recoger y limpiar datos del formulario
+        $tipo_documento = trim($_POST['tipo_documento'] ?? '');
+        $nit = trim($_POST['nit'] ?? '');
+        $nickname = trim($_POST['nickname'] ?? '');
+        $telefono = trim($_POST['telefono'] ?? '');
+        $correo = trim($_POST['correo'] ?? '');
+        $direccion = trim($_POST['direccion'] ?? '');
+        $rol = trim($_POST['rol'] ?? '');
+        $actividad_economica = trim($_POST['actividad_economica'] ?? '');
 
-        // Validar campos obligatorios
-        if (
-            empty($tipo_documento) || empty($nit) || empty($nickname) ||
-            empty($telefono) || empty($correo) || empty($direccion) ||
-            empty($rol) || empty($actividad_economica)
-        ) {
-            $error = "Por favor completa todos los campos obligatorios.";
-        } else {
-            // Insertar datos
+        // Validaciones
+        $errores = [];
+
+        // Validar tipo de documento
+        $tipos_validos = ['NIT', 'CC', 'CE', 'Pasaporte', 'Otro'];
+        if (!in_array($tipo_documento, $tipos_validos)) {
+            $errores[] = "❌ - Tipo de documento inválido.";
+        }
+
+        // Validar NIT / documento (solo números, longitud razonable)
+        if (!preg_match('/^\d{5,20}$/', $nit)) {
+            $errores[] = "❌ - El número de documento debe contener solo números (entre 5 y 20 dígitos).";
+        }
+
+        // Validar nombre de empresa (letras, números, espacios)
+        if (!preg_match('/^[\p{L}\p{N} ]{2,100}$/u', $nickname)) {
+            $errores[] = "❌ - El nombre de la empresa contiene caracteres inválidos.";
+        }
+
+        // Validar teléfono (solo números, opcionalmente con + y espacios)
+        if (!preg_match('/^\+?\d{7,15}$/', $telefono)) {
+            $errores[] = "❌ - El teléfono no tiene un formato válido.";
+        }
+
+        // Validar correo electrónico
+        if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+            $errores[] = "❌ - El correo no es válido.";
+        }
+
+        // Validar dirección (longitud y caracteres válidos)
+        if (strlen($direccion) < 5 || strlen($direccion) > 100) {
+            $errores[] = "❌ - La dirección debe tener entre 5 y 100 caracteres.";
+        }
+
+        // Validar rol (solo letras y espacios)
+        if (!preg_match('/^[\p{L} ]{2,50}$/u', $rol)) {
+            $errores[] = "❌ - El rol contiene caracteres inválidos.";
+        }
+
+        // Validar actividad económica (letras, números y espacios)
+        if (!preg_match('/^[\p{L}\p{N} ]{2,100}$/u', $actividad_economica)) {
+            $errores[] = "❌ - La actividad económica contiene caracteres inválidos.";
+        }
+
+        // Procesar si no hay errores
+        if (empty($errores)) {
             $sql = "INSERT INTO empresas (tipo_documento, nit, nickname, telefono, correo, direccion, rol, actividad_economica) 
                     VALUES (:tipo_documento, :nit, :nickname, :telefono, :correo, :direccion, :rol, :actividad_economica)";
             $stmt = $conexion->prepare($sql);
@@ -42,14 +78,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bindParam(':direccion', $direccion);
             $stmt->bindParam(':rol', $rol);
             $stmt->bindParam(':actividad_economica', $actividad_economica);
-
             $stmt->execute();
+
             $success = "Registro guardado correctamente.";
+        } else {
+            $error = implode("<br>", $errores);
         }
     } catch (PDOException $e) {
         $error = "Error en la base de datos: " . $e->getMessage();
-
-        // Sugerencia si se detecta error por contraseña
         if (strpos($error, 'Access denied') !== false) {
             $error .= "<br>Verifica que el usuario 'root' tenga acceso sin contraseña y esté usando el plugin 'mysql_native_password'.";
         }
@@ -98,15 +134,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div class="forma-row">
                             <label for="nit">Número de <br>documento:</label>
-                            <input type="text" id="nit" name="nit" required class="md-input" value="<?= htmlspecialchars($_POST['nit'] ?? '') ?>">
+                            <input type="text" id="nit" name="nit" placeholder="Ingrese el número de documento" required class="md-input" value="<?= htmlspecialchars($_POST['nit'] ?? '') ?>">
                         </div>
                         <div class="forma-row">
                             <label for="nickname">Nombre de <br>la empresa:</label>
-                            <input type="text" id="nickname" name="nickname" required class="md-input" value="<?= htmlspecialchars($_POST['nickname'] ?? '') ?>">
+                            <input type="text" id="nickname" name="nickname" placeholder="Ingrese el nombre de la empresa" required class="md-input" value="<?= htmlspecialchars($_POST['nickname'] ?? '') ?>">
                         </div>
                         <div class="forma-row">
                             <label for="telefono">Teléfono:</label>
-                            <input type="text" id="telefono" name="telefono" required class="md-input" value="<?= htmlspecialchars($_POST['telefono'] ?? '') ?>">
+                            <input type="text" id="telefono" name="telefono" placeholder="Ingrese su número de telefono" required class="md-input" value="<?= htmlspecialchars($_POST['telefono'] ?? '') ?>">
                         </div>
                     </div>
 
@@ -114,19 +150,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div>
                         <div class="forma-row">
                             <label for="correo">Correo:</label>
-                            <input type="email" id="correo" name="correo" required class="md-input" value="<?= htmlspecialchars($_POST['correo'] ?? '') ?>">
+                            <input type="email" id="correo" name="correo" placeholder="Ingrese su correo electronico" required class="md-input" value="<?= htmlspecialchars($_POST['correo'] ?? '') ?>">
                         </div>
                         <div class="forma-row">
                             <label for="direccion">Dirección:</label>
-                            <input type="text" id="direccion" name="direccion" required class="md-input" value="<?= htmlspecialchars($_POST['direccion'] ?? '') ?>">
+                            <input type="text" id="direccion" name="direccion" placeholder="Ingrese su direccion" required class="md-input" value="<?= htmlspecialchars($_POST['direccion'] ?? '') ?>">
                         </div>
                         <div class="forma-row">
                             <label for="rol">Rol:</label>
-                            <input type="text" id="rol" name="rol" required class="md-input" value="<?= htmlspecialchars($_POST['rol'] ?? '') ?>">
+                            <input type="text" id="rol" name="rol" placeholder="Ingrese su rol" required class="md-input" value="<?= htmlspecialchars($_POST['rol'] ?? '') ?>">
                         </div>
                         <div class="forma-row">
                             <label for="actividad_economica">Actividad<br> Económica:</label>
-                            <input type="text" id="actividad_economica" name="actividad_economica" required class="md-input" value="<?= htmlspecialchars($_POST['actividad_economica'] ?? '') ?>">
+                            <input type="text" id="actividad_economica" name="actividad_economica" placeholder="Ingrese su actividad economica" required class="md-input" value="<?= htmlspecialchars($_POST['actividad_economica'] ?? '') ?>">
                         </div>
                     </div>
                 </div>
