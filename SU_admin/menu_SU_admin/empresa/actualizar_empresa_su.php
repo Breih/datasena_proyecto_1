@@ -151,7 +151,7 @@ $conexion->close();
     <?php endif; ?>
 
     <div class="back_visual">
-        <button class="logout-btn" onclick="window.location.href='super_menu.html'">Regresar</button>
+        <button class="logout-btn" onclick="window.location.href='../super_menu.html'">Regresar</button>
     </div>
 </div>
 

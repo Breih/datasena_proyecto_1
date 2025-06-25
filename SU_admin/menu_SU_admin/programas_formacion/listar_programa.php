@@ -175,7 +175,7 @@ $conexion = null;
     <?php endif; ?>
 
     <div class="buttons-container">
-        <button class="back_listar" type="button" onclick="window.location.href='super_menu.html'">Regresar</button>
+        <button class="back_listar" type="button" onclick="window.location.href='../super_menu.html'">Regresar</button>
     </div>
 </div>
 
