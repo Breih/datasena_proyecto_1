@@ -30,7 +30,7 @@ $conexion = null; // Cerrar la conexión
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Listar Empresas</title>
-    <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon" />
+    <link rel="icon" href="../../img/Logotipo_Datasena.png" type="image/x-icon" />
     <link rel="stylesheet" href="css/listar_empresa.css"/>
     <style>
         /* Centrar el header */
@@ -39,8 +39,72 @@ $conexion = null; // Cerrar la conexión
             font-size: 2.0rem; /* Tamaño de fuente más grande */
             font-weight: bold;
             margin-top: 20px;
+            padding: 25px;
             color: var(--black); /* Color que deseas para el texto */
         }
+
+        /* Línea azul superior con logo del gobierno */
+        .blue-line-top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        background-color: var(--secundary-3-950);
+        z-index: 2000; /* Más alto que cualquier otro elemento */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Línea azul inferior con logo del gobierno */
+        .blue-line-bottom {
+        position: fixed;
+        bottom: 0; /* Pegado al fondo total */
+        left: 0;
+        width: 100%;
+        height: 40px;
+        background-color: var(--secundary-3-950);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+        /* Estilo del logo GOV */
+        .gov-logo {
+            padding: 0%;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        footer {
+        position: fixed;
+        bottom: 40px; /* Justo encima de la línea azul inferior */
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-950);
+        color: var(--white);
+        text-align: center;
+        font-size: 1.0rem;
+        padding: 5px 0;
+        z-index: 1500;
+        }
+
+        /* Imagen flotante */
+        .logo-sena {
+            padding: 35px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 80px;
+            height: auto;
+        }
+
 
         /* Estilos para la barra de búsqueda */
         .search-container {
