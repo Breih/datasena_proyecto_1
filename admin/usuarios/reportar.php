@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
     <link rel="stylesheet" href="css/reportar_usuarios.css" />
 </head>
 <body>
-    <!-- Línea azul superior con logo del gobierno -->
     <div class="blue-line-top">
         <img src="../../img/gov.png" alt="gov" class="gov-logo">
     </div>
@@ -59,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
                         required
                         value="<?= isset($_POST['documento']) ? htmlspecialchars($_POST['documento']) : '' ?>"
                     />
-                    <button type="" name="buscar" class="btn-bus">Buscar</button>
+                    <button type="submit" name="buscar" class="btn-bus">Buscar</button>
                 </div>
 
                 <div class="form_group">
@@ -91,10 +90,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
             </form>
         </div>
     </div>
-    
-    <!-- Línea azul inferior con logo del gobierno -->
+
     <div class="blue-line-bottom">
-        <img class="gov-logo"src="../../img/gov.png" alt="gov" >
+        <img class="gov-logo" src="../../img/gov.png" alt="gov">
     </div>
 
     <footer class="footer">

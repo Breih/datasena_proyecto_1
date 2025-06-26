@@ -103,8 +103,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <link rel="stylesheet" href="css/registro_empresa.css" >
     </head>
     <body>
-        <h1>DATASENA</h1>
-        <img src="../../img/logo-sena.png" alt="Logo" class="img" />
+        <div class="blue-line-top">
+            <img src="../../img/gov.png" alt="gov" class="gov-logo">
+        </div>
+
+        <h2>DATASENA</h2>
+        <img src="../../img/logo-sena.png" alt="Logo" class="logo-sena" />
 
         <div class="forma-container">
             <h3>Registro de Empresa</h3>
@@ -172,6 +176,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button type="button" class="logout-btn" onclick="window.location.href='../admin.menu.html'">Regresar</button>
                 </div>
             </form>
+        </div>
+
+        <div class="blue-line-bottom">
+            <img class="gov-logo" src="../../img/gov.png" alt="gov">
         </div>
 
         <footer>

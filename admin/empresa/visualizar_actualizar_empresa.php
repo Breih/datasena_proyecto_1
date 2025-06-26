@@ -72,8 +72,12 @@ $conexion->close();
     <link rel="stylesheet" href="css/visualizar_actualizar_empresa.css">
 </head>
 <body>
+    <div class="blue-line-top">
+        <img src="../../img/gov.png" alt="gov" class="gov-logo">
+    </div>
+
 <header>DATASENA</header>
-<img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+<img src="../../img/logo-sena.png" alt="Logo SENA" class="logo-sena">
 
 <div class="form-container">
     <h2>Visualizar / Actualizar Empresa</h2>
@@ -146,6 +150,9 @@ $conexion->close();
         <button class="logout-btn" onclick="window.location.href='../admin.menu.html'">Regresar</button>
     </div>
 </div>
+    <div class="blue-line-bottom">
+        <img class="gov-logo" src="../../img/gov.png" alt="gov">
+    </div>
 
 <footer>
     <a>&copy; Todos los derechos reservados al SENA</a>
