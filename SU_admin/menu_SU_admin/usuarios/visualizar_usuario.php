@@ -1,11 +1,16 @@
 <?php
-// Conexión
+// Mostrar errores para depuración
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "datasenn_db");
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-// Inicializar datos del usuario
+// Inicializar datos vacíos por defecto
 $usuario = [
     'nombre_completo' => '',
     'tipo_documento' => '',
@@ -19,30 +24,32 @@ $usuario = [
 
 $mensaje = "";
 
-// Si se envió el formulario para actualizar (método POST)
+// Si se envió el formulario por POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recuperar datos del formulario
-    $nombre_completo = $_POST['nombre_completo'];
-    $tipo_documento = $_POST['tipo_documento'];
-    $numero_identidad = $_POST['numero_identidad'];
-    $residencia = $_POST['residencia'];
-    $tipo_sangre = $_POST['tipo_sangre'];
-    $correo = $_POST['correo'];
-    $telefono = $_POST['telefono'];
-    $estado = $_POST['estado'];
+    $nombre_completo = $_POST['nombre_completo'] ?? '';
+    $tipo_documento = $_POST['tipo_documento'] ?? '';
+    $numero_identidad = $_POST['numero_identidad'] ?? '';
+    $residencia = $_POST['residencia'] ?? '';
+    $tipo_sangre = $_POST['tipo_sangre'] ?? '';
+    $correo = $_POST['correo'] ?? '';
+    $telefono = $_POST['telefono'] ?? '';
+    $estado = $_POST['estado'] ?? '';
 
-    // Recuperar el número de identidad original desde el GET o el formulario
-    $numero_identidad_original = $_POST['numero_identidad_original'] ?? $_GET['numero_identidad'];
+    $numero_identidad_original = $_POST['numero_identidad_original'] ?? $_GET['numero_identidad'] ?? '';
 
-    // Validación: Nombre completo solo debe contener letras y espacios
-    if (!preg_match("/^[a-zA-Z\s]+$/", $nombre_completo)) {
+    // Validaciones del lado del servidor
+    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/", $nombre_completo)) {
         $mensaje = "El nombre completo solo debe contener letras y espacios.";
-    }
-    // Validación: Número de identidad solo debe contener números
-    elseif (!preg_match("/^[0-9]+$/", $numero_identidad)) {
+    } elseif (!preg_match("/^[0-9]+$/", $numero_identidad)) {
         $mensaje = "El número de identidad solo debe contener números.";
+    } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+        $mensaje = "El correo electrónico no es válido.";
+    } elseif (!preg_match("/^[0-9]{7,15}$/", $telefono)) {
+        $mensaje = "El teléfono solo debe contener entre 7 y 15 dígitos.";
+    } elseif (!preg_match("/^[\p{L}\p{N}\s\-,.#]+$/u", $residencia)) {
+        $mensaje = "La residencia contiene caracteres inválidos.";
     } else {
-        // Si el número de identidad ha cambiado, verificar si ya está en uso
+        // Si el número de identidad cambió, verificar si ya existe
         if ($numero_identidad !== $numero_identidad_original) {
             $stmt = $conexion->prepare("SELECT COUNT(*) FROM usuarios WHERE numero_identidad = ?");
             $stmt->bind_param("s", $numero_identidad);
@@ -54,32 +61,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($count > 0) {
                 $mensaje = "El número de identidad ya está en uso.";
             } else {
-                // Actualizar usuario
                 $stmt = $conexion->prepare("UPDATE usuarios SET nombre_completo=?, tipo_documento=?, numero_identidad=?, residencia=?, tipo_sangre=?, correo=?, telefono=?, estado=? WHERE numero_identidad=?");
                 $stmt->bind_param("sssssssss", $nombre_completo, $tipo_documento, $numero_identidad, $residencia, $tipo_sangre, $correo, $telefono, $estado, $numero_identidad_original);
                 if ($stmt->execute()) {
                     $mensaje = "Usuario actualizado correctamente.";
                 } else {
-                    $mensaje = "Error al actualizar el usuario.";
+                    $mensaje = "Error al actualizar el usuario: " . $stmt->error;
                 }
                 $stmt->close();
             }
         } else {
-            // Si el número de identidad no cambió, solo actualizamos los demás campos
+            // Actualizar sin cambiar número de identidad
             $stmt = $conexion->prepare("UPDATE usuarios SET nombre_completo=?, tipo_documento=?, residencia=?, tipo_sangre=?, correo=?, telefono=?, estado=? WHERE numero_identidad=?");
             $stmt->bind_param("ssssssss", $nombre_completo, $tipo_documento, $residencia, $tipo_sangre, $correo, $telefono, $estado, $numero_identidad_original);
-
             if ($stmt->execute()) {
                 $mensaje = "Usuario actualizado correctamente.";
             } else {
-                $mensaje = "Error al actualizar el usuario.";
+                $mensaje = "Error al actualizar el usuario: " . $stmt->error;
             }
             $stmt->close();
         }
     }
 }
 
-// Si se envió por GET (para buscar usuario)
+// Si se envió por GET para cargar datos
 $numero_identidad = $_GET['numero_identidad'] ?? ($_POST['numero_identidad'] ?? '');
 if ($numero_identidad !== '') {
     $stmt = $conexion->prepare("SELECT nombre_completo, tipo_documento, numero_identidad, residencia, tipo_sangre, correo, telefono, estado FROM usuarios WHERE numero_identidad = ?");
@@ -96,6 +101,7 @@ if ($numero_identidad !== '') {
 
 $conexion->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
