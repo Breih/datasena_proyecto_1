@@ -148,12 +148,18 @@ body {
 /* container_admin */
 /* Form Container */
 .forma-container {
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 30px;
-    border-radius: 10px;
+    max-width: 850px; /* Ancho máximo ligeramente reducido */
+    margin: 15px auto; /* Margen ligeramente reducido */
+    padding: 30px; /* Padding ligeramente reducido */
+    border-radius: 1.2rem; /* Radio del borde ligeramente reducido */
     background-color: var(--secundary-3-200);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 6px var(--secundary-3-950); /* Sombra ligeramente reducida */
+}
+
+.forma-containera {
+    max-width: 90%; /* Ligeramente más pequeño que antes en responsive */
+    margin: 10px auto;
+    padding: 10px; /* Padding más pequeño en responsive */
 }
 
 h3 {
