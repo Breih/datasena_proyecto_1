@@ -1,5 +1,5 @@
 <?php
-$conexion = new mysqli("localhost", "root", "", "datasenn_db");
+$conexion = new mysqli("localhost", "root", "123456", "datasenn_db");
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
