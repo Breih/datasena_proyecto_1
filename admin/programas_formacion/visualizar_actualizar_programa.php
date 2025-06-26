@@ -54,11 +54,16 @@ $conexion->close();
     <meta charset="UTF-8">
     <title>Visualizar / Actualizar Programa</title>
     <link rel="stylesheet" href="css/visualizar_actualizar_programa_formacion.css">
-    <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
+    <link rel="icon" href="../../img/Logotipo_Datasena.png" type="image/x-icon">
 </head>
 <body>
+      <!-- Línea azul superior con logo del gobierno -->
+    <div class="blue-line-top">
+        <img src="../../img/gov.png" alt="gov" class="gov-logo">
+    </div>
+
 <header>DATASENA</header>
-<img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+<img src="../../img/logo-sena.png" alt="Logo SENA" class="logo-sena">
 
 <div class="form-container">
     <h2>Visualizar / Actualizar Programa</h2>
@@ -122,6 +127,11 @@ $conexion->close();
         <button class="logout-btn" onclick="window.location.href='../admin.menu.html'">Regresar</button>
     </div>
 </div>
+
+    <!-- Línea azul inferior con logo del gobierno -->
+    <div class="blue-line-bottom">
+        <img src="../../img/gov.png" alt="gov" class="gov-logo">
+    </div>
 
 <footer>
     <a>&copy; Todos los derechos reservados al SENA</a>

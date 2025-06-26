@@ -90,31 +90,70 @@ body {
 
 /* Header */
 header {
+    padding: 30px;
     margin-top: 20px;
     font-size: 2.0rem;
     font-weight: bold;
     text-align: center;
 }
 
+/* Línea azul superior con logo del gobierno */
+.blue-line-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: var(--secundary-3-950);
+  z-index: 2000; /* Más alto que cualquier otro elemento */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 
-/* Footer */
-footer {
-    background-color: var(--primary-950);
-    color: white;
-    text-align: center;
-    font-size: 12px;
-    width: 100%;
-    margin-top: auto;
-    padding: 5px 0;
+/* Línea azul inferior con logo del gobierno */
+.blue-line-bottom {
+  position: fixed;
+  bottom: 0; /* Pegado al fondo total */
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: var(--secundary-3-950);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del logo GOV */
+.gov-logo {
+  height: 30px;
+  object-fit: contain;
 }
 
 /* Imagen flotante */
-img {
+.logo-sena {
+    padding: 35px;
     position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 60px;
+    top: 10px;
+    right: 10px;
+    width: 80px;
     height: auto;
+}
+
+footer {
+  position: fixed;
+  bottom: 40px; /* Justo encima de la línea azul inferior */
+  left: 0;
+  width: 100%;
+  background-color: var(--primary-950);
+  color: var(--white);
+  text-align: center;
+  font-size: 1.0rem;
+  padding: 5px 0;
+  z-index: 1500;
 }
 
 /* Main Content */

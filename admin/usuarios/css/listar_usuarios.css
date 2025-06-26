@@ -140,6 +140,30 @@ header .logo {
     object-fit: contain;
 }
 
+footer {
+  position: fixed;
+  bottom: 40px; /* Justo encima de la línea azul inferior */
+  left: 0;
+  width: 100%;
+  background-color: var(--primary-950);
+  color: var(--white);
+  text-align: center;
+  font-size: 1.0rem;
+  padding: 5px 0;
+  z-index: 1500;
+}
+
+/* Imagen flotante */
+.logo-sena {
+    padding: 35px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 80px;
+    height: auto;
+}
+
+
 /* Estilos para la barra de búsqueda */
 .search-container {
     margin-bottom: 20px;
@@ -244,7 +268,7 @@ h1 {
 h2 {
     text-align: center;
     margin-bottom: 25px;
-    font-size: var(--font-size-h3);
+    font-size: var(--font-size-h2);
     border-bottom: 1px solid #ddd;
     padding-bottom: 12px;
 }
