@@ -175,6 +175,7 @@ body {
   height: 100%;
   z-index: 10;
 }
+
 /* Sidebar */
 .sidebar {
   background-color: var(--white);
