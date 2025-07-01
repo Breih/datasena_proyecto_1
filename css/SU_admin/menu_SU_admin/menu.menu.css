@@ -175,6 +175,7 @@ body {
   height: 100%;
   z-index: 10;
 }
+
 /* Sidebar */
 .sidebar {
   background-color: var(--white);
@@ -222,6 +223,42 @@ body {
   transition: background-color 0.3s;
 }
 
+/* Línea azul superior con logo del gobierno */
+.blue-line-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: var(--secundary-3-950);
+  z-index: 2000; /* Más alto que cualquier otro elemento */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Línea azul inferior con logo del gobierno */
+.blue-line-bottom {
+  position: fixed;
+  bottom: 0; /* Pegado al fondo total */
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: var(--secundary-3-950);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del logo GOV */
+.gov-logo {
+  height: 30px;
+  object-fit: contain;
+}
+
 .menu-btn:hover {
   background-color: var(--primary-950);
   color: var(--white);
@@ -241,6 +278,22 @@ body {
   flex: 1;
   overflow-y: auto; /* Permitimos el scroll vertical si el contenido es largo */
   padding-top: 80px; /* Añadimos padding superior para no ocultar contenido detrás de la barra superior */
+}
+
+.img-container {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  z-index: 1010;
+}
+
+.top-logo {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
 }
 
 .logo {
@@ -339,7 +392,7 @@ body {
   align-items: center;
   gap: 50px;
   position: fixed;
-  top: 0;
+  top: 2rem;
   /* left: 4%; /* Ajustamos left */ 
   left: 0; /* Lo fijamos a la izquierda y controlamos el ancho */
   width: 100%; /* Ancho completo */
@@ -565,6 +618,7 @@ body {
 }
 
 .dropdown-btn {
+  margin-top: 4rem;
   background-color: transparent;
   color: var(--white);
   padding: 10px 15px;
@@ -628,9 +682,9 @@ body {
 
 /* Cuadro centrado */
 .center-box {
-  width: 80%;
+  width: 90%;
   max-width: 600px;
-  margin: 20% auto;
+  margin: 40% auto;
   padding: 20px;
   background-color: var(--secundary-3-300);
   border-radius: 10px;
@@ -645,16 +699,25 @@ body {
 .center-box p {
   color: #555;
   font-size: 16px;
-  }
+}
+
 footer {
   position: fixed;
-  bottom: 0;
+  bottom: 40px; /* Justo encima de la línea azul inferior */
   left: 0;
   width: 100%;
   background-color: var(--primary-950);
   color: var(--white);
   text-align: center;
-  font-size: 14px;
-  padding: 5px;
-  z-index: 1000; /* Asegura que el footer esté sobre el contenido */
+  font-size: 1.0rem;
+  padding: 5px 0;
+  z-index: 1500;
+}
+
+@media screen and (max-width: 600px) {
+  .img-container {
+    height: 40px;
+    top: 5px;
+    right: 10px;
+  }
 }
