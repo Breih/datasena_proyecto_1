@@ -14,9 +14,9 @@ if (isset($_POST['search'])) {
 }
 
 // Consulta para obtener las empresas, con búsqueda si es necesario
-$sql = "SELECT id, tipo_documento, numero_documento, nickname FROM empresa WHERE 
+$sql = "SELECT id, tipo_documento, numero_identidad, nickname FROM empresas WHERE 
         tipo_documento LIKE :search OR
-        numero_documento LIKE :search OR
+        numero_identidad LIKE :search OR
         nickname LIKE :search";
 $stmt = $conexion->prepare($sql);
 $stmt->bindValue(':search', "%$searchQuery%");
@@ -47,7 +47,7 @@ $conexion = null; // Cerrar la conexión
                 type="text"
                 id="search-input"
                 name="search"
-                placeholder="Buscar por tipo documento, número de documento o nickname"
+                placeholder="Buscar por tipo documento, número de identidad o nickname"
                 value="<?= htmlspecialchars($searchQuery) ?>"
             />
             <button type="submit" class="search-btn">Buscar</button>
@@ -61,7 +61,7 @@ $conexion = null; // Cerrar la conexión
                     <thead>
                         <tr>
                             <th>Tipo Documento</th>
-                            <th>Número Documento</th>
+                            <th>Número Identidad</th>
                             <th>Nickname</th>
                             <th>Acciones</th>
                         </tr>
@@ -70,7 +70,7 @@ $conexion = null; // Cerrar la conexión
                         <?php foreach ($empresas as $empresa): ?>
                             <tr>
                                 <td><?= htmlspecialchars($empresa['tipo_documento']) ?></td>
-                                <td><?= htmlspecialchars($empresa['numero_documento']) ?></td>
+                                <td><?= htmlspecialchars($empresa['numero_identidad']) ?></td>
                                 <td><?= htmlspecialchars($empresa['nickname']) ?></td>
                                 <td>
                                     <button class="listar-btn" onclick="openModal(<?= $empresa['id'] ?>)">Visualizar</button>
@@ -120,13 +120,13 @@ $conexion = null; // Cerrar la conexión
                 } else {
                     modalBody.innerHTML = `
                         <p><strong>Tipo Documento:</strong> ${data.tipo_documento}</p>
-                        <p><strong>Número Documento:</strong> ${data.numero_documento}</p>
+                        <p><strong>Número Identidad:</strong> ${data.numero_identidad}</p>
                         <p><strong>Nickname:</strong> ${data.nickname}</p>
                         <p><strong>Teléfono:</strong> ${data.telefono}</p>
                         <p><strong>Correo:</strong> ${data.correo}</p>
                         <p><strong>Dirección:</strong> ${data.direccion}</p>
-                        <p><strong>Rol:</strong> ${data.rol}</p>
                         <p><strong>Actividad Económica:</strong> ${data.actividad_economica}</p>
+                        <p><strong>Estado:</strong> ${data.estado}</p>
                     `;
                 }
             }

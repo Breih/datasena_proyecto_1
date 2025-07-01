@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
 
     if ($documento !== "") {
         try {
+
             $conexion = new PDO("mysql:host=localhost;dbname=datasenn_db", "root", "");
             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

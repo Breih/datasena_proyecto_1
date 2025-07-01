@@ -4,104 +4,93 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "datasenn_db");
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-// Inicializar datos vacíos por defecto
 $usuario = [
-    'nombre_completo' => '',
-    'tipo_documento' => '',
-    'numero_identidad' => '',
-    'residencia' => '',
-    'tipo_sangre' => '',
-    'correo' => '',
-    'telefono' => '',
-    'estado' => ''
+    'nombre_completo' => '', 'tipo_documento' => '', 'numero_identidad' => '',
+    'residencia' => '', 'tipo_sangre' => '', 'correo' => '', 'telefono' => '', 'estado' => ''
 ];
-
+$errores = [];
 $mensaje = "";
 
-// Si se envió el formulario por POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre_completo = $_POST['nombre_completo'] ?? '';
-    $tipo_documento = $_POST['tipo_documento'] ?? '';
-    $numero_identidad = $_POST['numero_identidad'] ?? '';
-    $residencia = $_POST['residencia'] ?? '';
-    $tipo_sangre = $_POST['tipo_sangre'] ?? '';
-    $correo = $_POST['correo'] ?? '';
-    $telefono = $_POST['telefono'] ?? '';
-    $estado = $_POST['estado'] ?? '';
+    foreach ($usuario as $campo => &$valor) {
+        $valor = trim($_POST[$campo] ?? '');
+    }
+    unset($valor);
 
     $numero_identidad_original = $_POST['numero_identidad_original'] ?? $_GET['numero_identidad'] ?? '';
 
-    // Validaciones del lado del servidor
-    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/", $nombre_completo)) {
-        $mensaje = "El nombre completo solo debe contener letras y espacios.";
-    } elseif (!preg_match("/^[0-9]+$/", $numero_identidad)) {
-        $mensaje = "El número de identidad solo debe contener números.";
-    } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        $mensaje = "El correo electrónico no es válido.";
-    } elseif (!preg_match("/^[0-9]{7,15}$/", $telefono)) {
-        $mensaje = "El teléfono solo debe contener entre 7 y 15 dígitos.";
-    } elseif (!preg_match("/^[\p{L}\p{N}\s\-,.#]+$/u", $residencia)) {
-        $mensaje = "La residencia contiene caracteres inválidos.";
-    } else {
-        // Si el número de identidad cambió, verificar si ya existe
-        if ($numero_identidad !== $numero_identidad_original) {
+    if (!preg_match("/^[a-zA-Z\sÀ-ÿ]+$/", $usuario['nombre_completo'])) {
+        $errores['nombre_completo'] = "El nombre completo solo debe contener letras y espacios.";
+    }
+    if (!preg_match("/^\d{10}$/", $usuario['numero_identidad'])) {
+        $errores['numero_identidad'] = "El número de identidad debe contener exactamente 10 dígitos.";
+    }
+    if (!filter_var($usuario['correo'], FILTER_VALIDATE_EMAIL)) {
+        $errores['correo'] = "El correo electrónico no es válido.";
+    }
+    if (!preg_match("/^\d{10}$/", $usuario['telefono'])) {
+        $errores['telefono'] = "El teléfono debe contener exactamente 10 dígitos.";
+    }
+    if (!preg_match("/^[\p{L}\p{N}\s\-,.#]+$/u", $usuario['residencia'])) {
+        $errores['residencia'] = "La residencia contiene caracteres inválidos.";
+    }
+
+    if (empty($errores)) {
+        if ($usuario['numero_identidad'] !== $numero_identidad_original) {
             $stmt = $conexion->prepare("SELECT COUNT(*) FROM usuarios WHERE numero_identidad = ?");
-            $stmt->bind_param("s", $numero_identidad);
+            $stmt->bind_param("s", $usuario['numero_identidad']);
             $stmt->execute();
             $stmt->bind_result($count);
             $stmt->fetch();
             $stmt->close();
 
             if ($count > 0) {
-                $mensaje = "El número de identidad ya está en uso.";
-            } else {
-                $stmt = $conexion->prepare("UPDATE usuarios SET nombre_completo=?, tipo_documento=?, numero_identidad=?, residencia=?, tipo_sangre=?, correo=?, telefono=?, estado=? WHERE numero_identidad=?");
-                $stmt->bind_param("sssssssss", $nombre_completo, $tipo_documento, $numero_identidad, $residencia, $tipo_sangre, $correo, $telefono, $estado, $numero_identidad_original);
-                if ($stmt->execute()) {
-                    $mensaje = "Usuario actualizado correctamente.";
-                } else {
-                    $mensaje = "Error al actualizar el usuario: " . $stmt->error;
-                }
-                $stmt->close();
+                $errores['numero_identidad'] = "El número de identidad ya está en uso.";
             }
-        } else {
-            // Actualizar sin cambiar número de identidad
-            $stmt = $conexion->prepare("UPDATE usuarios SET nombre_completo=?, tipo_documento=?, residencia=?, tipo_sangre=?, correo=?, telefono=?, estado=? WHERE numero_identidad=?");
-            $stmt->bind_param("ssssssss", $nombre_completo, $tipo_documento, $residencia, $tipo_sangre, $correo, $telefono, $estado, $numero_identidad_original);
-            if ($stmt->execute()) {
-                $mensaje = "Usuario actualizado correctamente.";
-            } else {
-                $mensaje = "Error al actualizar el usuario: " . $stmt->error;
-            }
-            $stmt->close();
         }
+    }
+
+    if (empty($errores)) {
+        if ($usuario['numero_identidad'] !== $numero_identidad_original) {
+            $stmt = $conexion->prepare("UPDATE usuarios SET nombre_completo=?, tipo_documento=?, numero_identidad=?, residencia=?, tipo_sangre=?, correo=?, telefono=?, estado=? WHERE numero_identidad=?");
+            $stmt->bind_param("sssssssss",
+                $usuario['nombre_completo'], $usuario['tipo_documento'], $usuario['numero_identidad'],
+                $usuario['residencia'], $usuario['tipo_sangre'], $usuario['correo'], $usuario['telefono'],
+                $usuario['estado'], $numero_identidad_original);
+        } else {
+            $stmt = $conexion->prepare("UPDATE usuarios SET nombre_completo=?, tipo_documento=?, residencia=?, tipo_sangre=?, correo=?, telefono=?, estado=? WHERE numero_identidad=?");
+            $stmt->bind_param("ssssssss",
+                $usuario['nombre_completo'], $usuario['tipo_documento'], $usuario['residencia'],
+                $usuario['tipo_sangre'], $usuario['correo'], $usuario['telefono'], $usuario['estado'], $numero_identidad_original);
+        }
+
+        if ($stmt->execute()) {
+            $mensaje = "Usuario actualizado correctamente.";
+        } else {
+            $mensaje = "Error al actualizar el usuario: " . $stmt->error;
+        }
+        $stmt->close();
     }
 }
 
-// Si se envió por GET para cargar datos
 $numero_identidad = $_GET['numero_identidad'] ?? ($_POST['numero_identidad'] ?? '');
 if ($numero_identidad !== '') {
     $stmt = $conexion->prepare("SELECT nombre_completo, tipo_documento, numero_identidad, residencia, tipo_sangre, correo, telefono, estado FROM usuarios WHERE numero_identidad = ?");
     $stmt->bind_param("s", $numero_identidad);
     $stmt->execute();
     $resultado = $stmt->get_result();
-
     if ($resultado->num_rows > 0) {
         $usuario = $resultado->fetch_assoc();
     }
-
     $stmt->close();
 }
-
 $conexion->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -110,6 +99,16 @@ $conexion->close();
     <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
     <title>Visualizar y Actualizar Usuario</title>
     <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/visualizar_usuario.css">
+    <style>
+        .error-msg {
+            color: red;
+            font-size: 0.85em;
+            margin-top: 3px;
+        }
+        .form-row input:invalid {
+            border-color: red;
+        }
+    </style>
 </head>
 <body>
 <header>DATASENA</header>
@@ -118,12 +117,12 @@ $conexion->close();
 <div class="form-container">
     <h2>Visualizar / Actualizar Usuario</h2>
 
-    <!-- Mensaje de éxito o error -->
     <?php if ($mensaje): ?>
-        <p style="color:green; font-weight:bold;"><?= htmlspecialchars($mensaje) ?></p>
+        <p style="color:green; font-weight:bold;">
+            <?= htmlspecialchars($mensaje) ?>
+        </p>
     <?php endif; ?>
 
-    <!-- Buscar por número de identidad -->
     <form action="visualizar_usuario.php" method="get">
         <label for="buscar_id">Buscar por número de identidad:</label>
         <input type="text" id="buscar_id" name="numero_identidad" placeholder="Ingrese el número de identidad" required>
@@ -132,11 +131,11 @@ $conexion->close();
 
     <hr>
 
-    <!-- Formulario de edición -->
     <form class="form-grid" action="visualizar_usuario.php" method="post">
         <div class="form-row">
             <label>Nombre completo:</label>
-            <input type="text" name="nombre_completo" value="<?= htmlspecialchars($usuario['nombre_completo']) ?>" required pattern="[A-Za-z\s]+" title="El nombre completo solo puede contener letras y espacios">
+            <input type="text" name="nombre_completo" value="<?= htmlspecialchars($usuario['nombre_completo']) ?>" required>
+            <?php if (!empty($errores['nombre_completo'])): ?><div class="error-msg"><?= $errores['nombre_completo'] ?></div><?php endif; ?>
         </div>
 
         <div class="form-row">
@@ -148,37 +147,38 @@ $conexion->close();
                 <option value="Cédula de Extranjería" <?= $usuario['tipo_documento'] == 'Cédula de Extranjería' ? 'selected' : '' ?>>Cédula de Extranjería</option>
             </select>
         </div>
+
         <div class="form-row">
             <label>Número de identidad:</label>
             <input type="text" name="numero_identidad" value="<?= htmlspecialchars($usuario['numero_identidad']) ?>" required>
             <input type="hidden" name="numero_identidad_original" value="<?= htmlspecialchars($usuario['numero_identidad']) ?>">
+            <?php if (!empty($errores['numero_identidad'])): ?><div class="error-msg"><?= $errores['numero_identidad'] ?></div><?php endif; ?>
         </div>
+
         <div class="form-row">
             <label>Residencia:</label>
             <input type="text" name="residencia" value="<?= htmlspecialchars($usuario['residencia']) ?>" required>
+            <?php if (!empty($errores['residencia'])): ?><div class="error-msg"><?= $errores['residencia'] ?></div><?php endif; ?>
         </div>
 
         <div class="form-row">
             <label>Correo:</label>
             <input type="email" name="correo" value="<?= htmlspecialchars($usuario['correo']) ?>" required>
+            <?php if (!empty($errores['correo'])): ?><div class="error-msg"><?= $errores['correo'] ?></div><?php endif; ?>
         </div>
 
         <div class="form-row">
             <label>Teléfono:</label>
             <input type="text" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" required>
+            <?php if (!empty($errores['telefono'])): ?><div class="error-msg"><?= $errores['telefono'] ?></div><?php endif; ?>
         </div>
 
         <div class="form-row">
             <label>Tipo de sangre:</label>
             <select name="tipo_sangre" required>
-                <option value="A+" <?= $usuario['tipo_sangre'] == 'A+' ? 'selected' : '' ?>>A+</option>
-                <option value="A-" <?= $usuario['tipo_sangre'] == 'A-' ? 'selected' : '' ?>>A-</option>
-                <option value="B+" <?= $usuario['tipo_sangre'] == 'B+' ? 'selected' : '' ?>>B+</option>
-                <option value="B-" <?= $usuario['tipo_sangre'] == 'B-' ? 'selected' : '' ?>>B-</option>
-                <option value="AB+" <?= $usuario['tipo_sangre'] == 'AB+' ? 'selected' : '' ?>>AB+</option>
-                <option value="AB-" <?= $usuario['tipo_sangre'] == 'AB-' ? 'selected' : '' ?>>AB-</option>
-                <option value="O+" <?= $usuario['tipo_sangre'] == 'O+' ? 'selected' : '' ?>>O+</option>
-                <option value="O-" <?= $usuario['tipo_sangre'] == 'O-' ? 'selected' : '' ?>>O-</option>
+                <?php foreach (["A+","A-","B+","B-","AB+","AB-","O+","O-"] as $tipo): ?>
+                    <option value="<?= $tipo ?>" <?= $usuario['tipo_sangre'] == $tipo ? 'selected' : '' ?>><?= $tipo ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
 

@@ -1,192 +1,660 @@
+/* Variables y estilos globales */
 :root {
-  --primary-1-50: #eff6ff;
-  --primary-1-100: #dbeafe;
-  --primary-1-200: #bfdbfe;
-  --primary-1-300: #93c5fd;
-  --primary-1-400: #60a5fa;
-  --primary-1-500: #3b82f6;
-  --primary-1-600: #2563eb;
-  --primary-1-700: #1d4ed8;
-  --primary-1-800: #1e40af;
-  --primary-1-900: #1e3a8a;
-  --primary-1-950: #172554;
+  /* Primary color */
+  --primary-950: #39A900;
+  --primary-900: #4db21a;
+  --primary-800: #61BA33;
+  --primary-700: #74c34d;
+  --primary-600: #88cb66;
+  --primary-500: #9cd480;
+  --primary-400: #b0dd99;
+  --primary-300: #c4e5b3;
+  --primary-200: #d7eecc;
 
-  --secondary-1-50: #fdf2f8;
-  --secondary-1-100: #fce7f3;
-  --secondary-1-200: #fbcfe8;
-  --secondary-1-300: #f9a8d4;
-  --secondary-1-400: #f472b6;
-  --secondary-1-500: #ec4899;
-  --secondary-1-600: #db2777;
-  --secondary-1-700: #be185d;
-  --secondary-1-800: #9d174d;
-  --secondary-1-900: #831843;
-  --secondary-1-950: #500724;
+  /* Secondary color */
+  --secundary-1-950: #007832;
+  --secundary-1-900: #1A8647;
+  --secundary-1-800: #33935B;
+  --secundary-1-700: #4DA170;
+  --secundary-1-600: #66AE84;
+  --secundary-1-500: #80BC99;
+  --secundary-1-400: #99C9AD;
+  --secundary-1-300: #B3D7C2;
+  --secundary-1-200: #cce4d6;
+  --secundary-2-950: #71277a;
+  --secundary-2-900: #7f3d86;
+  --secundary-2-800: #8d5295;
+  --secundary-2-700: #9c68a2;
+  --secundary-2-600: #aa7daf;
+  --secundary-2-500: #b893bd;
+  --secundary-2-400: #c6a9ca;
+  --secundary-2-300: #dabed7;
+  --secundary-2-200: #e3daea;
+  --secundary-3-950: #00304d;
+  --secundary-3-900: #1a455f;
+  --secundary-3-800: #335971;
+  --secundary-3-700: #4d6e82;
+  --secundary-3-600: #668394;
+  --secundary-3-500: #8098a6;
+  --secundary-3-400: #99acb8;
+  --secundary-3-300: #b3c1ca;
+  --secundary-3-200: #ccd6db;
+  --secundary-4-950: #fdc300;
+  --secundary-4-900: #fdc91a;
+  --secundary-4-800: #fdcf33;
+  --secundary-4-700: #fed54d;
+  --secundary-4-600: #fedb66;
+  --secundary-4-500: #fee180;
+  --secundary-4-400: #fee799;
+  --secundary-4-300: #feedb3;
+  --secundary-4-200: #fff3cc;
 
-  --font-size-body: clamp(1rem, 1.2vw, 1.2rem);
-  --font-size-h1: clamp(2rem, 4vw, 3rem);
-  --font-size-h2: clamp(1.5rem, 3vw, 2.5rem);
+  /* Basic color */
+  --white: #ffffff;
+  --black: #000000;
+  --gray-950: #f6f6f6;
+  --gray-900: #e1e1e1;
+  --gray-800: #cccccc;
+  --gray-700: #b7b7b7;
+  --gray-600: #a2a2a2;
+  --gray-500: #8d8d8d;
+
+  /* Font-family */
+  --main-font: Arial, sans-serif;
+  --font-size-h1-plus: 4.8rem;
+  --font-size-h1: 3.2rem;
+  --font-size-h2: 2.4rem;
+  --font-size-h3: 2.0rem;
+  --font-size-h4: 1.6rem;
+  --font-size-h5: 1.4rem;
+  --font-size-h6: 1.2rem;
+
 }
 
+/* Reset y estilos generales */
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: var(--primary-1-50);
-  min-height: 100vh;
-  font-size: var(--font-size-body);
+  font-family: Arial, sans-serif;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden; /* Evita el scroll horizontal */
+  /* Eliminamos overflow: hidden; general si el contenido puede ser más largo que la pantalla */
 }
 
+/* Contenedor principal */
 .container {
   display: flex;
-  min-height: 100vh;
+  width: 100%;
+  min-height: 100vh; /* Usamos min-height para permitir que el contenido empuje la altura */
+  /* Eliminamos display: flex y height: 100vh duplicados */
+  flex-direction: column;
 }
 
-.menu-wrapper {
-  width: 5%;
-  background-color: var(--primary-1-900);
+/* Botones superiores */
+.top-buttons {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
+  gap: 15px; /* Espacio entre los botones */
+  padding: 15px 20px;
+  background-color: var(--primary-950);
   position: relative;
+  z-index: 20;
+  margin-bottom: 50px;
+}
+
+.top-btn {
+  background-color:var(--white);
+  border: 2px solid var(--primary-950); /* Borde del botón */
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.top-btn:hover {
+  background-color: var(--white);
+  transform: scale(1.05); /* Aumento al pasar el mouse */
+}
+
+/* Contenedor de cada botón con submenu */
+.dropdown-container {
+  position: relative;
+}
+
+/* Submenú */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--primary-800); /* Fondo verde */
+  border-radius: 10px;
+  margin-top: 10px; /* Margen para separar el submenú */
+  min-width: 220px;
+  box-shadow: 0 4px 8px var(--secundary-1-950);
+  z-index: 30;
+  transition: opacity 0.3s ease;
+}
+
+.submenu a {
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: normal;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid var(--primary-800); 
+  border-radius: 10px;
+  
+
+}
+
+.submenu a:hover {
+  background-color: var(--secundary-1-900); /* Fondo más oscuro al pasar el mouse */
+  border-radius: 10px;
+}
+
+/* Mostrar submenú */
+.submenu.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Fondo oscuro al desplegar */
+.overlay {
+  position: fixed;
+  display: none;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 10;
 }
-
-.logo-container {
-  margin-top: 20px;
-}
-
-.logo-container img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
-.m-btn {
-  background-color: var(--secondary-1-600);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 10px;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  bottom: 20px;
-}
-
-.m-btn:hover {
-  background-color: var(--secondary-1-700);
-}
-
-.main-content {
-  flex-grow: 1;
-  padding: 40px;
-  background-color: var(--primary-1-100);
+/* Sidebar */
+.sidebar {
+  background-color: var(--white);
+  width: 250px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position: fixed;
+  height: 93%;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px var(--black);
+  z-index: 1000; /* Ajustamos z-index si hay conflicto */
 }
 
-h1 {
-  color: var(--primary-1-800);
-  font-size: var(--font-size-h1);
+.user-profile {
+  text-align: left;
   margin-bottom: 20px;
 }
 
+.user-icon {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--gray-500);
+}
+
+/* Menú */
+.menu {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.menu-btn {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: var(--white);
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.menu-btn:hover {
+  background-color: var(--primary-950);
+  color: var(--white);
+}
+
+/* Contenido principal */
+.main-content {
+  margin-left: 250px; /* Ajustamos este margen para dar espacio a la sidebar */
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  min-height: 100vh; /* Usamos min-height para que ocupe al menos la altura de la pantalla */
+  flex: 1;
+  overflow-y: auto; /* Permitimos el scroll vertical si el contenido es largo */
+  padding-top: 80px; /* Añadimos padding superior para no ocultar contenido detrás de la barra superior */
+}
+
+.logo {
+  width: 80px; /* Tamaño del logo del SENA */
+  height: auto; /* Mantener la relación de aspecto */
+}
+/* Estilos del slider */
+.slider-container {
+  width: 80%;
+  max-width: 950px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  margin-top: 20px; /* Ajustamos margin-top ya que la barra superior es fija */
+  margin-bottom: 20px; /* Espacio debajo del slider */
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 300%; /* Asumiendo 3 slides */
+}
+
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Botones de navegación */
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 50%;
+  z-index: 1; /* Asegura que los botones estén sobre las imágenes */
+}
+
+.prev-button {
+  left: 10px;
+}
+
+.next-button {
+  right: 10px;
+}
+
+.logout-button {
+  background-color: var(--white);
+  color: var(--primary-950);
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Botón de cerrar sesión en la sidebar */
+.m-btn {
+  position: absolute;
+  bottom: 39px;
+  background-color: var(--primary-950);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  /* Asegúrate de que este botón no esté dentro de .menu si su posición es absoluta respecto a la sidebar */
+}
+
+
+/* Barra de botones fija en la parte superior */
 .top-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
-  margin-bottom: 20px;
+  gap: 50px;
+  position: fixed;
+  top: 0;
+  /* left: 4%; /* Ajustamos left */ 
+  left: 0; /* Lo fijamos a la izquierda y controlamos el ancho */
+  width: 100%; /* Ancho completo */
+  background-color: var(--primary-950);
+  padding: 0% 0;
+  box-shadow: 0 2px 4px var(--secundary-1-900);
+  z-index: 1000;
+  height: 70px; /* Altura fija para la barra superior */
 }
 
+/* Estilo de los botones superiores */
 .top-btn {
-  background-color: var(--secondary-1-500);
-  color: white;
-  padding: 10px 20px;
-  font-size: var(--font-size-body);
+  background-color: var(--primary-950);
+  color: var(--white);
   border: none;
-  border-radius: 12px;
+  border-radius: 5px;
+  padding: 25px 25px;
+  font-size: 16px;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s ease;
 }
 
 .top-btn:hover {
-  background-color: var(--secondary-1-700);
-  transform: translateY(-2px);
+  background-color: var(--primary-700);
+}
+/* Nuevo contenedor para los botones que se moverán hacia abajo */
+.bottom-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centramos los botones */
+  margin-top: 20px; /* Espacio adicional para separarlos */
+  gap: 40px;
+  padding: 0 20px; /* Añadimos un poco de padding horizontal */
 }
 
-.top-btn:active {
-  background-color: var(--secondary-1-800);
-  transform: scale(0.97);
-}
-
-.bottom-section {
-  background-color: white;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 900px;
+.bottom-btn {
+  /* Eliminamos width fijo para que Flexbox lo gestione mejor */
+  height: 50px;
+  font-size: 16px;
+  background-color: var(--primary-950); /* Usamos primary-950 como en otros botones */
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color 0.3s;
   text-align: center;
+  flex-basis: 220px; /* Sugerimos un ancho base, Flexbox ajustará */
+  flex-grow: 1; /* Permitimos que crezcan */
+  max-width: 250px; /* Ancho máximo para evitar que sean demasiado grandes */
 }
 
-.bottom-section h2 {
-  font-size: var(--font-size-h2);
-  color: var(--primary-1-800);
-  margin-bottom: 15px;
+.bottom-btn:hover {
+  background-color: var(--primary-700); /* Usamos primary-700 como en otros botones */
 }
 
-.bottom-section p {
-  color: var(--primary-1-700);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .menu-wrapper {
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px 20px;
-  }
-
-  .logo-container {
-    margin-top: 0;
-  }
-
-  .m-btn {
-    position: static;
+/* Diseño responsivo */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 200px;
   }
 
   .main-content {
-    padding: 20px;
+    margin-left: 200px;
+    padding: 15px; /* Ajustamos padding del contenido principal también */
+    padding-top: 75px; /* Ajustamos padding superior si la barra superior cambia de altura */
   }
 
   .top-buttons {
-    flex-direction: column;
-    gap: 15px;
+    gap: 20px; /* Reducimos el espacio entre botones superiores */
+    height: 65px; /* Ligeramente más pequeña en pantallas medianas */
+  }
+
+  .top-btn {
+    padding: 20px 15px; /* Reducimos el padding de los botones superiores */
+    font-size: 14px; /* Reducimos el tamaño de fuente */
+  }
+
+  .slider-container {
+    width: 95%; /* El slider ocupa más ancho en pantallas pequeñas */
+    height: 150px; /* Reducimos la altura del slider */
+  }
+
+  .bottom-buttons {
+    gap: 20px; /* Reducimos el espacio entre botones inferiores */
+    padding: 0 10px;
+  }
+
+  .bottom-btn {
+    flex-basis: 180px; /* Sugerimos un ancho base más pequeño */
+    max-width: 200px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .top-buttons {
+    flex-direction: column; /* Los botones superiores se apilan */
+    padding: 10px;
+    height: auto; /* La altura se ajusta al contenido apilado */
+    position: static; /* La barra superior deja de ser fija en pantallas muy pequeñas */
+    /* left: auto; */
+    /* transform: none; */
   }
 
   .top-btn {
     width: 100%;
-    text-align: center;
+    max-width: none; /* Permitimos que ocupen todo el ancho disponible */
+    padding: 10px 15px; /* Ajustamos padding */
+    text-align: center; /* Centramos el texto */
   }
 
-  .bottom-section {
-    padding: 15px;
+  .main-content {
+    margin-left: 0; /* Eliminamos el margen izquierdo cuando la sidebar no es fija */
+    padding-top: 10px; /* Ajustamos el padding superior ya que la barra superior no es fija */
   }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static; /* La sidebar deja de ser fija y ocupa el ancho completo */
+    box-shadow: none;
+    padding: 10px;
+  }
+
+  .user-profile {
+    text-align: center; /* Centramos el perfil de usuario */
+  }
+
+  .menu {
+    display: flex; /* Convertimos el menú en flexbox para potentially horizontal scroll or wrapping */
+    overflow-x: auto; /* Permitimos scroll horizontal si los elementos no caben */
+    padding-bottom: 10px; /* Espacio para la barra de scroll horizontal */
+    margin-bottom: 10px; /* Espacio debajo del menú */
+  }
+
+  .menu-btn {
+    flex-shrink: 0; /* Evita que los botones se encojan demasiado */
+    width: auto; /* Permitimos que el ancho se ajuste al contenido o al flex */
+    margin-right: 10px; /* Espacio entre botones en la disposición horizontal */
+    margin-bottom: 0; /* Eliminamos el margen inferior */
+  }
+
+  .m-btn {
+      position: static; /* El botón de logout ya no es absoluto */
+      margin-top: 20px; /* Añadimos espacio encima */
+      width: 100%; /* Ocupa el ancho completo */
+  }
+
+  .slider-container {
+      height: 120px; /* Reducimos aún más la altura del slider */
+      margin-top: 10px;
+  }
+
+  .bottom-buttons {
+      flex-direction: column; /* Los botones inferiores se apilan */
+      align-items: center; /* Centramos los botones apilados */
+      gap: 15px;
+  }
+
+  .bottom-btn {
+      width: 90%; /* Los botones inferiores ocupan casi todo el ancho */
+      max-width: 300px; /* Pero con un ancho máximo */
+  }
+}
+
+/* Media Query para pantallas muy pequeñas, como teléfonos en orientación portrait */
+@media screen and (max-width: 480px) {
+    .main-content {
+        padding: 5px; /* Reducimos aún más el padding del contenido principal */
+        padding-top: 5px; /* Ajustamos padding superior */
+    }
+
+    .slider-container {
+        height: 100px; /* Altura mínima para pantallas muy pequeñas */
+    }
+
+    .nav-button {
+        padding: 5px; /* Reducimos el padding de los botones del slider */
+        font-size: 14px;
+    }
+}
+
+
+/* Estilos del menu-wrapper (original y responsivo) */
+.menu-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001; /* Asegura que esté sobre otros elementos */
+  padding: 8.1px; /* Padding por defecto */
+  background-color: var(--primary-950);
+  width: 5%; /* Ocupa todo el ancho */
+  box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+  display: flex; /* Añadimos display flex para alinear contenido dentro */
+  align-items: center; /* Centra verticalmente el contenido */
+  justify-content: space-between; /* Espacia los elementos dentro (ej: logo y botón de menú) */
+  height: 70px; /* Altura fija, ajusta si es necesario */
+}
+
+/* Responsividad para el menu-wrapper */
+@media screen and (max-width: 768px) {
+  .menu-wrapper {
+    padding: 5px 10px; /* Ajustamos padding en pantallas medianas */
+    height: 65px; /* Ligeramente más pequeño */
+  }
+}
+
+@media screen and (max-width: 600px) {
+    /* En pantallas muy pequeñas, el menu-wrapper podría cambiar drasticamente
+       o incluso ocultarse si se implementa un menú hamburguesa */
+    .menu-wrapper {
+        /* Ejemplo: Si se convierte en un botón de hamburguesa centrado */
+        justify-content: center;
+        height: 60px;
+        padding: 5px;
+    }
+     /* Puedes necesitar ocultar ciertos elementos dentro de menu-wrapper aquí */
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  background-color: transparent;
+  color: var(--white);
+  padding: 10px 15px;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Contenedor del menú desplegable */
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  min-width: 180px; /* Ajusta el ancho a tu gusto */
+  box-shadow: 0 8px 16px var(--white);
+  z-index: 1;
+  border-radius: 10px;
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  left: 0;
+  /* Ajuste para pantallas pequeñas */
+  @media screen and (max-width: 600px) {
+      left: 50%; /* Centramos el dropdown */
+      transform: translateX(-50%) translateY(-10px);
+      min-width: 150px;
+  }
+}
+
+/* Estilo de los botones dentro del menú */
+.dropdown-content button {
+  width: 100%;
+  padding: 15px 20px; /* Aumenta el tamaño de los botones */
+  text-align: left;
+  border: none;
+  background-color: var(--primary-800);
+  cursor: pointer;
+  font-size: 16px;  /* Ajusta el tamaño del texto */
+  color: var(--white);
+  border-bottom: 2px solid var(--primary-950); /* Aumenta el grosor de la línea de separación */
+  border-radius: 10px; /* Bordes redondeados para los botones */
+}
+
+/* Efecto hover de los botones */
+.dropdown-content button:hover {
+  background-color: var(--secundary-1-800);
+}
+
+/* Clase para mostrar el menú */
+.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+   /* Ajuste para pantallas pequeñas */
+   @media screen and (max-width: 600px) {
+      transform: translateX(-50%) translateY(0);
+   }
+}
+
+/* Cuadro centrado */
+.center-box {
+  width: 80%;
+  max-width: 600px;
+  margin: 20% auto;
+  padding: 20px;
+  background-color: var(--secundary-3-300);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--secundary-3-950);
+  text-align: center;
+}
+
+.center-box h2 {
+  color: #333;
+}
+
+.center-box p {
+  color: #555;
+  font-size: 16px;
+  }
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--primary-950);
+  color: var(--white);
+  text-align: center;
+  font-size: 14px;
+  padding: 5px;
+  z-index: 1000; /* Asegura que el footer esté sobre el contenido */
 }

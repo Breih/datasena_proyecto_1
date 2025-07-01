@@ -1,6 +1,6 @@
 <?php
 // Depuración: Verificar los datos recibidos
-var_dump($_POST); // Esto imprimirá los datos del formulario recibidos.
+var_dump($_POST);
 
 // Conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "datasenn_db");
@@ -10,54 +10,46 @@ if ($conexion->connect_error) {
     die("❌ Error de conexión: " . $conexion->connect_error);
 }
 
-// Recolección de datos del formulario
-$nombre_programa = trim($_POST['nombre_programa'] ?? '');
-$codigo_programa = trim($_POST['codigo_programa'] ?? '');
-$nivel_formacion = trim($_POST['nivel_formacion'] ?? '');
-$estado = trim($_POST['estado'] ?? '');
+// Recolección de datos del formulario (usando nombres reales de la tabla)
+$nombre_programa     = trim($_POST['nombre_programa'] ?? '');
+$numero_ficha        = trim($_POST['codigo_programa'] ?? ''); // este es el código único del programa
+$tipo_programa       = trim($_POST['nivel_formacion'] ?? '');
+$activacion          = trim($_POST['estado'] ?? '');
 
-// Verificar si los campos están vacíos
-if (empty($nombre_programa) || empty($codigo_programa) || empty($nivel_formacion) || empty($estado)) {
+// Validación
+if (empty($nombre_programa) || empty($numero_ficha) || empty($tipo_programa) || empty($activacion)) {
     echo "<script>alert('❌ Todos los campos son obligatorios.'); window.history.back();</script>";
     exit;
 }
 
-// Depuración adicional: Verificar valores de las variables antes de continuar
-var_dump($nombre_programa, $codigo_programa, $nivel_formacion, $estado); // Esto te ayudará a ver si las variables están correctas.
-
-// Verificar si el código del programa ya existe
-$verificar_sql = "SELECT id FROM programas WHERE codigo_programa = ?";
+// Verificar si el número de ficha ya existe (porque es UNIQUE)
+$verificar_sql = "SELECT id FROM programas WHERE numero_ficha = ?";
 $verificar_stmt = $conexion->prepare($verificar_sql);
-$verificar_stmt->bind_param("s", $codigo_programa);
+$verificar_stmt->bind_param("s", $numero_ficha);
 $verificar_stmt->execute();
 $verificar_stmt->store_result();
 
-// Si el código ya existe, mostrar un mensaje y volver
 if ($verificar_stmt->num_rows > 0) {
-    echo "<script>alert('❌ El código del programa ya está registrado.'); window.history.back();</script>";
+    echo "<script>alert('❌ El número de ficha ya está registrado.'); window.history.back();</script>";
     exit;
 }
 $verificar_stmt->close();
 
-// Consulta SQL preparada para insertar el programa
-$sql = "INSERT INTO programas (nombre_programa, codigo_programa, nivel_formacion, estado)
-        VALUES (?, ?, ?, ?)";
+// Insertar el programa
+$sql = "INSERT INTO programas (nombre_programa, tipo_programa, numero_ficha, duracion_programa, activacion)
+        VALUES (?, ?, ?, '2 años', ?)"; // duracion_programa puedes ajustarlo dinámicamente si lo deseas
 
-// Preparar la consulta
 $stmt = $conexion->prepare($sql);
 if ($stmt === false) {
     die('❌ Error en la preparación de la consulta: ' . $conexion->error);
 }
 
-// Usar bind_param con los tipos correctos:
-// 's' para string (VARCHAR)
-$stmt->bind_param("ssss", $nombre_programa, $codigo_programa, $nivel_formacion, $estado);
+$stmt->bind_param("ssss", $nombre_programa, $tipo_programa, $numero_ficha, $activacion);
 
-// Ejecutar y verificar resultado
 if ($stmt->execute()) {
     echo "<script>
         alert('✅ Programa registrado con éxito.');
-        window.location.href = '../SU_admin/menu_SU_admin/super_menu.html';
+        window.location.href = '/datasena_proyecto_1/SU_admin/menu_SU_admin/super_menu.html';
     </script>";
 } else {
     echo "<script>
@@ -66,7 +58,6 @@ if ($stmt->execute()) {
     </script>";
 }
 
-// Cierre de conexión
 $stmt->close();
 $conexion->close();
 ?>

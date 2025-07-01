@@ -1,140 +1,191 @@
 <?php
-$conexion = new mysqli("localhost", "root", "", "datasenn_db");
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+$errores = [];
+$datos = [];
+$fichas = [];
+
+// Conexión a la base de datos para obtener fichas
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=datasenn_db", "root", "");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $pdo->query("SELECT numero_ficha FROM programas");
+    $fichas = $stmt->fetchAll(PDO::FETCH_COLUMN);
+} catch (PDOException $e) {
+    die("Error al conectar o consultar: " . $e->getMessage());
 }
 
-// Recolectar los datos del formulario
-$nombre_completo = $_POST['nombre_completo'] ?? '';
-$tipo_documento = $_POST['tipo_documento'] ?? '';
-$numero_identidad = $_POST['numero_identidad'] ?? '';
-$residencia = $_POST['residencia'] ?? '';
-$tipo_sangre = $_POST['tipo_sangre'] ?? '';
-$correo = $_POST['correo'] ?? '';
-$telefono = $_POST['telefono'] ?? '';
-$contrasena = $_POST['contrasena'] ?? '';
-$validacion = $_POST['validacion'] ?? '';
-$estado = $_POST['activacion'] ?? '';
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $campos = ['nombre_completo', 'tipo_documento', 'numero_identidad', 'residencia', 'tipo_sangre', 'correo', 'telefono', 'contrasena', 'validacion', 'activacion', 'numero_ficha'];
+    foreach ($campos as $campo) {
+        $datos[$campo] = trim($_POST[$campo] ?? '');
+    }
 
-// Validaciones: Asegurarse de que no estén vacíos
-if (empty($nombre_completo) || empty($tipo_documento) || empty($numero_identidad) || empty($residencia) || empty($tipo_sangre) || empty($correo) || empty($telefono) || empty($contrasena) || empty($validacion) || empty($estado)) {
-    echo "<script>
-        alert('❌ Todos los campos son obligatorios.');
-        window.history.back();
-    </script>";
-    exit;
+    if (in_array('', $datos)) {
+        $errores['general'] = "Todos los campos son obligatorios.";
+    }
+
+    if ($datos['contrasena'] !== $datos['validacion']) {
+        $errores['contrasena'] = "❌ Las contraseñas no coinciden.";
+    }
+
+    if (empty($errores)) {
+        $conexion = new mysqli("localhost", "root", "", "datasenn_db");
+        if ($conexion->connect_error) die("Conexión fallida: " . $conexion->connect_error);
+
+        $stmt = $conexion->prepare("SELECT id FROM usuarios WHERE numero_identidad = ?");
+        $stmt->bind_param("s", $datos['numero_identidad']);
+        $stmt->execute();
+        $stmt->store_result();
+        if ($stmt->num_rows > 0) {
+            $errores['numero_identidad'] = "❌ Ya está registrado.";
+        }
+        $stmt->close();
+
+        if (empty($errores)) {
+            $hashed_pass = password_hash($datos['contrasena'], PASSWORD_DEFAULT);
+            $sql = "INSERT INTO usuarios (nombre_completo, tipo_documento, numero_identidad, residencia, tipo_sangre, correo, telefono, contrasena, estado, numero_ficha)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conexion->prepare($sql);
+            $stmt->bind_param(
+                "ssssssssss",
+                $datos['nombre_completo'],
+                $datos['tipo_documento'],
+                $datos['numero_identidad'],
+                $datos['residencia'],
+                $datos['tipo_sangre'],
+                $datos['correo'],
+                $datos['telefono'],
+                $hashed_pass,
+                $datos['activacion'],
+                $datos['numero_ficha']
+            );
+
+            if ($stmt->execute()) {
+                echo "<script>alert('Usuario creado con éxito'); window.location.href='../super_menu.html';</script>";
+                exit;
+            } else {
+                $errores['general'] = "Error al insertar: " . $stmt->error;
+            }
+            $stmt->close();
+        }
+        $conexion->close();
+    }
 }
-
-// Validación del nombre completo (solo letras y espacios)
-if (!preg_match('/^[a-zA-Z\s]+$/', $nombre_completo)) {
-    echo "<script>
-        alert('❌ El nombre solo debe contener letras y espacios.');
-        window.history.back();
-    </script>";
-    exit;
-}
-
-// Validación del número de identidad (solo números)
-if (!ctype_digit($numero_identidad)) {
-    echo "<script>
-        alert('❌ El número de identidad solo debe contener números.');
-        window.history.back();
-    </script>";
-    exit;
-}
-
-// Validar que el número de identidad tenga exactamente 10 dígitos
-if (strlen($numero_identidad) !== 10) {
-    echo "<script>
-        alert('❌ El número de identidad debe tener exactamente 10 dígitos.');
-        window.history.back();
-    </script>";
-    exit;
-}
-
-// Validación de la contraseña
-if ($contrasena !== $validacion) {
-    echo "<script>
-        alert('❌ Las contraseñas no coinciden.');
-        window.history.back();
-    </script>";
-    exit;
-}
-
-// Expresión regular para validar la contraseña
-$patron_contrasena = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
-if (!preg_match($patron_contrasena, $contrasena)) {
-    echo "<script>
-        alert('❌ La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales.');
-        window.history.back();
-    </script>";
-    exit;
-}
-
-// Validación de correo electrónico
-if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-    echo "<script>
-        alert('❌ El correo electrónico no es válido.');
-        window.history.back();
-    </script>";
-    exit;
-}
-
-// Validación de número de teléfono (solo números y 10 dígitos)
-if (!preg_match('/^\d{10}$/', $telefono)) {
-    echo "<script>
-        alert('❌ El número de teléfono debe tener 10 dígitos.');
-        window.history.back();
-    </script>";
-    exit;
-}
-
-// Validación de tipo de sangre
-$tipos_sangre_validos = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
-if (!in_array($tipo_sangre, $tipos_sangre_validos)) {
-    echo "<script>
-        alert('❌ El tipo de sangre no es válido.');
-        window.history.back();
-    </script>";
-    exit;
-}
-
-// Verificar si ya existe el número de identidad
-$verificar_sql = "SELECT id FROM usuarios WHERE numero_identidad = ?";
-$verificar_stmt = $conexion->prepare($verificar_sql);
-$verificar_stmt->bind_param("s", $numero_identidad);
-$verificar_stmt->execute();
-$verificar_stmt->store_result();
-
-if ($verificar_stmt->num_rows > 0) {
-    echo "<script>
-        alert('❌ El número de identidad ya está registrado.');
-        window.history.back();
-    </script>";
-    exit;
-}
-$verificar_stmt->close();
-
-// Insertar el usuario
-$sql = "INSERT INTO usuarios (nombre_completo, tipo_documento, numero_identidad, residencia, tipo_sangre, correo, telefono, contrasena, estado)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-$stmt = $conexion->prepare($sql);
-$hashed_pass = password_hash($contrasena, PASSWORD_DEFAULT);
-$stmt->bind_param("sssssssss", $nombre_completo, $tipo_documento, $numero_identidad, $residencia, $tipo_sangre, $correo, $telefono, $hashed_pass, $estado);
-
-if ($stmt->execute()) {
-    echo "<script>
-        alert('✅ Usuario creado con éxito.');
-        window.location.href = '../super_menu.html';
-    </script>";
-} else {
-    echo "<script>
-        alert('❌ Error al crear el usuario: " . addslashes($stmt->error) . "');
-        window.history.back();
-    </script>";
-}
-
-$stmt->close();
-$conexion->close();
 ?>
+
+<!-- HTML -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear usuario Superadmin</title>
+    <link rel="icon" href="../../../img/Logotipo_Datasena.png">
+    <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/crear_usuario_SU.css">
+    <style>
+        .error { color: red; font-size: 0.9em; margin-top: 3px; }
+        .mensaje-error { background: #ffe0e0; padding: 10px; margin-bottom: 10px; border-left: 4px solid #d00; }
+    </style>
+</head>
+<body>
+    <h2>DATASENA</h2>
+    <img src="../../../img/logo-sena.png" alt="Logo SENA" class="img">
+
+    <div class="form-container">
+        <h1>Crear usuario</h1>
+        <?php if (!empty($errores['general'])): ?>
+            <div class="mensaje-error"><?= htmlspecialchars($errores['general']) ?></div>
+        <?php endif; ?>
+
+        <form action="" method="post">
+            <div class="form-grid">
+                <div>
+                    <div class="form-row">
+                        <label for="nombre_completo">Nombre completo:</label>
+                        <input type="text" name="nombre_completo" required
+                            pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" title="Solo letras y espacios"
+                            value="<?= htmlspecialchars($datos['nombre_completo'] ?? '') ?>">
+                    </div>
+                    <div class="form-row">
+                        <label for="tipo_documento">Tipo de documento:</label>
+                        <select name="tipo_documento" required>
+                            <option value="">Seleccione</option>
+                            <option value="cc" <?= ($datos['tipo_documento'] ?? '') === 'cc' ? 'selected' : '' ?>>Cédula</option>
+                            <option value="ce" <?= ($datos['tipo_documento'] ?? '') === 'ce' ? 'selected' : '' ?>>Extranjería</option>
+                            <option value="ti" <?= ($datos['tipo_documento'] ?? '') === 'ti' ? 'selected' : '' ?>>Tarjeta</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="numero_identidad">Número de identidad:</label>
+                        <input type="text" name="numero_identidad" required pattern="\d{10}"
+                            value="<?= htmlspecialchars($datos['numero_identidad'] ?? '') ?>">
+                        <div class="error"><?= $errores['numero_identidad'] ?? '' ?></div>
+                    </div>
+                    <div class="form-row">
+                        <label for="residencia">Residencia:</label>
+                        <input type="text" name="residencia" required value="<?= htmlspecialchars($datos['residencia'] ?? '') ?>">
+                    </div>
+                    <div class="form-row">
+                        <label for="tipo_sangre">Tipo de sangre:</label>
+                        <select name="tipo_sangre" required>
+                            <option value="">Seleccione</option>
+                            <?php foreach (["A+","A-","B+","B-","AB+","AB-","O+","O-"] as $tipo): ?>
+                                <option value="<?= $tipo ?>" <?= ($datos['tipo_sangre'] ?? '') === $tipo ? 'selected' : '' ?>><?= $tipo ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-row">
+                        <label for="correo">Correo electrónico:</label>
+                        <input type="email" name="correo" required value="<?= htmlspecialchars($datos['correo'] ?? '') ?>">
+                    </div>
+                    <div class="form-row">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" name="telefono" required pattern="\d{10}" value="<?= htmlspecialchars($datos['telefono'] ?? '') ?>">
+                    </div>
+                    <div class="form-row">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" name="contrasena" required
+                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}">
+                    </div>
+                    <div class="form-row">
+                        <label for="validacion">Confirmar contraseña:</label>
+                        <input type="password" name="validacion" required>
+                        <div class="error"><?= $errores['contrasena'] ?? '' ?></div>
+                    </div>
+                    <div class="form-row">
+                        <label for="activacion">Estado:</label>
+                        <select name="activacion" required>
+                            <option value="">Seleccione</option>
+                            <option value="activo" <?= ($datos['activacion'] ?? '') === 'activo' ? 'selected' : '' ?>>Activo</option>
+                            <option value="inactivo" <?= ($datos['activacion'] ?? '') === 'inactivo' ? 'selected' : '' ?>>Inactivo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="numero_ficha">Número de ficha:</label>
+                        <select name="numero_ficha" required>
+                            <option value="">Seleccione ficha</option>
+                            <?php foreach ($fichas as $ficha): ?>
+                                <option value="<?= $ficha ?>" <?= ($datos['numero_ficha'] ?? '') === $ficha ? 'selected' : '' ?>>
+                                    <?= $ficha ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons-container">
+                <button type="submit" class="logout-btn">Crear</button>
+                <button type="button" class="logout-btn" onclick="window.location.href='../super_menu.html'">Regresar</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <a>&copy; Todos los derechos reservados al SENA</a>
+    </footer>
+</body>
+</html>
+SU_admin/menu_SU_admin/usuarios/reportar_SU.php

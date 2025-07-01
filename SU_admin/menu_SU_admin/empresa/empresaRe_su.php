@@ -1,66 +1,57 @@
 <?php
-// Procesamiento del formulario
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $host = "localhost";
-    $db = "datasenn_db";
-    $user = "root";
-    $pass = "";
+$errores = [];
+$datos = [];
 
-    try {
-        $conexion = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Captura de datos
+    $campos = [
+        'tipo_documento', 'numero_identidad', 'nickname',
+        'telefono', 'correo', 'direccion',
+        'actividad_economica', 'estado'
+    ];
 
-        // Recoger datos del formulario
-        $tipo_documento = $_POST['tipo_documento'] ?? '';
-        $numero_documento = $_POST['numero_documento'] ?? ''; // <- aquí el cambio
-        $nickname = $_POST['nickname'] ?? '';
-        $numero_telefono = $_POST['numero_numero_telefono'] ?? '';
-        $correo_electronico = $_POST['correo_electronico'] ?? '';
-        $direccion = $_POST['direccion'] ?? '';
-        $actividad_economica = $_POST['actividad_economica'] ?? '';
-        $rol_id = $_POST['rol_id'] ?? null;
-        $estado = ($_POST['estado'] === 'Activo') ? 1 : 0;
+    foreach ($campos as $campo) {
+        $datos[$campo] = trim($_POST[$campo] ?? '');
+        if (empty($datos[$campo])) {
+            $errores[$campo] = "Este campo es obligatorio.";
+        }
+    }
 
-        // Validaciones
-        if (
-            empty($tipo_documento) || empty($numero_documento) || empty($nickname) ||
-            empty($numero_telefono) || empty($correo_electronico) || empty($direccion) ||
-            empty($actividad_economica)
-        ) {
-            $error = "Por favor completa todos los campos obligatorios.";
-        } elseif (!filter_var($correo_electronico, FILTER_VALIDATE_EMAIL)) {
-            $error = "El correo_electronico electrónico no es válido.";
-        } else {
-            $sql = "INSERT INTO empresa (
-                        tipo_documento, numero_documento, nickname, numero_telefono,
-                        correo_electronico, direccion, actividad_economica,
-                        rol_id, estado
+    if (!empty($datos['correo']) && !filter_var($datos['correo'], FILTER_VALIDATE_EMAIL)) {
+        $errores['correo'] = "Correo electrónico no válido.";
+    }
+
+    if (!empty($datos['telefono']) && !preg_match('/^\d{10}$/', $datos['telefono'])) {
+        $errores['telefono'] = "Debe tener exactamente 10 dígitos.";
+    }
+
+    if (empty($errores)) {
+        try {
+            $conexion = new PDO("mysql:host=localhost;dbname=datasenn_db;charset=utf8", "root", "");
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "INSERT INTO empresas (
+                        tipo_documento, numero_identidad, nickname, telefono,
+                        correo, direccion, actividad_economica, estado
                     ) VALUES (
-                        :tipo_documento, :numero_documento, :nickname, :numero_telefono,
-                        :correo_electronico, :direccion, :actividad_economica,
-                        :rol_id, :estado
+                        :tipo_documento, :numero_identidad, :nickname, :telefono,
+                        :correo, :direccion, :actividad_economica, :estado
                     )";
 
             $stmt = $conexion->prepare($sql);
-            $stmt->bindParam(':tipo_documento', $tipo_documento);
-            $stmt->bindParam(':numero_documento', $numero_documento); // <-- aquí también cambio
-            $stmt->bindParam(':nickname', $nickname);
-            $stmt->bindParam(':numero_telefono', $numero_telefono);
-            $stmt->bindParam(':correo_electronico', $correo_electronico);
-            $stmt->bindParam(':direccion', $direccion);
-            $stmt->bindParam(':actividad_economica', $actividad_economica);
-            $stmt->bindParam(':rol_id', $rol_id);
-            $stmt->bindParam(':estado', $estado);
-
+            foreach ($datos as $campo => $valor) {
+                $stmt->bindValue(":$campo", $valor);
+            }
             $stmt->execute();
-            $success = "Registro guardado correctamente.";
+            $exito = "Empresa registrada exitosamente.";
+            $datos = [];
+
+        } catch (PDOException $e) {
+            $errores['general'] = "Error en base de datos: " . $e->getMessage();
         }
-    } catch (PDOException $e) {
-        $error = "Error en la base de datos: " . $e->getMessage();
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -73,77 +64,96 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>DATASENA</h1>
     <img src="../../../img/logo-sena.png" alt="Logo" class="img" />
 
-    <div class="forma-container">
-        <h3>Registro de Empresa</h3>
+<div class="forma-container">
+    <h3>Registro de Empresa</h3>
 
-        <?php if (!empty($error)): ?>
-            <div style="color: red; margin-bottom: 1em;"><?= $error ?></div>
-        <?php endif; ?>
-        <?php if (!empty($success)): ?>
-            <div style="color: green; margin-bottom: 1em;"><?= $success ?></div>
-        <?php endif; ?>
+    <?php if (!empty($errores['general'])): ?>
+        <div class="mensaje-error"><?= htmlspecialchars($errores['general']) ?></div>
+    <?php endif; ?>
+    <?php if (!empty($exito)): ?>
+        <div class="mensaje-exito"><?= htmlspecialchars($exito) ?></div>
+    <?php endif; ?>
 
-        <form action="empresaRe_su.php" method="POST">
-            <div class="forma-grid">
-                <div>
-                    <div class="forma-row">
-                        <label for="tipo_documento">Tipo de Documento:</label>
-                        <select id="tipo_documento" name="tipo_documento" required class="md-input">
-                            <option value="">Seleccione una opción</option>
-                            <option value="numero_documento">numero_documento</option>
-                            <option value="CC">Cédula de Ciudadanía</option>
-                            <option value="CE">Cédula de Extranjería</option>
-                            <option value="Pasaporte">Pasaporte</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                    </div>
-                    <div class="forma-row">
-                        <label for="numero_documento">Número de documento:</label>
-                        <input type="text" id="numero_documento" name="numero_documento" required class="md-input" value="<?= htmlspecialchars($_POST['numero_documento'] ?? '') ?>">
-                    </div>
-                    <div class="forma-row">
-                        <label for="nickname">Nombre de la empresa:</label>
-                        <input type="text" id="nickname" name="nickname" required class="md-input" value="<?= htmlspecialchars($_POST['nickname'] ?? '') ?>">
-                    </div>
-                    <div class="forma-row">
-                        <label for="numero_numero_telefono">Teléfono:</label>
-                        <input type="text" id="numero_numero_telefono" name="numero_numero_telefono" required class="md-input" value="<?= htmlspecialchars($_POST['numero_numero_telefono'] ?? '') ?>">
-                    </div>
-                </div>
+<form action="" method="POST">
+  <div class="forma-grid">
+    <div>
+<div class="forma-row">
+  <label for="tipo_documento">Tipo de Documento de la Empresa:</label>
+  <select id="tipo_documento" name="tipo_documento" required class="md-input">
+    <option value="">Seleccione una opción</option>
+    <option value="NIT" <?= ($datos['tipo_documento'] ?? '') === 'NIT' ? 'selected' : '' ?>>NIT</option>
+    <option value="Registro Mercantil" <?= ($datos['tipo_documento'] ?? '') === 'Registro Mercantil' ? 'selected' : '' ?>>Registro Mercantil</option>
+    <option value="Registro Cámara de Comercio Extranjera" <?= ($datos['tipo_documento'] ?? '') === 'Registro Cámara de Comercio Extranjera' ? 'selected' : '' ?>>Registro Cámara de Comercio Extranjera</option>
+    <option value="Pasaporte Empresarial" <?= ($datos['tipo_documento'] ?? '') === 'Pasaporte Empresarial' ? 'selected' : '' ?>>Pasaporte Empresarial</option>
+    <option value="RUT" <?= ($datos['tipo_documento'] ?? '') === 'RUT' ? 'selected' : '' ?>>RUT</option>
+    <option value="Licencia Municipal" <?= ($datos['tipo_documento'] ?? '') === 'Licencia Municipal' ? 'selected' : '' ?>>Licencia Municipal</option>
+  </select>
+  <?php if (!empty($errores['tipo_documento'])): ?>
+    <div class="mensaje-error"><?= htmlspecialchars($errores['tipo_documento']) ?></div>
+  <?php endif; ?>
+</div>
 
-                <div>
-                    <div class="forma-row">
-                        <label for="correo_electronico">correo electronico:</label>
-                        <input type="email" id="correo_electronico" name="correo_electronico" required class="md-input" value="<?= htmlspecialchars($_POST['correo_electronico'] ?? '') ?>">
-                    </div>
-                    <div class="forma-row">
-                        <label for="direccion">Dirección:</label>
-                        <input type="text" id="direccion" name="direccion" required class="md-input" value="<?= htmlspecialchars($_POST['direccion'] ?? '') ?>">
-                    </div>
-                    <div class="forma-row">
-                        <label for="rol_id">rol (ID):</label>
-                        <input type="number" id="rol_id" name="rol_id" class="md-input" value="<?= htmlspecialchars($_POST['rol_id'] ?? '') ?>">
-                    </div>
-                    <div class="forma-row">
-                        <label for="actividad_economica">Actividad Económica:</label>
-                        <input type="text" id="actividad_economica" name="actividad_economica" required class="md-input" value="<?= htmlspecialchars($_POST['actividad_economica'] ?? '') ?>">
-                    </div>
-                    <div class="forma-row">
-                            <label for="estado"> estado:</label>
-                        <select name="estado" required>
-                            <option value="1">Activo</option>
-                            <option value="0">Inactivo</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
 
-            <div class="logout-buttons-container">
-                <button type="submit" class="logout-btn">Crear</button>
-                <button type="button" class="logout-btn" onclick="window.location.href='../super_menu.html'">Regresar</button>
-            </div>
-        </form>
+      <div class="forma-row">
+        <label for="numero_identidad">Número de documento:</label>
+        <input type="text" id="numero_identidad" name="numero_identidad" class="md-input"
+               pattern="\d{8,12}" title="Debe tener entre 8 y 12 dígitos numéricos"
+               value="<?= htmlspecialchars($datos['numero_identidad'] ?? '') ?>" required>
+      </div>
+
+      <div class="forma-row">
+        <label for="nickname">Nombre de la empresa:</label>
+        <input type="text" id="nickname" name="nickname" class="md-input"
+               pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ0-9 ]+" title="Solo letras, números y espacios"
+               value="<?= htmlspecialchars($datos['nickname'] ?? '') ?>" required>
+      </div>
+
+      <div class="forma-row">
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" class="md-input"
+               pattern="\d{10}" title="Debe tener exactamente 10 dígitos"
+               value="<?= htmlspecialchars($datos['telefono'] ?? '') ?>" required>
+      </div>
     </div>
+
+    <div>
+      <div class="forma-row">
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" class="md-input"
+               value="<?= htmlspecialchars($datos['correo'] ?? '') ?>" required>
+      </div>
+
+      <div class="forma-row">
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" class="md-input"
+               value="<?= htmlspecialchars($datos['direccion'] ?? '') ?>" required>
+      </div>
+
+      <div class="forma-row">
+        <label for="actividad_economica">Actividad Económica:</label>
+        <input type="text" id="actividad_economica" name="actividad_economica" class="md-input"
+               pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ0-9 ,.]+" title="Solo letras, números, comas y puntos"
+               value="<?= htmlspecialchars($datos['actividad_economica'] ?? '') ?>" required>
+      </div>
+
+      <div class="forma-row">
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+          <option value="">Seleccione</option>
+          <option value="1" <?= ($datos['estado'] ?? '') == '1' ? 'selected' : '' ?>>Activo</option>
+          <option value="0" <?= ($datos['estado'] ?? '') == '0' ? 'selected' : '' ?>>Inactivo</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="logout-buttons-container">
+    <button type="submit" class="logout-btn">Crear</button>
+    <button type="button" class="logout-btn" onclick="window.location.href='../super_menu.html'">Regresar</button>
+  </div>
+</form>
+</div>
+
 
     <footer>&copy; Todos los derechos reservados al SENA</footer>
 </body>
