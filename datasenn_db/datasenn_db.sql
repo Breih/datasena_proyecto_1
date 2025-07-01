@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: datasenn_db
 -- ------------------------------------------------------
--- Server version	8.3.0
+-- Server version	9.0.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,20 +24,23 @@ DROP TABLE IF EXISTS `admin`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admin` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `tipo_documento` enum('CC','TI','CE','Otro') COLLATE utf8mb4_general_ci NOT NULL,
-  `numero_documento` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `nombres` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `apellidos` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `nickname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `correo_electronico` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `tipo_documento` enum('CC','TI','CE','Otro') NOT NULL,
+  `numero_documento` varchar(20) NOT NULL,
+  `nombres` varchar(100) NOT NULL,
+  `apellidos` varchar(100) NOT NULL,
+  `nickname` varchar(50) NOT NULL,
+  `correo_electronico` varchar(100) NOT NULL,
   `rol_id` int DEFAULT NULL,
+  `contrasena` varchar(255) NOT NULL,
+  `estado` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
+  `estado_habilitacion` enum('Activo','Inactivo') NOT NULL DEFAULT 'Activo',
   PRIMARY KEY (`id`),
   UNIQUE KEY `numero_documento` (`numero_documento`),
   UNIQUE KEY `nickname` (`nickname`),
   UNIQUE KEY `correo_electronico` (`correo_electronico`),
   KEY `rol_id` (`rol_id`),
   CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,84 +49,41 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (30,'CC','123456','inge','niero','admin 1','administ@gmail.com',1,'$2y$10$.VmtQPu5Kx60q8FewtTZzOE1cZFwL4wE7./9GDmxYXcQJRjCAikEW','Inactivo','Inactivo');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `diagnostico_empresarial`
+-- Table structure for table `empresas`
 --
 
-DROP TABLE IF EXISTS `diagnostico_empresarial`;
+DROP TABLE IF EXISTS `empresas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `diagnostico_empresarial` (
+CREATE TABLE `empresas` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `empresa` varchar(150) NOT NULL,
-  `nit` varchar(20) NOT NULL,
-  `sector` varchar(50) NOT NULL,
-  `tamano` varchar(50) NOT NULL,
-  `ubicacion` varchar(100) NOT NULL,
-  `empleados` int NOT NULL,
-  `contrataciones` int NOT NULL,
-  `contrato_frecuente` varchar(50) NOT NULL,
-  `tiene_proceso` varchar(10) NOT NULL,
-  `perfiles_definidos` varchar(10) NOT NULL,
-  `publicacion` varchar(50) NOT NULL,
-  `aprendices` varchar(10) NOT NULL,
-  `programa_apoyo` varchar(10) NOT NULL,
-  `perfiles_necesarios` varchar(255) NOT NULL,
-  `infraestructura` varchar(10) NOT NULL,
-  `apoyo_seleccion` varchar(10) NOT NULL,
-  `beneficios` varchar(10) NOT NULL,
-  `fecha_envio` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `tipo_documento` enum('NIT','Registro Mercantil','Registro Cámara de Comercio Extranjera','Pasaporte Empresarial','RUT','Licencia Municipal') NOT NULL,
+  `numero_identidad` bigint NOT NULL,
+  `nickname` varchar(100) NOT NULL,
+  `telefono` varchar(20) NOT NULL,
+  `correo` varchar(150) NOT NULL,
+  `direccion` varchar(255) NOT NULL,
+  `estado_habilitacion` enum('Activo','Inactivo') DEFAULT 'Activo',
+  `actividad_economica` varchar(255) NOT NULL,
+  `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `estado` varchar(20) NOT NULL DEFAULT 'Activo',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `diagnostico_empresarial`
+-- Dumping data for table `empresas`
 --
 
-LOCK TABLES `diagnostico_empresarial` WRITE;
-/*!40000 ALTER TABLE `diagnostico_empresarial` DISABLE KEYS */;
-/*!40000 ALTER TABLE `diagnostico_empresarial` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `empresa`
---
-
-DROP TABLE IF EXISTS `empresa`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `empresa` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `tipo_documento` enum('NIT') COLLATE utf8mb4_general_ci NOT NULL,
-  `numero_documento` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `nickname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `numero_telefono` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-  `correo_electronico` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `confirmacion_correo` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `direccion` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `actividad_economica` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `rol_id` int DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `numero_documento` (`numero_documento`),
-  UNIQUE KEY `nickname` (`nickname`),
-  UNIQUE KEY `correo_electronico` (`correo_electronico`),
-  KEY `rol_id` (`rol_id`),
-  CONSTRAINT `empresa_ibfk_1` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `empresa`
---
-
-LOCK TABLES `empresa` WRITE;
-/*!40000 ALTER TABLE `empresa` DISABLE KEYS */;
-/*!40000 ALTER TABLE `empresa` ENABLE KEYS */;
+LOCK TABLES `empresas` WRITE;
+/*!40000 ALTER TABLE `empresas` DISABLE KEYS */;
+INSERT INTO `empresas` VALUES (1,'NIT',123456,'las hijas de eva','12345789','yo@gmail.com','r4r5','Activo',':)','2025-05-29 05:16:40','Inactivo'),(2,'NIT',23344433,'asas','3216549877','rer4@gmail.com','cr32 -34-3','Activo','nmo','2025-06-26 05:13:51','Activo'),(3,'Registro Cámara de Comercio Extranjera',9874659874123,'qweqe123','3216549874','yo@gmail.com','r4r5123','Activo','sdfsdf123','2025-06-29 23:47:51','1'),(4,'NIT',0,'la floristeria','0000000000','lafloriste@gmail.com','nose','Activo','cositas','2025-06-30 01:36:55','1'),(5,'Registro Mercantil',1010050748,'la floristeria','3216549877','yo@gmail.com','sdfsdf','Activo','cositas','2025-07-01 04:59:40','1');
+/*!40000 ALTER TABLE `empresas` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -135,13 +95,14 @@ DROP TABLE IF EXISTS `programas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `programas` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre_programa` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
-  `codigo_programa` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `nivel_formacion` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `estado` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `nombre_programa` varchar(150) NOT NULL,
+  `tipo_programa` varchar(50) NOT NULL,
+  `numero_ficha` varchar(30) NOT NULL,
+  `duracion_programa` varchar(50) NOT NULL,
+  `activacion` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `codigo_programa` (`codigo_programa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  UNIQUE KEY `numero_ficha` (`numero_ficha`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,6 +111,7 @@ CREATE TABLE `programas` (
 
 LOCK TABLES `programas` WRITE;
 /*!40000 ALTER TABLE `programas` DISABLE KEYS */;
+INSERT INTO `programas` VALUES (25,'programacion','Tecnologo','2896363','2 años','activo');
 /*!40000 ALTER TABLE `programas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,11 +124,12 @@ DROP TABLE IF EXISTS `reportes`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reportes` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `numero_identidad` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `numero_identidad` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `nombre` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `descripcion` text COLLATE utf8mb4_general_ci NOT NULL,
-  `fecha_reporte` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha_reporte` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,6 +138,7 @@ CREATE TABLE `reportes` (
 
 LOCK TABLES `reportes` WRITE;
 /*!40000 ALTER TABLE `reportes` DISABLE KEYS */;
+INSERT INTO `reportes` VALUES (1,'123',NULL,'aaaaaa','2025-05-30'),(2,'1010050748',NULL,'se porto mal','2025-07-03');
 /*!40000 ALTER TABLE `reportes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,9 +151,9 @@ DROP TABLE IF EXISTS `rol`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rol` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre_rol` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `nombre_rol` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,6 +162,7 @@ CREATE TABLE `rol` (
 
 LOCK TABLES `rol` WRITE;
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
+INSERT INTO `rol` VALUES (1,'Administrador'),(2,'Usuario'),(3,'empresa');
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,19 +175,21 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre_completo` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `tipo_documento` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  `numero_identidad` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `residencia` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
-  `tipo_sangre` varchar(5) COLLATE utf8mb4_general_ci NOT NULL,
-  `correo` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `telefono` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `contrasena` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `estado` enum('activo','inactivo') COLLATE utf8mb4_general_ci NOT NULL,
+  `nombre_completo` varchar(100) NOT NULL,
+  `tipo_documento` varchar(30) DEFAULT NULL,
+  `numero_identidad` varchar(20) NOT NULL,
+  `residencia` varchar(150) NOT NULL,
+  `tipo_sangre` varchar(5) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `telefono` varchar(20) NOT NULL,
+  `numero_ficha` varchar(30) DEFAULT NULL,
+  `contrasena` varchar(255) NOT NULL,
+  `estado` enum('activo','inactivo') NOT NULL,
   `fecha_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `estado_habilitacion` enum('Activo','Inactivo') DEFAULT 'Activo',
   PRIMARY KEY (`id`),
   UNIQUE KEY `numero_identidad` (`numero_identidad`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +198,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'alejo','cc','123','123','AB-','f@gmail.com','123','[HASH]','activo','2025-05-22 07:36:41'),(2,'seoop','cc','12345','123','AB-','fe@gmail.com','123','[HASH]','activo','2025-05-22 07:40:15'),(3,'qw','cc','12345674','123','O+','fe@gmail.com','123','[HASH]','inactivo','2025-05-22 07:43:14'),(4,'asd','ti','789456','1233rr','A-','rer4@gmail.com','1234455','[HASH]','inactivo','2025-05-22 07:44:46'),(5,'asd','ti','78945633','1233rr','A-','rer4@gmail.com','1234455','[HASH]','inactivo','2025-05-22 07:46:57'),(6,'sdjk','cc','211','pl','O+','leyvadilan36@gmail.com','3113350701','$2y$10$UxhNkO9ygeucjJx1L7QYqOYYafd17Zkwy4x1jmNloS.51IY19U2Ne','activo','2025-05-22 19:54:35'),(7,'yilet','cc','1111','1111','O+','yilet@gmail.com','123','$2y$10$6yUzzFcnmf5pUelqrrVq2OAHPee/IRtFIf053CkrL77NPZVLVLVnu','activo','2025-05-22 23:05:22'),(8,'valentina z','cc','4352','casa alejo','O+','valentian@gmail.com','31235552','$2y$10$uCTV5N/8WVz4QIlMfP3CCOk0Rx3WN7K5MJxTBJ.bsDuPEThCgNbTK','activo','2025-05-22 23:08:46'),(9,'JUAN JOSE','cc','0808','rololandia','O+','leyva@ghh','3113350701','$2y$10$kwgrHju0t9BX/HHiaw1e..l9YzFU65aTRWlqmMwIru775jTbfqCgG','activo','2025-05-27 20:43:49'),(10,'sofia','cc','4567','PEREIRA','AB-','sofia@gmail.com','3108980485','$2y$10$z4rYz5lqwx3s68HvnuDbq.L8.EVlXFPdwBzU3JCVPQC/wH1IxQtTC','inactivo','2025-05-28 00:56:03');
+INSERT INTO `usuarios` VALUES (14,'juan carlos','cc','1010050748','allí','AB+','yo@gmail.com','3216549877','2896363','$2y$10$PBMUWC1CncBmJuzgqNB5vOZx3pmudAlRNjpTmOr.TPS4EFWmboTQm','activo','2025-07-01 04:48:07','Inactivo'),(15,'pele dinoho','cc','9876549871','ojol98','O-','lldikid@gmail.com','1234567898','2896363','$2y$10$f/RAozzTPWeDBHMBsGxrGOr4WOHK7MWSedGopDH/Ni9k.7PhrhoNG','activo','2025-07-01 05:25:23','Activo');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -244,4 +211,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-03 17:21:26
+-- Dump completed on 2025-07-01 11:31:29
