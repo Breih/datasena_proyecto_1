@@ -138,14 +138,12 @@ header {
 
 /* Imagen flotante */
 .logo-sena {
-    padding: 35px;
     position: absolute;
-    top: 10px;
+    top: 50px;
     right: 10px;
     width: 80px;
     height: auto;
 }
-
 
 .forma-container {
     max-width: 800px;
@@ -289,22 +287,6 @@ input:focus, select:focus {
     
 }
 
-/* .buttons-container button {
-    background-color: var(--primary-950);
-    color: var(--white);
-    border: none;
-    border-radius: 5px;
-    padding: 12px 25px;
-    font-size: 16px;
-    cursor: pointer;
-    min-width: 120px;
-    margin-bottom: -5em;
-}
-
-.buttons-container button:hover {
-    background-color: var(--primary-900);
-} */
-
 /* Footer */
 footer {
     position: fixed;
@@ -344,5 +326,13 @@ footer {
         width: 100%;
         max-width: 200px;
         margin-bottom: 10px;
+    }
+
+    .forma-container {
+        width: 50%;
+    }
+
+    .logo-sena {
+        width: 50px;
     }
 }
