@@ -128,7 +128,7 @@ header .logo {
     color: var(--white);
     border: none;
     border-radius: 4px;
-    padding: 10px 20px;
+    padding: 10px 10px;
     font-size: 16px;
     cursor: pointer;
     margin-left: 10px;
@@ -359,21 +359,6 @@ textarea {
             margin-bottom: 5px;
         }
 
-        .search-btn {
-            padding: 10px 20px;
-            background-color: var(--primary-950);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-left: auto;
-            margin-top: 1rem;
-        }
-
-        .search-btn:hover {
-            background-color: var(--primary-800);
-        }
 
         /* Modal */
         .modal {

@@ -99,20 +99,25 @@ $conexion->close();
 
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="icon" href="../../../img/Logotipo_Datasena.png" type="image/x-icon">
-        <title>Visualizar y Actualizar Usuario</title>
-        <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/visualizar_usuario.css">
-    </head>
-    <body>
-        <!-- Línea azul superior con logo del gobierno -->
-        <div class="blue-line-top">
-            <img src="../../../img/gov.png" alt="gov" class="gov-logo">
-        </div>
-
-        <header>DATASENA</header>
-        <img src="../../../img/logo-sena.png" alt="Logo SENA" class="logo-sena">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
+    <title>Visualizar y Actualizar Usuario</title>
+    <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/visualizar_usuario.css">
+    <style>
+        .error-msg {
+            color: red;
+            font-size: 0.85em;
+            margin-top: 3px;
+        }
+        .form-row input:invalid {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+<header>DATASENA</header>
+<img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
 
         <div class="form-container">
             <h2>Visualizar / Actualizar Usuario</h2>
