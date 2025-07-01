@@ -38,6 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
     <link rel="stylesheet" href="../../../css/admin/style.css" />
 </head>
 <body>
+        <!-- Línea azul superior con logo del gobierno -->
+        <div class="blue-line-top">
+            <img src="../../../img/gov.png" alt="gov" class="gov-logo">
+        </div>
+        
     <header>DATASENA</header>
 
     <div class="logo-container">
@@ -90,6 +95,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar'])) {
             </form>
         </div>
     </div>
+
+        <!-- Línea azul inferior con logo del gobierno -->
+        <div class="blue-line-bottom">
+            <img class="gov-logo"src="../../../img/gov.png" alt="gov" >
+        </div>
 
     <footer class="footer">
         <a>&copy; Todos los derechos reservados al SENA</a>

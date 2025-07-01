@@ -71,12 +71,6 @@
 
 }
 
-/* Header Styles */
-header {
-    margin-top: 30px;
-    font-size: 2.0;
-    font-weight: bold;
-}
 
 body {
     margin: 0;
@@ -90,23 +84,66 @@ body {
 }
 
 header {
-    font-size: 2.0rem;
+    padding: 0.1px;
+    text-align: center; /* Centra el texto */
+    font-size: var(--font-size-h3); /* Tamaño de fuente más grande */
     font-weight: bold;
+    margin-top: 5px;
+    color: var(--black); /* Color que deseas para el texto */
 }
 
-img {
+
+/* Línea azul superior con logo del gobierno */
+.blue-line-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: var(--secundary-3-950);
+  z-index: 2000; /* Más alto que cualquier otro elemento */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Línea azul inferior con logo del gobierno */
+.blue-line-bottom {
+  position: fixed;
+  bottom: 0; /* Pegado al fondo total */
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: var(--secundary-3-950);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del logo GOV */
+.gov-logo {
+    padding: 0%;
+    height: 30px;
+    object-fit: contain;
+}
+
+/* Imagen flotante */
+.logo-sena {
     position: absolute;
-    top: 10px;
+    top: 50px;
     right: 10px;
     width: 80px;
     height: auto;
 }
 
 .forma-container {
-    max-width: 850px;
+    max-width: 800px;
     margin: 20px auto;
-    padding: 30px;
-    padding-bottom: 80px;
+    padding: 15px;
+    padding-bottom: 50px;
     border-radius: 10px;
     background-color: var(--secundary-3-300);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -244,32 +281,19 @@ input:focus, select:focus {
     
 }
 
-/* .buttons-container button {
-    background-color: var(--primary-950);
-    color: var(--white);
-    border: none;
-    border-radius: 5px;
-    padding: 12px 25px;
-    font-size: 16px;
-    cursor: pointer;
-    min-width: 120px;
-    margin-bottom: -5em;
-}
-
-.buttons-container button:hover {
-    background-color: var(--primary-900);
-} */
-
+/* Footer */
 footer {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
     background-color: var(--primary-950);
     color: var(--white);
     text-align: center;
     font-size: 1.0rem;
-    width: 100%;
-    margin-top: auto;
     padding: 5px 0;
+    z-index: 1500;
 }
-
 
 @media screen and (max-width: 768px) {
     .forma-grid {
@@ -296,5 +320,13 @@ footer {
         width: 100%;
         max-width: 200px;
         margin-bottom: 10px;
+    }
+
+    .forma-container {
+        width: 50%;
+    }
+
+    .logo-sena {
+        width: 50px;
     }
 }
