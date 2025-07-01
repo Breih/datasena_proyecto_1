@@ -6,34 +6,32 @@ if ($conexion->connect_error) {
 }
 
 // Datos por defecto
-$empresa = [
+$empresas = [
     'id' => '',
     'tipo_documento' => '',
-    'numero_documento' => '',
+    'numero_identidad' => '',
     'nickname' => '',
     'telefono' => '',
     'correo' => '',
     'direccion' => '',
-    'rol' => '',
     'actividad_economica' => ''
 ];
 
 $mensaje = "";
 
-// Actualizar empresa
+// Actualizar empresas
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && !empty($_POST['id'])) {
     $id = $_POST['id'];
     $tipo_documento = $_POST['tipo_documento'];
-    $numero_documento = $_POST['numero_documento'];
+    $numero_identidad = $_POST['numero_identidad'];
     $nickname = $_POST['nickname'];
     $telefono = $_POST['telefono'];
     $correo = $_POST['correo'];
     $direccion = $_POST['direccion'];
-    $rol = $_POST['rol'];
     $actividad_economica = $_POST['actividad_economica'];
 
-    $stmt = $conexion->prepare("UPDATE empresa SET tipo_documento=?, numero_documento=?, nickname=?, numero_telefono=?, correo_electronico=?, direccion=?, rol_id=?, actividad_economica=? WHERE id=?");
-    $stmt->bind_param("ssssssssi", $tipo_documento, $numero_documento, $nickname, $telefono, $correo, $direccion, $rol, $actividad_economica, $id);
+    $stmt = $conexion->prepare("UPDATE empresas SET tipo_documento=?, numero_identidad=?, nickname=?, telefono=?, correo=?, direccion=?, actividad_economica=? WHERE id=?");
+    $stmt->bind_param("sssssssi", $tipo_documento, $numero_identidad, $nickname, $telefono, $correo, $direccion, $actividad_economica, $id);
 
     if ($stmt->execute()) {
         $mensaje = "Empresa actualizada correctamente.";
@@ -44,11 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && !empty($_POS
     $stmt->close();
 }
 
-// Buscar empresa por número_documento o nickname
+// Buscar empresas por número de identidad o nickname
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST['id']) && isset($_POST['dato_busqueda'])) {
     $dato = $_POST['dato_busqueda'];
 
-    $sql = "SELECT * FROM empresa WHERE numero_documento = ? OR nickname = ?";
+    $sql = "SELECT * FROM empresas WHERE numero_identidad = ? OR nickname = ?";
     $stmt = $conexion->prepare($sql);
 
     if (!$stmt) {
@@ -60,9 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST['id']) && isset($_POST
     $resultado = $stmt->get_result();
 
     if ($resultado->num_rows > 0) {
-        $empresa = $resultado->fetch_assoc();
+        $empresas = $resultado->fetch_assoc();
     } else {
-        $mensaje = "No se encontró empresa con ese número de documento o nickname.";
+        $mensaje = "No se encontró empresa con ese número de identidad o nickname.";
     }
 
     $stmt->close();
@@ -76,7 +74,7 @@ $conexion->close();
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
-    <title>Visualizar / Actualizar Empresa</title>
+    <title>Visualizar / Actualizar Empresas</title>
     <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/visualizar_usuario.css">
 </head>
 <body>
@@ -84,64 +82,59 @@ $conexion->close();
 <img src="../img/logo-sena.png" alt="Logo SENA" class="img">
 
 <div class="form-container">
-    <h2>Visualizar / Actualizar Empresa</h2>
+    <h2>Visualizar / Actualizar Empresas</h2>
 
     <?php if ($mensaje): ?>
         <p style="color:green; font-weight:bold;"><?= htmlspecialchars($mensaje) ?></p>
     <?php endif; ?>
 
-    <!-- Buscar empresa -->
+    <!-- Buscar empresas -->
     <form action="actualizar_empresa_su.php" method="post">
-        <label for="buscar_dato">Buscar por número de documento o nickname:</label>
-        <input type="text" id="buscar_dato" name="dato_busqueda" placeholder="Ingrese número de documento o nickname" required>
+        <label for="buscar_dato">Buscar por número de identidad o nickname:</label>
+        <input type="text" id="buscar_dato" name="dato_busqueda" placeholder="Ingrese número de identidad o nickname" required>
         <button class="logout-btn" type="submit">Buscar</button>
     </form>
 
     <hr>
 
-    <?php if (!empty($empresa['id'])): ?>
+    <?php if (!empty($empresas['id'])): ?>
         <!-- Formulario de edición -->
         <form class="form-grid" action="actualizar_empresa_su.php" method="post">
-            <input type="hidden" name="id" value="<?= htmlspecialchars($empresa['id']) ?>">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($empresas['id']) ?>">
 
             <div class="form-row">
                 <label>Tipo de documento:</label>
-                <input type="text" name="tipo_documento" value="<?= htmlspecialchars($empresa['tipo_documento']) ?>" required>
+                <input type="text" name="tipo_documento" value="<?= htmlspecialchars($empresas['tipo_documento']) ?>" required>
             </div>
 
             <div class="form-row">
-                <label>Número de documento:</label>
-                <input type="text" name="numero_documento" value="<?= htmlspecialchars($empresa['numero_documento']) ?>" required>
+                <label>Número de identidad:</label>
+                <input type="text" name="numero_identidad" value="<?= htmlspecialchars($empresas['numero_identidad']) ?>" required>
             </div>
 
             <div class="form-row">
-                <label>Nickname:</label>
-                <input type="text" name="nickname" value="<?= htmlspecialchars($empresa['nickname']) ?>" required>
+                <label>Nombre de la empresa:</label>
+                <input type="text" name="nickname" value="<?= htmlspecialchars($empresas['nickname']) ?>" required>
             </div>
 
             <div class="form-row">
                 <label>Teléfono:</label>
-                <input type="text" name="telefono" value="<?= htmlspecialchars($empresa['numero_telefono'] ?? '') ?>" required>
+                <input type="text" name="telefono" value="<?= htmlspecialchars($empresas['telefono']) ?>" pattern="\d{10}" title="Debe tener exactamente 10 dígitos" required>
             </div>
 
             <div class="form-row">
                 <label>Correo electrónico:</label>
-                <input type="email" name="correo" value="<?= htmlspecialchars($empresa['correo_electronico'] ?? '') ?>" required>
+                <input type="email" name="correo" value="<?= htmlspecialchars($empresas['correo']) ?>" required>
             </div>
 
             <div class="form-row">
                 <label>Dirección:</label>
-                <input type="text" name="direccion" value="<?= htmlspecialchars($empresa['direccion']) ?>" required>
-            </div>
-
-            <div class="form-row">
-                <label>Rol:</label>
-                <input type="text" name="rol" value="<?= htmlspecialchars($empresa['rol_id']) ?>" required>
+                <input type="text" name="direccion" value="<?= htmlspecialchars($empresas['direccion']) ?>" required>
             </div>
 
             <div class="form-row">
                 <label>Actividad Económica:</label>
-                <input type="text" name="actividad_economica" value="<?= htmlspecialchars($empresa['actividad_economica']) ?>" required>
+                <input type="text" name="actividad_economica" value="<?= htmlspecialchars($empresas['actividad_economica']) ?>" required>
             </div>
 
             <div class="form-row">

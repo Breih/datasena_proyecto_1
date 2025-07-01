@@ -13,10 +13,10 @@ if (isset($_POST['search'])) {
     $searchQuery = $_POST['search'];
 }
 
-// Consulta con búsqueda en nombre_programa y nivel_formacion
-$sql = "SELECT id, nombre_programa, codigo_programa, nivel_formacion, estado 
+// Consulta con búsqueda en nombre_programa y tipo_programa
+$sql = "SELECT id, nombre_programa, numero_ficha, tipo_programa, activacion 
         FROM programas 
-        WHERE nombre_programa LIKE :search OR nivel_formacion LIKE :search";
+        WHERE nombre_programa LIKE :search OR tipo_programa LIKE :search";
 $stmt = $conexion->prepare($sql);
 $stmt->bindValue(':search', "%$searchQuery%");
 $stmt->execute();
@@ -152,7 +152,7 @@ $conexion = null;
             <th>Nombre</th>
             <th>Código</th>
             <th>Nivel Formación</th>
-            <th>Estado</th>
+            <th>activacion</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -160,10 +160,11 @@ $conexion = null;
         <?php foreach ($programas as $p): ?>
         <tr>
             <td><?= htmlspecialchars($p['nombre_programa']) ?></td>
-            <td><?= htmlspecialchars($p['codigo_programa']) ?></td>
-            <td><?= htmlspecialchars($p['nivel_formacion']) ?></td>
-            <td><?= htmlspecialchars($p['estado']) ?></td>
-            <td><button onclick="openModal(<?= $p['id'] ?>)">Visualizar</button></td>
+            <td><?= htmlspecialchars($p['numero_ficha']) ?></td>
+            <td><?= htmlspecialchars($p['tipo_programa']) ?></td>
+            <td><?= htmlspecialchars($p['activacion']) ?></td>
+            <td><button onclick="verAprendices('<?= $p['numero_ficha'] ?>')">Ver aprendices</button></td>
+
         </tr>
         <?php endforeach; ?>
     </tbody>
@@ -226,6 +227,11 @@ $conexion = null;
         const modal = document.getElementById("myModal");
         if (event.target === modal) modal.style.display = "none";
     };
+
+    function verAprendices(ficha) {
+        window.location.href = '../empresa/vermas/ver_aprendices_por_ficha.php?ficha=' + encodeURIComponent(ficha);
+    }
+
 </script>
 </body>
 </html>
