@@ -438,11 +438,7 @@ textarea:focus {
         padding: 10px;
     }
 
-    .form-container {
-        max-width: 90%; /* Ligeramente más pequeño que antes en responsive */
-        margin: 10px auto;
-        padding: 10px; /* Padding más pequeño en responsive */
-    }
+
 
     .form-grid {
         grid-template-columns: 1fr;

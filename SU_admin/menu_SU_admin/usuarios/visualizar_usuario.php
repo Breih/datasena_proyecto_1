@@ -96,7 +96,7 @@ $conexion->close();
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
+    <link rel="icon" href="../../../img/Logotipo_Datasena.png" type="image/x-icon">
     <title>Visualizar y Actualizar Usuario</title>
     <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/visualizar_usuario.css">
     <style>
@@ -112,7 +112,7 @@ $conexion->close();
 </head>
 <body>
 <header>DATASENA</header>
-<img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+<img src="../../../img/logo-sena.png" alt="Logo SENA" class="img">
 
 <div class="form-container">
     <h2>Visualizar / Actualizar Usuario</h2>

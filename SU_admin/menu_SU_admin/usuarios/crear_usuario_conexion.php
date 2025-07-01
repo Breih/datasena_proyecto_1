@@ -188,4 +188,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </footer>
 </body>
 </html>
-SU_admin/menu_SU_admin/usuarios/reportar_SU.php

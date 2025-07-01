@@ -54,11 +54,11 @@ $conexion->close();
     <meta charset="UTF-8">
     <title>Visualizar / Actualizar Programa</title>
     <link rel="stylesheet" href="../../../css/SU_admin/menu_SU_admin/visualizar_usuario.css">
-    <link rel="icon" href="../img/Logotipo_Datasena.png" type="image/x-icon">
+    <link rel="icon" href="../../../img/Logotipo_Datasena.png" type="image/x-icon">
 </head>
 <body>
 <header>DATASENA</header>
-<img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+<img src="../../../img/logo-sena.png" alt="Logo SENA" class="img">
 
 <div class="form-container">
     <h2>Visualizar / Actualizar Programa</h2>
