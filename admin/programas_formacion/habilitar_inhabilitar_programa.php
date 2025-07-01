@@ -81,8 +81,13 @@ $conexion->close();
     <link rel="stylesheet" href="css/habilitar_inhabilitar_programa_formacion.css"/>
 </head>
 <body>
-    <h1>DATASENA - Administración de Programas</h1>
-    <img src="../../img/logo-sena.png" alt="Logo SENA" class="img">
+     <!-- Línea azul superior con logo del gobierno -->
+    <div class="blue-line-top">
+        <img src="../../img/gov.png" alt="gov" class="gov-logo">
+    </div>
+
+    <header>DATASENA - Administración de Programas</header>
+    <img src="../../img/logo-sena.png" alt="Logo SENA" class="logo-sena">
 
     <div class="forma-container">
         <h3>Habilitar / Inhabilitar Programa</h3>
@@ -169,6 +174,11 @@ $conexion->close();
                 <button type="button" class="habilitar-btn" onclick="window.location.href='../admin.menu.html'">Regresar al Menú</button>
             </div>
         <?php endif; ?>
+    </div>
+
+    <!-- Línea azul inferior con logo del gobierno -->
+    <div class="blue-line-bottom">
+        <img src="../../img/gov.png" alt="gov" class="gov-logo">
     </div>
 
     <footer>
