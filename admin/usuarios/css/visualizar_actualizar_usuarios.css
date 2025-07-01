@@ -116,9 +116,8 @@ footer {
 
 /* Imagen flotante */
 .logo-sena {
-    padding: 35px;
     position: absolute;
-    top: 10px;
+    top: 50px;
     right: 10px;
     width: 80px;
     height: auto;
@@ -300,7 +299,7 @@ select:focus {
     input,
     select {
         font-size: 12px;
-        padding: 6px;
+        padding: 3px;
     }
 
     .logout-btn {
@@ -309,5 +308,9 @@ select:focus {
         display: block;
         font-size: 12px;
         padding: 6px;
+    }
+
+    .logo-sena {
+        width: 50px;
     }
 }
