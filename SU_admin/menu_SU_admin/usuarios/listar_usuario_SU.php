@@ -29,8 +29,14 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
+    <!-- Línea azul superior con logo del gobierno -->
+    <div class="blue-line-top">
+        <img src="../../../img/gov.png" alt="gov" class="gov-logo">
+    </div>
+
 <header>DATASENA</header>
-<img src="../../../img/logo-sena.png" alt="Logo SENA" class="img">
+<img src="../../../img/logo-sena.png" alt="Logo SENA" class="logo-sena">
 
 <div class="form-container">
     <h2>Listar Usuario</h2>
@@ -75,6 +81,11 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <button class="back_listar" type="button" onclick="window.location.href='../super_menu.html'">Regresar</button>
     </div>
 </div>
+
+        <!-- Línea azul inferior con logo del gobierno -->
+        <div class="blue-line-bottom">
+            <img class="gov-logo"src="../../../img/gov.png" alt="gov" >
+        </div>
 
 <footer>
     <a>&copy; Todos los derechos reservados al SENA</a>
