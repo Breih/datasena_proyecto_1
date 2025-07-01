@@ -86,11 +86,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </style>
 </head>
 <body>
-    <h2>DATASENA</h2>
-    <img src="../../../img/logo-sena.png" alt="Logo SENA" class="img">
+    <!-- Línea azul superior con logo del gobierno -->
+    <div class="blue-line-top">
+        <img src="../../../img/gov.png" alt="gov" class="gov-logo">
+    </div>
+
+    <header>DATASENA</header>
+    <img src="../../../img/logo-sena.png" alt="Logo SENA" class="logo-sena">
 
     <div class="form-container">
-        <h1>Crear usuario</h1>
+        <h3>Crear usuario</h3>
         <?php if (!empty($errores['general'])): ?>
             <div class="mensaje-error"><?= htmlspecialchars($errores['general']) ?></div>
         <?php endif; ?>
@@ -99,13 +104,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="form-grid">
                 <div>
                     <div class="form-row">
-                        <label for="nombre_completo">Nombre completo:</label>
+                        <label for="nombre_completo">Nombre <br> completo:</label>
                         <input type="text" name="nombre_completo" required
                             pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" title="Solo letras y espacios"
                             value="<?= htmlspecialchars($datos['nombre_completo'] ?? '') ?>">
                     </div>
                     <div class="form-row">
-                        <label for="tipo_documento">Tipo de documento:</label>
+                        <label for="tipo_documento">Tipo de <br> documento:</label>
                         <select name="tipo_documento" required>
                             <option value="">Seleccione</option>
                             <option value="cc" <?= ($datos['tipo_documento'] ?? '') === 'cc' ? 'selected' : '' ?>>Cédula</option>
@@ -114,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         </select>
                     </div>
                     <div class="form-row">
-                        <label for="numero_identidad">Número de identidad:</label>
+                        <label for="numero_identidad">Número de <br>  identidad:</label>
                         <input type="text" name="numero_identidad" required pattern="\d{10}"
                             value="<?= htmlspecialchars($datos['numero_identidad'] ?? '') ?>">
                         <div class="error"><?= $errores['numero_identidad'] ?? '' ?></div>
@@ -124,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <input type="text" name="residencia" required value="<?= htmlspecialchars($datos['residencia'] ?? '') ?>">
                     </div>
                     <div class="form-row">
-                        <label for="tipo_sangre">Tipo de sangre:</label>
+                        <label for="tipo_sangre">Tipo de <br> sangre:</label>
                         <select name="tipo_sangre" required>
                             <option value="">Seleccione</option>
                             <?php foreach (["A+","A-","B+","B-","AB+","AB-","O+","O-"] as $tipo): ?>
@@ -136,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 <div>
                     <div class="form-row">
-                        <label for="correo">Correo electrónico:</label>
+                        <label for="correo">Correo <br> electrónico:</label>
                         <input type="email" name="correo" required value="<?= htmlspecialchars($datos['correo'] ?? '') ?>">
                     </div>
                     <div class="form-row">
@@ -149,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}">
                     </div>
                     <div class="form-row">
-                        <label for="validacion">Confirmar contraseña:</label>
+                        <label for="validacion">Confirmar <br> contraseña:</label>
                         <input type="password" name="validacion" required>
                         <div class="error"><?= $errores['contrasena'] ?? '' ?></div>
                     </div>
@@ -163,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
 
                     <div class="form-row">
-                        <label for="numero_ficha">Número de ficha:</label>
+                        <label for="numero_ficha">Número de <br> ficha:</label>
                         <select name="numero_ficha" required>
                             <option value="">Seleccione ficha</option>
                             <?php foreach ($fichas as $ficha): ?>
@@ -182,6 +187,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </form>
     </div>
+
+    <!-- Línea azul inferior con logo del gobierno -->
+    <div class="blue-line-bottom">
+        <img src="../../../img/gov.png" alt="gov" class="gov-logo">
+    </div>
+
 
     <footer>
         <a>&copy; Todos los derechos reservados al SENA</a>
